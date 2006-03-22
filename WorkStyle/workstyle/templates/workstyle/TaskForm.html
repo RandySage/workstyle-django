@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+{% comment %}
+Copyright (c) 2006, www.everes.net
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, 
+are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, 
+      this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, 
+      this list of conditions and the following disclaimer in the documentation 
+      and/or other materials provided with the distribution.
+    * Neither the name of the everes nor the names of its contributors may be 
+      used to endorse or promote products derived from this software without 
+      specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE 
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
+THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+{% endcomment %}
+{% load i18n %}
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>WorkStyle</title>
+	<link type="text/css" rel="stylesheet" href="{{ workstyle_root }}/resources/skin/default/basic.css"/>
+	<script src="{{ workstyle_root }}/resources/script.js" language="JavaScript"></script>
+	<script src="{{ workstyle_root }}/resources/rollover.js" language="JavaScript"></script>
+	<script src="{{ workstyle_root }}/resources/rolloverLink.js" language="JavaScript"></script>
+	<script language="JavaScript" type="text/JavaScript">
+	<!--
+	function init() {
+	}
+	function checkBody() {
+		if(document.task_form.task.value == "") {
+			alert("{% trans "Task Body is required." %}")
+			return false;
+		}
+		if(document.task_form.tag_searchable.value.length > 800) {
+			alert("{% trans "Tag is only 800 chars." %}")
+			return false;
+		}
+		if(document.task_form.commentator.value.length > 50) {
+			alert("{% trans "Commentaitor is only 50 chars." %}")
+			return false;
+		}
+		return true;
+	}
+	//-->
+	</script>
+</head>
+<body onload="init()">
+<p id="header"><a href="{{ workstyle_root }}"><img src="{{ workstyle_root }}/resources/skin/default/image/logo.png" alt="WorkStyle" /></a></p>
+
+<ul class="nav">
+	<li><a href="{{ workstyle_root }}/TaskList/">{% trans "Task List" %}</a></li>
+	<li><a href="{{ workstyle_root }}/Tag/">{% trans "Tag Management" %}</a></li>
+</ul>
+
+<h1 id="pageTitle">{% trans "Task Form" %}</h1>
+
+<div id="content"> 
+<div id="content-body"> 
+	<div id="menu"> 
+		<h2>{% trans "Menu" %}</h2>
+		{% block menu %}
+		<ul>
+			<li><a href="{{ workstyle_root }}/Task/{{ task.id }}/"><img src="{{ workstyle_root }}/resources/skin/default/image/icon/view.png"/>{% trans "Back to Task Detail" %}</a></li>
+			<li><a href="{{ workstyle_root }}/TaskList/"><img src="{{ workstyle_root }}/resources/skin/default/image/icon/go_up.png"/>{% trans "Back to Task List" %}</a></li>
+		</ul>
+        {% endblock %}
+<a href="http://www.djangoproject.com/"><img src="http://media.djangoproject.com/img/badges/djangomade124x25_grey.gif" border="0" alt="Made with Django." title="Made with Django."></a>
+	</div>
+	<div id="main"> 
+	{% block formaction %}
+	<form action="{{ workstyle_root }}/Task/{{ task.id|default_if_none:"0" }}/update/" name="taskForm" method="POST" enctype="multipart/form-data" class="tableForm" onSubmit="return checkBody();">
+	{% endblock %}
+{% if form.has_errors %}
+<h2>Please correct the following error{{ errors|pluralize }}:</h2>
+{% endif %}
+		<table class="form">
+		<tr> 
+			<th nowrap="nowrap">{% trans "Status" %}</th>
+			<td class="text">
+				<ul>
+			{% for status in status_list %}
+					<li><input type="radio" class="radio" name="status" value="{{ forloop.counter }}" {% ifequal form.status.data status.id_str %} checked="checked" {% endifequal %}/>
+						<img src="{{ workstyle_root }}/resources/skin/default/image/icon/{{ status.icon }}24.png"/>{{ status.name }}</li>
+			{% endfor %}
+				</ul>
+			</td>
+		</tr>
+		<tr> 
+			<th nowrap="nowrap">{% trans "Task" %} </th>
+			<td class="text">
+				{{ form.task }}
+				{% if form.task.errors %}*** {{ form.task.errors|join:", " }}{% endif %}
+			</td>
+		</tr>
+		<tr> 
+			<th height="100%" nowrap="nowrap">{% trans "Estimate" %}</th>
+			<td class="text">
+				{{ form.estimate }}
+				{% if form.estimate.errors %}*** {{ form.estimate.errors|join:", " }}{% endif %}
+			</td>
+		</tr>
+		<tr> 
+			<th nowrap="nowrap">{% trans "Tag" %}</th>
+			<td class="text"><input id="tagList" name="task_tag" type="text" class="text" value="{% for tag in task_tag_list %}[{{ tag.name }}]{% endfor %}" />
+				{% if form.task_tag.errors %}*** {{ form.task_tag.errors|join:", " }}{% endif %}
+				</td>
+		</tr>
+		<tr> 
+			<th nowrap="nowrap">{% trans "file" %}</th>
+			<td class="text">
+				{{ form.attachFile }}
+				{% if form.attachFile.errors %}*** {{ form.attachFile.errors|join:", " }}{% endif %}
+			</td>
+		</tr>
+		{% if task.update_date %}
+		<tr> 
+			<th nowrap="nowrap">{% trans "Last Update" %}</th>
+			<td height="100%">{{ task.update_date|date:"Y/m/d" }}</td>
+		</tr>
+		{% endif %}
+		</table>
+        <h3>{% trans "Tag" %}</h3>
+		<ul class="tagList">
+			{% for tag in tag_list %}
+			<li id="tag{{ forloop.counter }}"><a href="javascript:updateTagList('tagList', 'tag{{ forloop.counter }}', '{{ tag.name }}', 'tag{{ tag.tag_type }}')">{{ tag.name }}</a></li>
+			{% endfor %}
+		</ul>
+        <h2>{% trans "Comment" %}</h2>
+		<table class="form">
+		<tr> 
+			<th width="48" nowrap="nowrap">{% trans "Comment" %}</th>
+			<td class="text">
+				{{ form.comment }}
+				{% if form.comment.errors %}*** {{ form.comment.errors|join:", " }}{% endif %}
+			</td>
+		</tr>
+		<tr> 
+			<th nowrap="nowrap">{% trans "Commentator" %}</th>
+			<td class="text">
+				{{ form.commentator }}
+				{% if form.commentator.errors %}*** {{ form.commentator.errors|join:", " }}{% endif %}
+				</td>
+		</tr>
+		</table>
+		{% block submitbutton %}
+		<input name="" type="submit" class="submit" value="{% trans "Update" %}" />
+		{% endblock %}
+	</form>
+	</div>
+    <!-- main -->
+    <hr class="bot" />
+</div>
+<!-- content-body -->
+</div>
+<!-- content -->
+<div id="footer"/>
+</body>
+</html>

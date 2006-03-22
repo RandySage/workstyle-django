@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+{% comment %}
+Copyright (c) 2006, www.everes.net
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, 
+are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, 
+      this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, 
+      this list of conditions and the following disclaimer in the documentation 
+      and/or other materials provided with the distribution.
+    * Neither the name of the everes nor the names of its contributors may be 
+      used to endorse or promote products derived from this software without 
+      specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE 
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
+THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+{% endcomment %}
+{% load i18n %}
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>WorkStyle</title>
+	<link type="text/css" rel="stylesheet" href="{{ workstyle_root }}/resources/skin/default/basic.css"/>
+	<script src="{{ workstyle_root }}/resources/script.js" language="JavaScript"></script>
+	<script src="{{ workstyle_root }}/resources/rollover.js" language="JavaScript"></script>
+	<script src="{{ workstyle_root }}/resources/rolloverLink.js" language="JavaScript"></script>
+	<script language="JavaScript" type="text/JavaScript">
+	<!--
+	function init() {
+		{% for attach in attach_list %}
+		setRollOver('deleteIcon-{{ forloop.counter }}', '{{ workstyle_root }}/resources/skin/default/image/icon/delete.png');
+		{% endfor %}
+
+		{% for status in status_list %}
+		setRollOverLink('updateStatusLink{{ forloop.counter}}', 'updateSatusImage{{ forloop.counter}}', '{{ workstyle_root }}/resources/skin/default/image/icon/{{ status.icon }}24.png');
+		{% endfor %}
+
+	}
+	//-->
+	</script>
+</head>
+<body onload="init()">
+<p id="header"><a href="{{ workstyle_root }}"><img src="{{ workstyle_root }}/resources/skin/default/image/logo.png" alt="WorkStyle" /></a></p>
+  
+<ul class="nav">
+	<li><a href="{{ workstyle_root }}/TaskList">{% trans "Task List" %}</a></li>
+	<li><a href="{{ workstyle_root }}/Tag">{% trans "Tag Management" %}</a></li>
+</ul>
+
+<h1 id="pageTitle">{% trans "TaskDetail" %}</h1>
+
+<div id="content"> 
+<div id="content-body"> 
+    <div id="menu"> 
+		<h2>{% trans "Menu" %}</h2>
+		<ul>
+			<li><a href="{{ workstyle_root }}/Task/new"><img src="{{ workstyle_root }}/resources/skin/default/image/icon/normal16.png"/>{% trans "Add Task" %}</a></li>
+	        <li><a href="{{ workstyle_root }}/Task/{{ task.id }}/edit"><img src="{{ workstyle_root }}/resources/skin/default/image/icon/edit.png"/>{% trans "Edit" %}</a></li>
+	        <li><a href="{{ workstyle_root }}/TaskList"><img src="{{ workstyle_root }}/resources/skin/default/image/icon/go_up.png"/>{% trans "Back to Task list" %}</a></li>
+		</ul>
+		<h2>{% trans "Update" %}</h2>
+		<h3>{% trans "Tag" %}</h3>
+		<ul>
+			{% for tag in tag_with_selected_list %}
+				{% if tag.selected %}
+			<li><a href="{{ workstyle_root }}/Task/{{ task.id }}/remove_tag/{{ tag.id }}" class="search-on">{{ tag.name }}</a></li>
+				{% else %}
+			<li><a href="{{ workstyle_root }}/Task/{{ task.id }}/add_tag/{{ tag.id }}" class="search-off">{{ tag.name }}</a></li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+<a href="http://www.djangoproject.com/"><img src="http://media.djangoproject.com/img/badges/djangomade124x25_grey.gif" border="0" alt="Made with Django." title="Made with Django."></a>
+	</div>
+	<div id="main">
+		<div class="taskinfo"> 
+			<table class="list">
+			<tr>
+				<td colspan="2" style="text-align: center;">
+					{% for status in status_list %}
+						{% ifequal task.status status.id %}
+						<img src="{{ workstyle_root }}/resources/skin/default/image/icon/{{ status.icon }}128.png"/>
+						{% endifequal %}
+					{% endfor %}
+				<p>
+				{% for status in status_list %}
+					{% ifequal task.status status.id %}
+					<span id="updateStatusLink{{ forloop.counter }}" />
+					<img src="{{ workstyle_root }}/resources/skin/default/image/icon/{{ status.icon}}24.png" id="updateSatusImage{{ forloop.counter }}" />
+					{% else %}
+					<a id="updateStatusLink{{ forloop.counter }}" href="{{ workstyle_root }}/Task/{{ task.id }}/update_status/{{ status.id }}" class="search-off">
+					<img src="{{ workstyle_root }}/resources/skin/default/image/icon/{{ status.icon }}24-off.png" id="updateSatusImage{{ forloop.counter }}"  />
+					</a>
+					{% endifequal %}
+				{% endfor %}
+			    </p>
+				</td>
+			</tr>
+			<tr> 
+				<th>{% trans "Created" %}</th>
+				<td>{{ task.create_date|date:"Y/m/d" }}<br />{{ task.create_date|date:"H:i" }}</td>
+			</tr>
+			<tr> 
+				<th>{% trans "Last Update" %}</th>
+				<td>{{ task.update_date|date:"Y/m/d" }}<br />{{ task.update_date|date:"H:i" }}</td>
+			</tr>
+			<tr> 
+				<th>{% trans "Estimate" %}</th>
+				<td class="number">{{ task.estimate }}</td>
+			</tr>
+			</table>
+		</div>
+		<ul class="tagList">
+			{% for tag in task_tag_list %}
+			<li class="tag{{ tag.tag_type}}">{{ tag.name }}</li>
+			{% endfor %}
+		</ul>
+		<p class="text">{{ task.task|escape|linebreaks|urlize }}</p>
+		<h3>Attached File</h3>
+		<ul class="fileList">
+		{% for attach in attach_list %}
+			<li><a href="{{ workstyle_root }}/resources/{{ attach.file }}">{{ attach.name }}</a><a href="{{ workstyle_root }}/Task/{{ task.id }}/delete_attachment/{{ attach.id }}/"><img src="{{ workstyle_root }}/resources/skin/default/image/icon/delete-off.png" id="deleteIcon-{{ forloop.counter }}"/></a></li>
+		{% endfor %}
+		</ul>
+		<h2>Comment List</h2>
+		<table class="list">
+		<tr> 
+			<th width="48" nowrap="nowrap">{% trans "date/time" %}</th>
+			<th nowrap="nowrap">{% trans "Commentator" %}</th>
+			<th nowrap="nowrap">{% trans "Comment" %}</th>
+		</tr>
+		{% for comm in comment_list %}
+		<tr> 
+			<td>{{ comm.create_date|date:"Y/m/d H:i" }}</td>
+			<td>{{ comm.commentator }}</td>
+			<td>{{ comm.comment|escape|linebreaks }}</td>
+		</tr>
+		{% endfor %}
+		</table>
+	</div>
+	<hr class="bot"/>
+</div>
+<!-- content-body -->
+</div>
+<!-- content -->
+<div id="footer"/>
+</body>
+</html>
