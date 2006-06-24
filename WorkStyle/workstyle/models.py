@@ -34,14 +34,27 @@ TAG_TYPE_CHOICES = (
 )
 
 class Task(models.Model):
-    task = models.TextField(db_index=True)
-    create_date = models.DateTimeField(auto_now_add=True)
-    update_date = models.DateTimeField()
-    tag_searchable = models.CharField(maxlength=800, db_index=True, null=True)
-    estimate = models.FloatField(max_digits=3, default=0, decimal_places=1, null=True)
-    status = models.IntegerField(maxlength=1, default=3, choices=TASK_STATUS_CHOICES, db_index=True)
+    task = models.TextField(_('Task'), db_index=True, blank=False)
+    create_date = models.DateTimeField(_('Create Date')auto_now_add=True)
+    update_date = models.DateTimeField(_('Update Date'))
+    tag_searchable = models.CharField(_('Tag')maxlength=800, db_index=True, blank=True)
+    estimate = models.FloatField(_('Estimate')max_digits=3, default=0, decimal_places=1, null=True)
+    status = models.IntegerField(_('Status')maxlength=1, default=3, choices=TASK_STATUS_CHOICES, db_index=True)
     class Meta:
         ordering = ['-update_date']
+
+    def get_absolute_url(self):
+        return "/Task/%i/" % self.id
+
+    def save(self):
+        tagList = tag_searchable.split(' ')
+        existTag = Tag.objects.filter(name__in=tagList).values('name')
+        for exist in existTag :
+            tagList.remove(exist['name'])
+        for tag in tagList :
+            t = new Tag(name=tag)
+            t.save()
+        super(Task, self).save()
 
 class Tag(models.Model):
     name = models.CharField(maxlength=50)
@@ -52,21 +65,27 @@ class Tag(models.Model):
     def __repr__(self):
         return self.name
 
-class TagList(models.Model):
-    task = models.ForeignKey(Task)
-    tag  = models.ForeignKey(Tag)
+    def delete(self):
+        taskList = Task.objects.filter(tag_searchable__contains=self.name)
+        for task in taskList:
+            task.tag_searchable = task.tag_searchable.replace(self.name, "")replace("  ", " ").strip()
+            task.save()
+        super(Tag, self).delete()
+
 
 class Comment(models.Model):
-    comment    = models.TextField()
-    create_date = models.DateTimeField(auto_now_add=True)
-    commentator = models.CharField(maxlength=50, null=True)
     task        = models.ForeignKey(Task)
+    comment    = models.TextField(blank=False)
+    commentator = models.CharField(maxlength=50, blank=False)
+    create_date = models.DateTimeField(auto_now_add=True)
 
 class Attachment(models.Model):
-    create_date = models.DateTimeField(auto_now_add=True)
+    task        = models.ForeignKey(Task)
     name        = models.CharField(maxlength=200)
     file        = models.FileField(upload_to=WORKSTYLE_JUNK_DIR)
     size        = models.IntegerField(maxlength=12)
-    task        = models.ForeignKey(Task)
+    create_date = models.DateTimeField(auto_now_add=True)
 
-
+class TaskRelation(models.Model):
+    task_a = models.ForeignKey(Task)
+    task_b = models.ForeignKey(Task)

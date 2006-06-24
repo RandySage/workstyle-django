@@ -56,7 +56,3 @@ class TaskManipulator(forms.Manipulator):
             if len(task_tag) > 49 :
                 raise validators.ValidationError(_("Tag's name is must be less than 50 characters."))
 
-#not using now
-def isAlphaNumeric(field_data, all_data):
-    if not alnum_re.search(field_data):
-        raise ValidationError, _("This value must contain only letters, numbers and underscores.")
