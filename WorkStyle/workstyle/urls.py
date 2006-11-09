@@ -1,10 +1,11 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
+from WorkStyle.workstyle.models import Task
 
 urlpatterns = patterns('',
     # Example:
     # (r'^WorkStyle/', include('WorkStyle.foo.urls.foo')),
-    (r'^$', 'WorkStyle.workstyle.view.task.top'),
+    (r'^$', 'WorkStyle.workstyle.views.index'),
     (r'^TaskList/$', 'WorkStyle.workstyle.view.task.list_default'),
     (r'^TaskList/rss/(?P<sort_type>\d+)/(?P<sort_order>\d+)/(?P<status_list>\S+)/(?P<tag_list>\S+)/(?P<offset>\d+)/(?P<limit>\d+)/(?P<key>\S+)/$', 'WorkStyle.workstyle.view.task.list_rss'),
     (r'^TaskList/atom/(?P<sort_type>\d+)/(?P<sort_order>\d+)/(?P<status_list>\S+)/(?P<tag_list>\S+)/(?P<offset>\d+)/(?P<limit>\d+)/(?P<key>\S+)/$', 'WorkStyle.workstyle.view.task.list_atom'),
@@ -15,8 +16,7 @@ urlpatterns = patterns('',
     (r'^Task/(?P<task_id>\d+)/update_status/(?P<status>\d+)/$', 'WorkStyle.workstyle.view.task.update_status'),
     (r'^Task/(?P<task_id>\d+)/add_tag/(?P<tag_id>\d+)/$', 'WorkStyle.workstyle.view.task.add_tag'),
     (r'^Task/(?P<task_id>\d+)/remove_tag/(?P<tag_id>\d+)/$', 'WorkStyle.workstyle.view.task.remove_tag'),
-    (r'^Task/new/$', 'WorkStyle.workstyle.view.task.create_task'),
-    (r'^Task/add/$', 'WorkStyle.workstyle.view.task.create_task'),
+    (r'^Task/add/$', 'django.views.generic.create_update.create_object', {'model': Task}),
     (r'^Task/(?P<task_id>\d+)/edit/$', 'WorkStyle.workstyle.view.task.edit_task'),
     (r'^Task/(?P<task_id>\d+)/update/$', 'WorkStyle.workstyle.view.task.edit_task'),
     (r'^Task/(?P<task_id>\d+)/delete/$', 'WorkStyle.workstyle.view.task.delete'),

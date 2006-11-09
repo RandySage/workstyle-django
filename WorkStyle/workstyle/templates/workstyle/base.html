@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+{% load wsfilters %}
+{% load wstags %}
+{% load i18n %}
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>WorkStyle</title>
+	<link type="text/css" rel="stylesheet" href="{{ workstyle_root }}/resources/skin/default/basic.css"/>
+	<link rel="alternate" href="http://{{ domain }}{{ workstyle_root }}/TaskList/atom{{ search_query }}" type="application/atom+xml" title="Atom" />
+    <link rel="alternate" href="http://{{ domain }}{{ workstyle_root }}/TaskList/rss{{ search_query }}"
+          title="RSS 1.0" type="application/rss+xml" />
+	<script src="{{ workstyle_root }}/resources/script.js" language="JavaScript"></script>
+	<script src="{{ workstyle_root }}/resources/rollover.js" language="JavaScript"></script>
+	<script src="{{ workstyle_root }}/resources/rolloverLink.js" language="JavaScript"></script>
+	<script language="JavaScript" type="text/JavaScript">
+	<!--
+{% block 'custom_js' %}{% endblock %}
+	//-->
+	</script>
+</head>
+<body{% block 'onload' %}{% endblock %}>
+<p id="header"><a href="{{ workstyle_root }}"><img src="{{ workstyle_root }}/resources/skin/default/image/logo.png" alt="WorkStyle" /></a></p>
+
+<ul class="nav">
+	<li><a href="{{ workstyle_root }}/TaskList/">{% trans "Task List" %}</a></li>
+	<li><a href="{{ workstyle_root }}/Tag/">{% trans "Tag Management" %}</a></li>
+</ul>
+
+<h1 id="pageTitle">{% trans "Tag List" %}</h1>
+
+<div id="content"> 
+<div id="content-body"> 
+{% block 'contents' %}
+{% block 'menu' %}
+{% endblock %}
+{% block 'main' %}
+	<div id="main">
+		<div class="pager">
+			<a href="{% ifequal prev "1" %}javascript:prev(){% else %}#{% endifequal %}"><img src="{{ workstyle_root }}/resources/skin/default/image/icon/back.png" /></a>
+			<a href="{% ifequal next "1" %}javascript:next(){% else %}#{% endifequal %}""><img src="{{ workstyle_root }}/resources/skin/default/image/icon/next.png" /></a>
+			{{ start }}-{{ end }} / {{ all_count }}
+		</div>
+		<table class="list" width="100%">
+		<tr> 
+			<th nowrap="nowrap"><a href="javascript:sort(3);">{% trans "Status" %}<img src="{{ workstyle_root }}/resources/skin/default/image/icon/order_desc.png" /></a></th>
+			<th nowrap="nowrap"><a href="javascript:sort(2);">{% trans "ID" %}<img src="{{ workstyle_root }}/resources/skin/default/image/icon/order_desc.png"/></a></th>
+			<th nowrap="nowrap">{% trans "Task" %}</th>
+			<th nowrap="nowrap"><a href="javascript:sort(4);">{% trans "Estimate" %}<img src="{{ workstyle_root }}/resources/skin/default/image/icon/order_desc.png" /></a></th>
+			<th nowrap="nowrap"><a href="javascript:sort(1);">{% trans "Last Update" %}<img src="{{ workstyle_root }}/resources/skin/default/image/icon/order_desc.png" /></a></th>
+		</tr>
+		{% for task in task_list %}
+		<tr> 
+			<td width="48">
+				{% for status in status_list %}
+					{% ifequal task.status status.id %}
+				<img src="{{ workstyle_root }}/resources/skin/default/image/icon/{{ status.icon }}48.png" width="48" height="48" /> 
+					{% endifequal %}
+				{% endfor %}
+				<p class="compactStatusList"><a
+					{% for status in status_list %}
+					href="javascript:updateStatus({{ task.id }}, {{ status.id }});"><img src="{{ workstyle_root }}/resources/skin/default/image/icon/{{ status.icon }}24{% ifnotequal task.status status.id %}-off{% endifnotequal %}.png" id="statusIcon{{ forloop.parentloop.counter }}-{{ forloop.counter }}" /></a><a
+					{% endfor %}
+					></a>
+				</p>
+			</td>
+			<td class="number">{{ task.id }}</td>
+			<td class="text">
+				<ul class="tagList">
+					{% for tag in task.tag_list %}
+					<li class="tag{{ tag.tag_type }}">{{ tag.name }}</li>
+					{% endfor %}
+				</ul>
+				<a href="{{ workstyle_root }}/Task/{{ task.id }}/" class="text">{{ task.task|truncatelines:3|escape|linebreaks }}</a> 
+				<ul class="actionList">
+					<li><a href="{{ workstyle_root }}/Task/{{ task.id }}/"><img src="{{ workstyle_root }}/resources/skin/default/image/icon/view-off.png" id="viewIcon-{{ forloop.counter }}" /></a></li>
+					<li><a href="{{ workstyle_root }}/Task/{{ task.id }}/edit"><img src="{{ workstyle_root }}/resources/skin/default/image/icon/edit-off.png" id="editIcon-{{ forloop.counter }}"  /></a></li>
+					<li><a href="javascript:deleteTask({{ task.id }})"><img src="{{ workstyle_root }}/resources/skin/default/image/icon/delete-off.png" id="deleteIcon-{{ forloop.counter }}"/></a></li>
+				</ul>
+			</td>
+			<td class="number">{{ task.estimate }}</td>
+			<td>{{ task.update_date|date:"Y/m/d" }}<br />{{ task.update_date|date:"H:i" }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+		<div class="pager">
+			<a href="{% ifequal prev "1" %}javascript:prev(){% else %}#{% endifequal %}"><img src="{{ workstyle_root }}/resources/skin/default/image/icon/back.png" /></a>
+			<a href="{% ifequal next "1" %}javascript:next(){% else %}#{% endifequal %}""><img src="{{ workstyle_root }}/resources/skin/default/image/icon/next.png" /></a>
+			{{ start }}-{{ end }} / {{ all_count }}
+		</div>
+	</div>
+	<!-- main -->
+    {% endblock %}
+	<hr class="bot" />
+</div>
+<!-- content-body -->
+{% endblock %}
+</div>
+<!-- content -->
+<div id="footer"/>
+</body>
+</html>

@@ -1,0 +1,71 @@
+{% extends 'workstyle/base.html' %}
+{% load wsfilters %}
+{% load wstags %}
+{% load i18n %}
+
+{% block menu %}
+	<div id="menu"> 
+		<h2>{% trans "Menu" %}</h2>
+		<ul>
+			<li><a href="{{ workstyle_root }}/Task/{{ task.id }}/"><img src="{{ workstyle_root }}/resources/skin/default/image/icon/view.png"/>{% trans "Back to Task Detail" %}</a></li>
+			<li><a href="{{ workstyle_root }}/TaskList/"><img src="{{ workstyle_root }}/resources/skin/default/image/icon/go_up.png"/>{% trans "Back to Task List" %}</a></li>
+		</ul>
+<a href="http://www.djangoproject.com/"><img src="http://media.djangoproject.com/img/badges/djangomade124x25_grey.gif" border="0" alt="Made with Django." title="Made with Django."></a>
+	</div>
+{% endblock %}
+
+
+{% block 'main' %}
+{% get_status_list as status_list %}
+{% get_tag_list as tag_list %}
+	<div id="main"> 
+	<form method="POST" enctype="multipart/form-data" class="tableForm">
+{% if form.has_errors %}
+<h2>Please correct the following error{{ errors|pluralize }}:</h2>
+{{ form.errors }}
+{% endif %}
+		<table class="form">
+		<tr> 
+			<th nowrap="nowrap">{% trans "Status" %}</th>
+			<td class="text">
+				<ul>
+			{% for status in status_list %}
+					<li><input type="radio" class="radio" name="status" value="{{ forloop.counter }}" {% ifequal form.status status.id %} checked="checked" {% endifequal %}/>
+						<img src="{{ workstyle_root }}/resources/skin/default/image/icon/{{ status.icon }}24.png"/>{{ status.name }}</li>
+			{% endfor %}
+				</ul>
+				{% if form.status.errors %}*** {{ form.status.errors|join:", " }}{% endif %}
+			</td>
+		</tr>
+		<tr> 
+			<th nowrap="nowrap">{% trans "Task" %} </th>
+			<td class="text">
+				{{ form.task }}
+				{% if form.task.errors %}*** {{ form.task.errors|join:", " }}{% endif %}
+			</td>
+		</tr>
+		<tr> 
+			<th height="100%" nowrap="nowrap">{% trans "Estimate" %}</th>
+			<td class="text">
+				{{ form.estimate }}
+				{% if form.estimate.errors %}*** {{ form.estimate.errors|join:", " }}{% endif %}
+			</td>
+		</tr>
+		<tr> 
+			<th nowrap="nowrap">{% trans "Tag" %}</th>
+			<td class="text">{{ form.tag_searchable }}
+				{% if form.tag_searchable.errors %}*** {{ form.tag_searchable.errors|join:", " }}{% endif %}
+				</td>
+		</tr>
+		</table>
+        <h3>{% trans "Tag" %}</h3>
+		<ul class="tagList">
+			{% for tag in tag_list %}
+			<li id="tag{{ forloop.counter }}"><a href="javascript:updateTagList('tagList', 'tag{{ forloop.counter }}', '{{ tag.name }}', 'tag{{ tag.tag_type }}')">{{ tag.name }}</a></li>
+			{% endfor %}
+		</ul>
+		<input type="submit" value="_('Update')">
+	</form>
+	</div>
+    <!-- main -->
+{% endblock %}

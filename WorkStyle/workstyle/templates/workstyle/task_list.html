@@ -1,0 +1,38 @@
+{% extends 'workstyle/base.html' %}
+{% load wsfilters %}
+{% load wstags %}
+{% load i18n %}
+
+{% block 'menu' %}
+{% get_status_list as status_list %}
+{% get_tag_list as tag_list %}
+<div id="menu"> 
+	<h2>{% trans "Menu" %}</h2>
+	<ul>
+		<li><a href="{{ workstyle_root }}/Task/add/"><img src="{{ workstyle_root }}/resources/skin/default/image/icon/normal16.png"/>{% trans "Add Task" %}</a></li>
+	</ul>
+
+	<h2>{% trans "Search" %}</h2>
+	<form>
+		<input type="text" name="search_key" value="{{ key|escape }}" class="text" style="width: 110px;padding:2px;"/>
+		<input type="button" value="{% trans "Search" %}" onClick="javascript:setKeyWord(this.form.search_key.value)" />
+	</form>
+	<h3>{% trans "Status" %}</h3>
+	<ul >
+		{% for status in status_list %}
+		<li><a class="search-on"><img src="{{ workstyle_root }}/resources/skin/default/image/icon/{{ status.css }}24.png"/>{{ status }}</a></li>
+		{% endfor %}
+	</ul>
+	<h3>{% trans "Tag" %}</h3>
+	<ul>
+		{% for tag in tag_list %}
+	<li><a href="{{ tag.id }}" class="search-on">{{ tag.name }}</a></li>
+		{% endfor %}
+	</ul>
+	<a href="http://www.djangoproject.com/"><img src="http://media.djangoproject.com/img/badges/djangomade124x25_grey.gif" border="0" alt="Made with Django." title="Made with Django."></a>
+</div>
+<!-- menu -->
+{% endblock %}
+
+{% block 'main' %}
+{% endblock %}

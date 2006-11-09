@@ -19,10 +19,14 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 
 
 #WorkStyle origin settings
-WORKSTYLE_BASE_DIR = '/open/svn/everes/WorkStyle/trunk/WorkStyle/WorkStyle'
+#WORKSTYLE_BASE_DIR = '/open/svn/everes/WorkStyle/trunk/WorkStyle/WorkStyle'
+import os
+WORKSTYLE_BASE_DIR = os.getcwd()
 WORKSTYLE_ROOT = '/WorkStyle'
 WORKSTYLE_MEDIA_ROOT = WORKSTYLE_BASE_DIR + '/workstyle/media/resources'
 WORKSTYLE_JUNK_DIR = 'junk'
+
+TEMPLATE_CONTEXT_PROCESSORS = ('WorkStyle.workstyle.context_processor.server_path',) 
 
 TAG_TYPE_1  = 'TAG_TYPE_1'
 TAG_TYPE_2  = 'TAG_TYPE_2'
@@ -72,8 +76,9 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    "django.middleware.common.CommonMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
+    "django.middleware.common.CommonMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.middleware.doc.XViewMiddleware",
 )
@@ -82,7 +87,6 @@ ROOT_URLCONF = 'WorkStyle.urls'
 
 
 TEMPLATE_DIRS = (
-    #"E:\\everes.net\\WorkStyle\\WorkStyle\\apps\\workstyle\\template",
     WORKSTYLE_BASE_DIR + "/workstyle/templates",
     # Put strings here, like "/home/html/django_templates".
 )

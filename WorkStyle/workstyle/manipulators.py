@@ -49,10 +49,11 @@ class TaskManipulator(forms.Manipulator):
         print "FILE_NAME:" + filename
         if not alnum_re.search(filename) :
             raise validators.ValidationError(_("Attach filename must contain only letters, numbers and underscores."))
+
     def isValidTagName(self, field_data, all_data):
-        task_tag_list = string.split(field_data, "]")
+        task_tag_list = string.split(field_data, " ")
         for task_tag in task_tag_list :
-            task_tag = string.strip(string.replace(task_tag, "[", ""))
+            task_tag = string.strip(task_tag)
             if len(task_tag) > 49 :
                 raise validators.ValidationError(_("Tag's name is must be less than 50 characters."))
 
