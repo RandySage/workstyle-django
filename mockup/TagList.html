@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>WorkStyle</title>
+	<link type="text/css" rel="stylesheet" href="resources/skin/default/basic.css"/>
+	<script src="resources/prototype.js" language="JavaScript"></script>
+	<script src="resources/jkl-parsexml.js" language="JavaScript"></script>
+	<script src="resources/script.js" language="JavaScript"></script>
+	<script src="resources/local.js" language="JavaScript"></script>
+	<script src="resources/AjaxPages.js" language="JavaScript"></script>
+</head>
+<body onload="init()">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+	var tagTypes = [
+		{tagTypeId: 11, name: 'タグ種別名A', styleClass: 'tag1'},
+		{tagTypeId: 12, name: 'タグ種別名B', styleClass: 'tag2'},
+		{tagTypeId: 13, name: 'タグ種別名C', styleClass: 'tag3'},
+		{tagTypeId: 14, name: 'タグ種別名D', styleClass: 'tag4'},
+		{tagTypeId: 15, name: 'タグ種別名E', styleClass: 'tag5'},
+		{tagTypeId: 16, name: 'タグ種別名F', styleClass: 'tag6'},
+		{tagTypeId: 17, name: 'タグ種別名G', styleClass: 'tag7'},
+		{tagTypeId: 18, name: 'タグ種別名H', styleClass: 'tag8'},
+		{tagTypeId: 19, name: 'タグ種別名I', styleClass: 'tag9'}
+	]
+//-->
+</script>
+<script src="resources/TagList.js" language="JavaScript"></script>
+<p id="header"><a href="TaskList.html"><img src="resources/skin/default/image/logo.png" alt="WorkStyle" /></a></p>
+
+<ul class="nav">
+	<li><a href="TaskList.html">タスク一覧</a></li>
+	<li><a href="TaskList.html">タグ管理</a></li>
+</ul>
+
+<h1 id="pageTitle">Tag List</h1>
+
+<div id="content"> 
+<div id="content-body"> 
+	<div id="menu"> 
+		<h2>Menu</h2>
+		<ul>
+			<li><a href="TagTypeList.html"><img src="resources/skin/default/image/icon/TagType.png"/>タグ種別を編集する</a></li>
+		</ul>
+	</div>
+	<div id="main"> 
+		<table id="tagList" class="list" width="99%">
+		<tr> 
+			<th nowrap="nowrap">&nbsp;</th>
+			<th nowrap="nowrap">&nbsp;</th>
+			<th nowrap="nowrap"> タグ</th>
+			<th nowrap="nowrap">種別</th>
+		</tr>
+		<tr id="tag1"> 
+			<td class="icon"><a class="deleteAction" href="javascript:deleteTag(1, 'tag1');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+			<td class="icon"><a id="tagActvity1" class="inactive" href="javascript:toggleTagActivity(1, 'tagActvity1')"><img src="resources/skin/default/image/spacer.gif" width="16" height="16"/></a></td>
+			<td>プロジェクトA</td>
+			<td>
+				<ul id="tagTypeList-1" class="tagTypeList">
+				<li><a href="javascript:changeTypeOfTag(1, 11)" class="tag1">プロジェクト</a></li>
+				<li><a href="javascript:changeTypeOfTag(1, 12)">タスク種別</a></li>
+				<li><a href="javascript:changeTypeOfTag(1, 13)">担当</a></li>
+				<li><a href="javascript:changeTypeOfTag(1, 14)">イテレーション</a></li>
+				<li><a href="javascript:changeTypeOfTag(1, 15)">備考</a></li>
+				<li><a href="javascript:changeTypeOfTag(1, 16)">Group6</a></li>
+				<li><a href="javascript:changeTypeOfTag(1, 17)">Group7</a></li>
+				<li><a href="javascript:changeTypeOfTag(1, 18)">Group8</a></li>
+				<li><a href="javascript:changeTypeOfTag(1, 19)">Group9</a></li>
+				<li><a href="javascript:changeTypeOfTag(1, 20)">Group10</a></li>
+				</ul>
+			</td>
+		</tr>
+		<tr id="tag2"> 
+			<td class="icon"><a class="deleteAction" href="javascript:deleteTag(2, 'tag2');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+			<td class="icon"><a id="tagActvity2" class="inactive" href="javascript:toggleTagActivity(2, 'tagActvity2')"><img src="resources/skin/default/image/spacer.gif" width="16" height="16"/></a></td>
+			<td>プロジェクトB</td>
+			<td>
+				<ul id="tagTypeList-2" class="tagTypeList">
+				<li><a href="javascript:changeTypeOfTag(2, 11)" class="tag1">プロジェクト</a></li>
+				<li><a href="javascript:changeTypeOfTag(2, 12)">タスク種別</a></li>
+				<li><a href="javascript:changeTypeOfTag(2, 13)">担当</a></li>
+				<li><a href="javascript:changeTypeOfTag(2, 14)">イテレーション</a></li>
+				<li><a href="javascript:changeTypeOfTag(2, 15)">備考</a></li>
+				<li><a href="javascript:changeTypeOfTag(2, 16)">Group6</a></li>
+				<li><a href="javascript:changeTypeOfTag(2, 17)">Group7</a></li>
+				<li><a href="javascript:changeTypeOfTag(2, 18)">Group8</a></li>
+				<li><a href="javascript:changeTypeOfTag(2, 19)">Group9</a></li>
+				<li><a href="javascript:changeTypeOfTag(2, 20)">Group10</a></li>
+				</ul>
+			</td>
+		</tr>
+		<tr id="tag3"> 
+			<td class="icon"><a class="deleteAction" href="javascript:deleteTag(3, 'tag3');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+			<td class="icon"><a id="tagActvity3" class="inactive" href="javascript:toggleTagActivity(3, 'tagActvity3')"><img src="resources/skin/default/image/spacer.gif" width="16" height="16"/></a></td>
+			<td>ユースケース</td>
+			<td>
+				<ul id="tagTypeList-3" class="tagTypeList">
+				<li><a href="javascript:changeTypeOfTag(3, 11)">プロジェクト</a></li>
+				<li><a href="javascript:changeTypeOfTag(3, 12)" class="tag2">タスク種別</a></li>
+				<li><a href="javascript:changeTypeOfTag(3, 13)">担当</a></li>
+				<li><a href="javascript:changeTypeOfTag(3, 14)">イテレーション</a></li>
+				<li><a href="javascript:changeTypeOfTag(3, 15)">備考</a></li>
+				<li><a href="javascript:changeTypeOfTag(3, 16)">Group6</a></li>
+				<li><a href="javascript:changeTypeOfTag(3, 17)">Group7</a></li>
+				<li><a href="javascript:changeTypeOfTag(3, 18)">Group8</a></li>
+				<li><a href="javascript:changeTypeOfTag(3, 19)">Group9</a></li>
+				<li><a href="javascript:changeTypeOfTag(3, 20)">Group10</a></li>
+				</ul>
+			</td>
+		</tr>
+		<tr id="tag4"> 
+			<td class="icon"><a class="deleteAction" href="javascript:deleteTag(4, 'tag4');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+			<td class="icon"><a id="tagActvity4" class="inactive" href="javascript:toggleTagActivity(4, 'tagActvity4')"><img src="resources/skin/default/image/spacer.gif" width="16" height="16"/></a></td>
+			<td>バグ</td>
+			<td>
+				<ul id="tagTypeList-4" class="tagTypeList">
+				<li><a href="javascript:changeTypeOfTag(4, 11)">プロジェクト</a></li>
+				<li><a href="javascript:changeTypeOfTag(4, 12)" class="tag2">タスク種別</a></li>
+				<li><a href="javascript:changeTypeOfTag(4, 13)">担当</a></li>
+				<li><a href="javascript:changeTypeOfTag(4, 14)">イテレーション</a></li>
+				<li><a href="javascript:changeTypeOfTag(4, 15)">備考</a></li>
+				<li><a href="javascript:changeTypeOfTag(4, 16)">Group6</a></li>
+				<li><a href="javascript:changeTypeOfTag(4, 17)">Group7</a></li>
+				<li><a href="javascript:changeTypeOfTag(4, 18)">Group8</a></li>
+				<li><a href="javascript:changeTypeOfTag(4, 19)">Group9</a></li>
+				<li><a href="javascript:changeTypeOfTag(4, 20)">Group10</a></li>
+				</ul>
+			</td>
+		</tr>
+		<tr id="tag5">
+			<td class="icon"><a class="deleteAction" href="javascript:deleteTag(5, 'tag5');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+			<td class="icon"><a id="tagActvity5" class="inactive" href="javascript:toggleTagActivity(5, 'tagActvity5')"><img src="resources/skin/default/image/spacer.gif" width="16" height="16"/></a></td>
+			<td>担当A</td>
+			<td>
+				<ul id="tagTypeList-5" class="tagTypeList">
+				<li><a href="javascript:changeTypeOfTag(5, 11)">プロジェクト</a></li>
+				<li><a href="javascript:changeTypeOfTag(5, 12)">タスク種別</a></li>
+				<li><a href="javascript:changeTypeOfTag(5, 13)" class="tag3">担当</a></li>
+				<li><a href="javascript:changeTypeOfTag(5, 14)">イテレーション</a></li>
+				<li><a href="javascript:changeTypeOfTag(5, 15)">備考</a></li>
+				<li><a href="javascript:changeTypeOfTag(5, 16)">Group6</a></li>
+				<li><a href="javascript:changeTypeOfTag(5, 17)">Group7</a></li>
+				<li><a href="javascript:changeTypeOfTag(5, 18)">Group8</a></li>
+				<li><a href="javascript:changeTypeOfTag(5, 19)">Group9</a></li>
+				<li><a href="javascript:changeTypeOfTag(5, 20)">Group10</a></li>
+				</ul>
+			</td>
+		</tr>
+		<tr id="tag6"> 
+			<td class="icon"><a class="deleteAction" href="javascript:deleteTag(6, 'tag6');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+			<td class="icon"><a id="tagActvity6" class="inactive" href="javascript:toggleTagActivity(6, 'tagActvity6')"><img src="resources/skin/default/image/spacer.gif" width="16" height="16"/></a></td>
+			<td>担当B</td>
+			<td>
+				<ul id="tagTypeList-6" class="tagTypeList">
+				<li><a href="javascript:changeTypeOfTag(6, 11)">プロジェクト</a></li>
+				<li><a href="javascript:changeTypeOfTag(6, 12)">タスク種別</a></li>
+				<li><a href="javascript:changeTypeOfTag(6, 13)" class="tag3">担当</a></li>
+				<li><a href="javascript:changeTypeOfTag(6, 14)">イテレーション</a></li>
+				<li><a href="javascript:changeTypeOfTag(6, 15)">備考</a></li>
+				<li><a href="javascript:changeTypeOfTag(6, 16)">Group6</a></li>
+				<li><a href="javascript:changeTypeOfTag(6, 17)">Group7</a></li>
+				<li><a href="javascript:changeTypeOfTag(6, 18)">Group8</a></li>
+				<li><a href="javascript:changeTypeOfTag(6, 19)">Group9</a></li>
+				<li><a href="javascript:changeTypeOfTag(6, 20)">Group10</a></li>
+				</ul>
+			</td>
+		</tr>
+		<tr id="tag7"> 
+			<td class="icon"><a class="deleteAction" href="javascript:deleteTag(7, 'tag7');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+			<td class="icon"><a id="tagActvity7" class="inactive" href="javascript:toggleTagActivity(7, 'tagActvity7')"><img src="resources/skin/default/image/spacer.gif" width="16" height="16"/></a></td>
+			<td>イテレーション1</td>
+			<td>
+				<ul id="tagTypeList-7" class="tagTypeList">
+				<li><a href="javascript:changeTypeOfTag(7, 11)">プロジェクト</a></li>
+				<li><a href="javascript:changeTypeOfTag(7, 12)">タスク種別</a></li>
+				<li><a href="javascript:changeTypeOfTag(7, 13)">担当</a></li>
+				<li><a href="javascript:changeTypeOfTag(7, 14)" class="tag4">イテレーション</a></li>
+				<li><a href="javascript:changeTypeOfTag(7, 15)">備考</a></li>
+				<li><a href="javascript:changeTypeOfTag(7, 16)">Group6</a></li>
+				<li><a href="javascript:changeTypeOfTag(7, 17)">Group7</a></li>
+				<li><a href="javascript:changeTypeOfTag(7, 18)">Group8</a></li>
+				<li><a href="javascript:changeTypeOfTag(7, 19)">Group9</a></li>
+				<li><a href="javascript:changeTypeOfTag(7, 20)">Group10</a></li>
+				</ul>
+			</td>
+		</tr>
+		<tr id="tag8"> 
+			<td class="icon"><a class="deleteAction" href="javascript:deleteTag(8, 'tag8');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+			<td class="icon"><a id="tagActvity8" class="inactive" href="javascript:toggleTagActivity(8, 'tagActvity8')"><img src="resources/skin/default/image/spacer.gif" width="16" height="16"/></a></td>
+			<td>イテレーション2</td>
+			<td>
+				<ul id="tagTypeList-8" class="tagTypeList">
+				<li><a href="javascript:changeTypeOfTag(8, 11)">プロジェクト</a></li>
+				<li><a href="javascript:changeTypeOfTag(8, 12)">タスク種別</a></li>
+				<li><a href="javascript:changeTypeOfTag(8, 13)">担当</a></li>
+				<li><a href="javascript:changeTypeOfTag(8, 14)" class="tag4">イテレーション</a></li>
+				<li><a href="javascript:changeTypeOfTag(8, 15)">備考</a></li>
+				<li><a href="javascript:changeTypeOfTag(8, 16)">Group6</a></li>
+				<li><a href="javascript:changeTypeOfTag(8, 17)">Group7</a></li>
+				<li><a href="javascript:changeTypeOfTag(8, 18)">Group8</a></li>
+				<li><a href="javascript:changeTypeOfTag(8, 19)">Group9</a></li>
+				<li><a href="javascript:changeTypeOfTag(8, 20)">Group10</a></li>
+				</ul>
+			</td>
+		</tr>
+		<tr id="tag9"> 
+			<td class="icon"><a class="deleteAction" href="javascript:deleteTag(9, 'tag9');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+			<td class="icon"><a id="tagActvity9" class="inactive" href="javascript:toggleTagActivity(9, 'tagActvity9')"><img src="resources/skin/default/image/spacer.gif" width="16" height="16"/></a></td>
+			<td>本番機アップ待ち</td>
+			<td>
+				<ul id="tagTypeList-9" class="tagTypeList">
+				<li><a href="javascript:changeTypeOfTag(9, 11)">プロジェクト</a></li>
+				<li><a href="javascript:changeTypeOfTag(9, 12)">タスク種別</a></li>
+				<li><a href="javascript:changeTypeOfTag(9, 13)">担当</a></li>
+				<li><a href="javascript:changeTypeOfTag(9, 14)">イテレーション</a></li>
+				<li><a href="javascript:changeTypeOfTag(9, 15)" class="tag5">備考</a></li>
+				<li><a href="javascript:changeTypeOfTag(9, 16)">Group6</a></li>
+				<li><a href="javascript:changeTypeOfTag(9, 17)">Group7</a></li>
+				<li><a href="javascript:changeTypeOfTag(9, 18)">Group8</a></li>
+				<li><a href="javascript:changeTypeOfTag(9, 19)">Group9</a></li>
+				<li><a href="javascript:changeTypeOfTag(9, 20)">Group10</a></li>
+				</ul>
+			</td>
+		</tr>
+		<tr id="tag10"> 
+			<td class="icon"><a class="deleteAction" href="javascript:deleteTag(10, 'tag10');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+			<td class="icon"><a id="tagActvity10" class="active" href="javascript:toggleTagActivity(10, 'tagActvity10')"><img src="resources/skin/default/image/spacer.gif" width="16" height="16"/></a></td>
+			<td>XXX</td>
+			<td>
+				<ul id="tagTypeList-10" class="tagTypeList">
+				<li><a href="javascript:changeTypeOfTag(10, 11)">プロジェクト</a></li>
+				<li><a href="javascript:changeTypeOfTag(10, 12)">タスク種別</a></li>
+				<li><a href="javascript:changeTypeOfTag(10, 13)">担当</a></li>
+				<li><a href="javascript:changeTypeOfTag(10, 14)">イテレーション</a></li>
+				<li><a href="javascript:changeTypeOfTag(10, 15)" class="tag5">備考</a></li>
+				<li><a href="javascript:changeTypeOfTag(10, 16)">Group6</a></li>
+				<li><a href="javascript:changeTypeOfTag(10, 17)">Group7</a></li>
+				<li><a href="javascript:changeTypeOfTag(10, 18)">Group8</a></li>
+				<li><a href="javascript:changeTypeOfTag(10, 19)">Group9</a></li>
+				<li><a href="javascript:changeTypeOfTag(10, 20)">Group10</a></li>
+				</ul>
+			</td>
+		</tr>
+		<tr id="tag11"> 
+			<td class="icon"><a class="deleteAction" href="javascript:deleteTag(11, 'tag11');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+			<td class="icon"><a id="tagActvity11" class="active" href="javascript:toggleTagActivity(11, 'tagActvity11')"><img src="resources/skin/default/image/spacer.gif" width="16" height="16"/></a></td>
+			<td>YYY</td>
+			<td>
+				<ul id="tagTypeList-11" class="tagTypeList">
+				<li><a href="javascript:changeTypeOfTag(11, 11)">プロジェクト</a></li>
+				<li><a href="javascript:changeTypeOfTag(11, 12)">タスク種別</a></li>
+				<li><a href="javascript:changeTypeOfTag(11, 13)">担当</a></li>
+				<li><a href="javascript:changeTypeOfTag(11, 14)">イテレーション</a></li>
+				<li><a href="javascript:changeTypeOfTag(11, 15)" class="tag5">備考</a></li>
+				<li><a href="javascript:changeTypeOfTag(11, 16)">Group6</a></li>
+				<li><a href="javascript:changeTypeOfTag(11, 17)">Group7</a></li>
+				<li><a href="javascript:changeTypeOfTag(11, 18)">Group8</a></li>
+				<li><a href="javascript:changeTypeOfTag(11, 19)">Group9</a></li>
+				<li><a href="javascript:changeTypeOfTag(11, 20)">Group10</a></li>
+				</ul>
+			</td>
+		</tr>
+		</table>
+		<p id="newLink">
+		<a class="ajax" href="javascript:openTagForm()"/>追加</a>
+		</p>
+		<form id="TagForm" onsubmit="return addTag()" style="display:none">
+			<fieldset>
+				<label for="name">名前</label>
+				<input id="name" name="name" type="text" class="text" value="" />
+			</fieldset>
+			<div class="action">
+			<input type="submit" class="submit" value="登録"/>
+			<input type="reset" class="cancel" value="キャンセル" onclick="closeTagForm()"/>
+			</div>
+		</form>
+	</div>
+	<!-- main -->
+<hr class="bot" />
+</div>
+<!-- content-body -->
+</div>
+<!-- content -->
+<div id="footer"/>
+</body>
+</html>

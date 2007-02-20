@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<result>
+	<!-- 失敗した場合は、下記のエラー返す
+		<errors>
+			<error>なんでかだめだった</error>
+			<error>別の原因でもだめだった</error>
+		</errors>
+	 -->
+	<messages>
+		<message>処理に成功しました</message>
+		<message>処理に成功しました</message>
+	</messages>
+</result>

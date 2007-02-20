@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed version="0.3" 
+      xmlns="http://purl.org/atom/ns#"
+	  xmlns:dc="http://purl.org/dc/elements/1.1/"
+	  xmlns:openSearch="http://a9.com/-/spec/opensearchrss/1.0/"
+      xml:lang="ja">
+	<!--
+	$url-base:		entryの中の相対パスの基本となるURL
+	$url-atom:		このatomフィードを生成するURL
+	$url-listTask:	タスク一覧のURL（検索条件付き）
+	$url-viewTask:	タスク詳細のURL
+	$url-statusIcon:	タスクの状態画像へのURL
+	$date-site-updated:	フィード対象のタスクのうち、最新の日付(例:2005-12-29T00:01:00+09:00)
+	$date-task-updated:	タスクの更新日時(例:2005-12-29T00:01:00+09:00)
+	$date-task-created:	タスクの作成日時(例:2005-12-29T00:01:00+09:00)
+	$date-task-deadEnd:	タスクの〆切(例:2005-12-29)
+	$author:	
+	$feed-id:	$url-listTaskと同一
+	$entry-id:	$url-viewTaskと同一
+	$task-id:	WorkStyle上でタスクに付与されたID
+	$task-manHour タスクの工数
+	$task-priority タスクの優先度
+	$lang:		表示言語(例:ja)
+	-->
+
+  <title>WorkStyle</title>
+  <link rel="alternate" type="text/html" href="$url-listTask" />
+  <link rel="service.post" type="application/x.atom+xml" href="$url-atom" title="WorkStyle" />
+  
+  <modified>$date-site-updated</modified>
+  <author>
+    <name>yher.net</name>
+  </author>
+  <id>$$url-listTask</id>
+  <generator url="workstyle">WorkStyle</generator>
+
+  <entry>
+    <title>$task-id 内容の最初の30文字</title>
+    <link rel="alternate" type="text/html" 
+    	href="$url-viewTask?dummy=date-task-updated" />
+    	<!-- dummyは更新分も新規エントリとして認識させるため -->
+    <issued>$date-task-updated</issued>
+    <modified>$date-task-updated</modified>
+    <created>$date-task-updated</created>
+    <author>
+      <name>nobody</name>
+    </author>
+    <id>$url-viewTask</id>
+	<summary type="text/plain">内容の頭から150文字</summary>
+	
+	<dc:subject>$task-id 内容の最初の30文字</dc:subject>
+	
+    <content 
+    	type="application/xhtml+xml" 
+    	xml:lang="ja">
+
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<p style="font-family: 'Arial', 'Osaka', 'ＭＳ Ｐゴシック';">
+				<div style="float:left; margin: 8px; text-align:center;width:128px;font-size:x-small;">
+					<img src="resources/skin/default/image/icon/normal128.png"/>
+					<img src="resources/skin/default/image/icon/starset-4h.gif"/><br/>
+					<span style="color: #aaa;">見積: $task-manHour, 〆切: $date-task-deadEnd</span>
+				</div>
+				<ul style="line-height: 2em;list-style: none;">
+					<li style="background-color: #EEEEEE;border: 1px solid #DDDDDD;display: inline;padding: 1px;margin-right: 4px;padding: 2px;font-weight: normal;font-size: small;">
+						タグ1
+					</li>
+					<li style="background-color: #EEEEEE;border: 1px solid #DDDDDD;display: inline;padding: 1px;margin-right: 4px;padding: 2px;font-weight: normal;font-size: small;">
+						タグ2
+					</li>
+					<li style="background-color: #EEEEEE;border: 1px solid #DDDDDD;display: inline;padding: 1px;margin-right: 4px;padding: 2px;font-weight: normal;font-size: small;">
+						タグ3
+					</li>
+				</ul>
+				タスク内容タスク内容タスク内容タスク内容タスク内容タスク内容
+				タスク内容タスク内容タスク内容タスク内容タスク内容タスク内容タスク内容
+				タスク内容タスク内容タスク内容タスク内容
+
+				<dl style="clear:both;font-size:small;border: 1px solid #999999; background-color:#EEEEEE;padding: 5px;line-height: 1.5em;">
+					<dt style="font-weight:bold;">コメンテイター (2006/01/30 10:00:00)</dt>
+					<dd style="margin-bottom:5px;">
+					コメント内容コメント内容コメント内容コメント内容コメント内容コメント内容コメント内容
+					</dd>
+					<dt style="font-weight:bold;">コメンテイター (2006/01/30 10:00:00)</dt>
+					<dd style="margin-bottom:5px;">
+					コメント内容コメント内容コメント内容コメント内容コメント内容コメント内容コメント内容
+					</dd>
+					<dt style="font-weight:bold;">コメンテイター (2006/01/30 10:00:00)</dt>
+					<dd style="margin-bottom:5px;">
+					コメント内容コメント内容コメント内容コメント内容コメント内容コメント内容コメント内容
+					</dd>
+				</dl>
+			</p>
+		</div>
+	</content>
+  </entry>
+</feed>

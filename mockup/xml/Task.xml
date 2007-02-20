@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<result>
+<!-- 失敗した場合は、下記のエラー返す
+	<errors>
+		<error>なんでかだめだった</error>
+		<error>別の原因でもだめだった</error>
+	</errors>
+ -->
+	<task>
+		<taskId>123</taskId>
+		<createDate>2005/01/31 10:00:00</createDate>
+		<updateDate>2006/01/31 10:00:00</updateDate>
+		<deadEndDate>2006/02/14</deadEndDate>
+		<estimatedManHour>10.5</estimatedManHour>
+		<priority>5</priority>
+		<status>1</status>
+		<tagList>
+			<tag>
+				<name><![CDATA[プロジェクトA]]></name>
+				<styleClass>tag</styleClass>
+			</tag>
+			<tag>
+				<name><![CDATA[プロジェクトC]]></name>
+				<styleClass>tag1</styleClass>
+			</tag>
+			<tag>
+				<name><![CDATA[牧野]]></name>
+				<styleClass>tag2</styleClass>
+			</tag>
+			<tag>
+				<name><![CDATA[露木]]></name>
+				<styleClass>tag3</styleClass>
+			</tag>
+			<tag>
+				<name><![CDATA[徳嶋]]></name>
+				<styleClass>tag3</styleClass>
+			</tag>
+			<tag>
+				<name><![CDATA[斉藤]]></name>
+				<styleClass>tag3</styleClass>
+			</tag>
+ 		</tagList>
+		<contents><![CDATA[これでいいのかな。どんなもんじゃろうか？<a href="#">リンク</a>
+あああhttp://localhost:8080/hogehogeああああ
+あああhttp://blog.yher2.netああああ
+改行]]></contents>
+		<fileList>
+			<file>
+				<fileId></fileId>
+				<name></name>
+				<url></url>
+			</file>
+		</fileList>
+		<commentList>
+			<comment>
+				<commentId>1</commentId>
+				<commentator>牧野</commentator>
+				<contents><![CDATA[コメント内容<a href="#">リンク</a>
+				http://localhost:8080/hogehoge
+				改行もあるやつ]]></contents>
+				<updateDate>2006/12/31 10:30:29</updateDate>
+			</comment>
+<!-- 
+			<comment>
+				<commentId>1</commentId>
+				<commentator>牧野</commentator>
+				<contents><![CDATA[コメント内容
+				改行もあるやつ]]></contents>
+				<updateDate>2006/12/31 10:30:29</updateDate>
+			</comment>
+			<comment>
+				<commentId>1</commentId>
+				<commentator>牧野</commentator>
+				<contents><![CDATA[コメント内容
+				改行もあるやつ]]></contents>
+				<updateDate>2006/12/31 10:30:29</updateDate>
+			</comment>
+ -->
+		</commentList>
+	</task>
+	<tagMasterList>
+		<tag>
+			<tagId>1</tagId>
+			<name><![CDATA[プロジェクトA]]></name>
+			<styleClass>tag1</styleClass>
+		</tag>
+		<tag>
+			<tagId>2</tagId>
+			<name><![CDATA[プロジェクトB]]></name>
+			<styleClass>tag1</styleClass>
+		</tag>
+		<tag>
+			<tagId>3</tagId>
+			<name><![CDATA[プロジェクトC]]></name>
+			<styleClass>tag1</styleClass>
+		</tag>
+		<tag>
+			<tagId>4</tagId>
+			<name><![CDATA[プ<ロ>ジェクトD]]></name>
+			<styleClass>tag1</styleClass>
+		</tag>
+		<tag>
+			<tagId>5</tagId>
+			<name><![CDATA[牧野]]></name>
+			<styleClass>tag2</styleClass>
+		</tag>
+		<tag>
+			<tagId>6</tagId>
+			<name><![CDATA[露木]]></name>
+			<styleClass>tag3</styleClass>
+		</tag>
+		<tag>
+			<tagId>7</tagId>
+			<name><![CDATA[徳嶋]]></name>
+			<styleClass>tag3</styleClass>
+		</tag>
+		<tag>
+			<tagId>8</tagId>
+			<name><![CDATA[斉藤]]></name>
+			<styleClass>tag3</styleClass>
+		</tag>
+	</tagMasterList>
+</result>

@@ -1,0 +1,43 @@
+		<tr id="linkedTask-<%= context.task.taskId %>">
+			<td class="statusIcon">
+				<img id="linkedTaskStatusIcon-<%= context.task.taskId %>" class="status<%= context.task.status%>-icon" src="resources/skin/default/image/spacer.gif" />
+				<ul>
+					<li><a href="javascript:updateLinkedTaskStatus(<%= context.task.taskId %>, 7)"><img class="status7" src="resources/skin/default/image/spacer.gif" alt="未確認" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(<%= context.task.taskId %>, 1)"><img class="status1" src="resources/skin/default/image/spacer.gif" alt="実行中" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(<%= context.task.taskId %>, 2)"><img class="status2" src="resources/skin/default/image/spacer.gif" alt="すぐやる" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(<%= context.task.taskId %>, 3)"><img class="status3" src="resources/skin/default/image/spacer.gif" alt="そのうちやる" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(<%= context.task.taskId %>, 4)"><img class="status4" src="resources/skin/default/image/spacer.gif" alt="確認待ち" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(<%= context.task.taskId %>, 5)"><img class="status5" src="resources/skin/default/image/spacer.gif" alt="保留" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(<%= context.task.taskId %>, 6)"><img class="status6" src="resources/skin/default/image/spacer.gif" alt="終わり" /></a></li>
+				</ul>
+			</td>
+			<td id="linkedTaskPriority-<%= context.task.taskId %>" class="priority<%= context.task.priority %>">
+				<input type="hidden" id="linkedTaskOriginalPriority-<%= context.task.taskId %>" value="3">
+				<div class="vertical-priority-set" onmouseout="updatePriorityIcon('linkedTaskPriority-<%= context.task.taskId %>', $('linkedTaskOriginalPriority-<%= context.task.taskId %>').value)">
+					<img class="icon-priority1" onmouseover="updatePriorityIcon('linkedTaskPriority-<%= context.task.taskId %>', 1)"  onclick="updateLinkedTaskPriority(<%= context.task.taskId %>, 1);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority2" onmouseover="updatePriorityIcon('linkedTaskPriority-<%= context.task.taskId %>', 2)"  onclick="updateLinkedTaskPriority(<%= context.task.taskId %>, 2);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority3" onmouseover="updatePriorityIcon('linkedTaskPriority-<%= context.task.taskId %>', 3)"  onclick="updateLinkedTaskPriority(<%= context.task.taskId %>, 3);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority4" onmouseover="updatePriorityIcon('linkedTaskPriority-<%= context.task.taskId %>', 4)"  onclick="updateLinkedTaskPriority(<%= context.task.taskId %>, 4);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority5" onmouseover="updatePriorityIcon('linkedTaskPriority-<%= context.task.taskId %>', 5)"  onclick="updateLinkedTaskPriority(<%= context.task.taskId %>, 5);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority0" onmouseover="updatePriorityIcon('linkedTaskPriority-<%= context.task.taskId %>', 0)"  onclick="updateLinkedTaskPriority(<%= context.task.taskId %>, 0);" src="resources/skin/default/image/spacer.gif"/>
+				</div>
+			</td>
+			<td class="text">
+<% var tmpTag = $AX(context.task.tagList.tag); %>
+				<ul class="tagList">
+<% for (var i = 0; i<tmpTag.length; i++) { %>
+					<li class="<%=tmpTag[i].styleClass%>"><%=tmpTag[i].name%></li>
+<% } %>
+				</ul>
+				<%= context.task.contents.formatSimpleHTML() %>
+<% var viewUrl = buildViewUrl(context.task.taskId); %>
+				<ul class="actionList">
+					<li><a class="viewAction" href="<%= viewUrl %>">閲覧</a></li>
+					<li><a class="unlinkAction" href="javascript:unlinkTask(<%= context.parentTaskId %>, <%= context.task.taskId %>, 'linkedTask-<%= context.task.taskId %>')">リンク削除</a></li>
+					<li><a class="deleteAction" href="javascript:deleteLinkedTask(<%= context.task.taskId %>, 'linkedTask-<%= context.task.taskId %>')">削除</a></li>
+				</ul>
+				<p class="note">ID: <%= context.task.taskId %>, 見積: <%= context.task.estimatedManHour %>, 作成日: <%= context.task.createDate %></p>
+			</td>
+			<td><%= normalize(context.task.deadEndDate) %></td>
+			<td id="linkedTaskUpdateDate-<%= context.task.taskId %>"><%= context.task.updateDate %></td>
+		</tr>

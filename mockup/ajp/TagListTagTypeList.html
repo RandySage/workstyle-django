@@ -1,0 +1,10 @@
+<%
+	var _tagTypes = $AX(context.tagTypes);
+	for (var i=0; i<_tagTypes.length; i++) {
+%>
+<li>
+	<a href="javascript:changeTypeOfTag(<%=context.tag.tagId%>, <%=_tagTypes[i].tagTypeId%>)" class="<%= (context.tag.tagType.tagTypeId == _tagTypes[i].tagTypeId) ? _tagTypes[i].styleClass : '' %>">
+	<%= _tagTypes[i].name%>
+	</a>
+</li>
+<%	} %>

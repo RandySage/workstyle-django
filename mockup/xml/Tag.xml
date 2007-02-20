@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<result>
+<!-- 失敗した場合は、下記のエラー返す
+	<errors>
+		<error>なんでかだめだった</error>
+		<error>別の原因でもだめだった</error>
+	</errors>
+ -->
+	<tag>
+		<tagId>123</tagId>
+		<active>
+			true
+		</active>
+		<name>ほうほう</name>
+		<tagType>
+			<tagTypeId>14</tagTypeId>
+			<name>タグ種別名</name>
+			<styleClass>tag3</styleClass>
+			<sortOrder>3</sortOrder>
+		</tagType>
+	</tag>
+</result>

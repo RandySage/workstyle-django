@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>WorkStyle</title>
+	<link type="text/css" rel="stylesheet" href="resources/skin/default/basic.css"/>
+	<script src="resources/prototype.js" language="JavaScript"></script>
+	<script src="resources/jkl-parsexml.js" language="JavaScript"></script>
+	<script src="resources/script.js" language="JavaScript"></script>
+	<script src="resources/local.js" language="JavaScript"></script>
+	<script src="resources/AjaxPages.js" language="JavaScript"></script>
+	<script language="JavaScript" type="text/JavaScript">
+	<!--
+	function init() {
+		$('contents').focus();
+	}
+	//-->
+	</script>
+</head>
+<body onload="init()">
+<p id="header"><a href="TaskList.html"><img src="resources/skin/default/image/logo.png" alt="WorkStyle" /></a></p>
+
+<ul class="nav">
+	<li><a href="TaskList.html">タスク一覧</a></li>
+	<li><a href="TagList.html">タグ管理</a></li>
+</ul>
+
+<h1 id="pageTitle">Task Form</h1>
+
+<div id="content"> 
+<div id="content-body"> 
+	<div id="menu"> 
+		<h2>Menu</h2>
+		<ul>
+			<li><a href="TaskList.html"><img src="resources/skin/default/image/icon/go_up.png"/>タスク一覧に戻る</a></li>
+		</ul>
+	</div>
+	<div id="main"> 
+	<form action="TaskDetail.html" method="post" enctype="multipart/form-data">
+		<fieldset>
+			<div>
+			<label for="conents">タスク</label>
+			<textarea id="contents" name="contents" class="text" rows="15">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</textarea>
+			</div>
+			<div>
+			<label for="tagList">タグ</label>
+			<input id="tagList" name="tagList" type="text" class="text" value="[プロジェクトA][プロジェクトA][プロジェクトA][プロジェクトA]" />
+			<ul class="tagList">
+				<li id="tag1"><a href="javascript:updateTagList('tagList', 'tag1', '牧野', 'tag1')">牧野</a></li>
+		        <li id="tag2"><a href="javascript:updateTagList('tagList', 'tag2', '露木', 'tag1')">露木</a></li>
+		        <li id="tag3"><a href="javascript:updateTagList('tagList', 'tag3', '徳嶋', 'tag1')">徳嶋</a></li>
+		        <li id="tag4"><a href="javascript:updateTagList('tagList', 'tag4', '斉藤', 'tag1')">斉藤</a></li>
+		        <li id="tag5"><a href="javascript:updateTagList('tagList', 'tag5', '菊池', 'tag1')">菊池</a></li>
+		        <li id="tag6"><a href="javascript:updateTagList('tagList', 'tag6', 'プロジェクトA', 'tag2')">プロジェクトA</a></li>
+		        <li id="tag7"><a href="javascript:updateTagList('tagList', 'tag7', 'プロジェクトB', 'tag2')">プロジェクトB</a></li>
+		        <li id="tag8"><a href="javascript:updateTagList('tagList', 'tag8', 'プロジェクトC', 'tag2')">プロジェクトC</a></li>
+		        <li id="tag9"><a href="javascript:updateTagList('tagList', 'tag9', 'プロジェクトD', 'tag2')">プロジェクトD</a></li>
+		        <li id="tag10"><a href="javascript:updateTagList('tagList', 'tag10', 'プロジェクトE', 'tag2')">プロジェクトE</a></li>
+			</ul>
+			</div>
+		</fieldset>
+		<div class="action">
+		<input name="" type="submit" class="submit" value="登録" />
+		</div>
+	</form>
+	</div>
+    <!-- main -->
+    <hr class="bot" />
+</div>
+<!-- content-body -->
+</div>
+<!-- content -->
+<div id="footer"/>
+</body>
+</html>

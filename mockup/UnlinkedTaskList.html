@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>WorkStyle</title>
+	<link type="text/css" rel="stylesheet" href="resources/skin/default/basic.css"/>
+	<script src="resources/prototype.js" language="JavaScript"></script>
+	<script src="resources/jkl-parsexml.js" language="JavaScript"></script>
+	<script src="resources/script.js" language="JavaScript"></script>
+	<script src="resources/local.js" language="JavaScript"></script>
+	<script language="JavaScript" type="text/JavaScript">
+	<!--
+	function init() {
+	}
+	function linkTask(fromTaskId, toTaskId, elementId) {
+		ajaxLinkTask(fromTaskId, toTaskId, elementId, processLinkTaskResult);
+	}
+	function processLinkTaskResult(result, request) {
+		Element.remove(request.element);
+	}
+	//-->
+	</script>
+</head>
+<body onload="init()">
+<p id="header"><a href="TaskList.html"><img src="resources/skin/default/image/logo.png" alt="WorkStyle" /></a></p>
+
+<ul class="nav">
+	<li><a href="TaskList.html">タスク一覧</a></li>
+	<li><a href="TagList.html">タグ管理</a></li>
+</ul>
+
+<h1 id="pageTitle">Task List</h1>
+
+<div id="content"> 
+<div id="content-body"> 
+	<div id="menu"> 
+		<h2>Menu</h2>
+		<ul>
+			<li><a href="TaskDetail.html"><img src="resources/skin/default/image/icon/view.png"/>タスク詳細に戻る</a></li>
+		</ul>
+
+		<h2>Search</h2>
+		<form id="searchForm" action="UnlinkedTaskList.html" method="get" onmouseover="activateForm(this)">
+			<input type="text" class="text"/>
+			<input type="submit" class="submit" value="検索"/>
+			<script type="text/javascript" charset="utf-8">
+				<!--
+				function toggleQuery(target, id) {
+					var elmOption = $(target + 'Option' + id);
+					elmOption.selected = !elmOption.selected;
+					var cls = elmOption.selected ? 'search-on' : 'search-off';
+					Element.classNames(target + 'Item'+id).set(cls)
+					$('searchForm').submit();
+				}
+				-->
+			</script>
+			<h3 class="accordion-header-close" onclick="toggleAccordion(this, 'searchStatus')">状態</h3>
+			<ul id="searchStatus" class="searchStatus accordion-close">
+				<li id="searchStatusItem7" class="search-on"><a class="status7" href="javascript:toggleQuery('searchStatus', 7);">未分類</a></li>
+				<li id="searchStatusItem1" class="search-on"><a class="status1" href="javascript:toggleQuery('searchStatus', 1);">実行中</a></li>
+				<li id="searchStatusItem2" class="search-on"><a class="status2" href="javascript:toggleQuery('searchStatus', 2);">すぐやる</a></li>
+				<li id="searchStatusItem3" class="search-off"><a class="status3" href="javascript:toggleQuery('searchStatus', 3);">そのうちやる</a></li>
+				<li id="searchStatusItem4" class="search-off"><a class="status4" href="javascript:toggleQuery('searchStatus', 4);">確認待ち</a></li>
+				<li id="searchStatusItem5" class="search-off"><a class="status5" href="javascript:toggleQuery('searchStatus', 5);">保留</a></li>
+				<li id="searchStatusItem6" class="search-off"><a class="status6" href="javascript:toggleQuery('searchStatus', 6);">終わり</a></li>
+			</ul>
+			<select multiple="true" name="status" class="hidden">
+				<option id="searchStatusOption1">1</option>
+				<option id="searchStatusOption2">2</option>
+				<option id="searchStatusOption3">3</option>
+				<option id="searchStatusOption4">4</option>
+				<option id="searchStatusOption5">5</option>
+				<option id="searchStatusOption6">6</option>
+				<option id="searchStatusOption7">7</option>
+			</select>
+			<h3 class="accordion-header-close" onclick="toggleAccordion(this, 'includeTagList');">このタグをすべて含む</h3>
+			<ul class="accordion-close" id="includeTagList">
+			<li id="includeTagItem1" class="search-on"><a href="javascript:toggleQuery('includeTag', 1);">牧野</a></li>
+			<li id="includeTagItem2" class="search-off"><a href="javascript:toggleQuery('includeTag', 2);">牧野</a></li>
+			<li id="includeTagItem3" class="search-off"><a href="javascript:toggleQuery('includeTag', 3);">牧野</a></li>
+			<li id="includeTagItem4" class="search-off"><a href="javascript:toggleQuery('includeTag', 4);">プロジェクトA</a></li>
+			<li id="includeTagItem5" class="search-off"><a href="javascript:toggleQuery('includeTag', 5);">プロジェクトB</a></li>
+			<li id="includeTagItem6" class="search-off"><a href="javascript:toggleQuery('includeTag', 6);">プロジェクトC</a></li>
+			<li id="includeTagItem7" class="search-off"><a href="javascript:toggleQuery('includeTag', 7);">プロジェクトD</a></li>
+			<li id="includeTagItem8" class="search-off"><a href="javascript:toggleQuery('includeTag', 8);">プロジェクトE</a></li>
+			<li id="includeTagItem9" class="search-off"><a href="javascript:toggleQuery('includeTag', 9);">プロジェクトE</a></li>
+			</ul>
+			<select multiple="true" name="includeTag" class="hidden">
+				<option id="includeTagOption1">牧野</option>
+				<option id="includeTagOption2">牧野</option>
+				<option id="includeTagOption3">牧野</option>
+				<option id="includeTagOption4">プロジェクトA</option>
+				<option id="includeTagOption5">プロジェクトB</option>
+				<option id="includeTagOption6">プロジェクトC</option>
+				<option id="includeTagOption7">プロジェクトD</option>
+				<option id="includeTagOption8">プロジェクトE</option>
+				<option id="includeTagOption9">プロジェクトF</option>
+			</select>
+			
+			<h3 class="accordion-header-close" onclick="toggleAccordion(this, 'excludeTagList');">このタグを含まない</h3>
+			<ul class="accordion-close" id="excludeTagList">
+			<li id="excludeTagItem1" class="search-on"><a href="javascript:toggleQuery('excludeTag', 1);">牧野</a></li>
+			<li id="excludeTagItem2" class="search-off"><a href="javascript:toggleQuery('excludeTag', 2);">牧野</a></li>
+			<li id="excludeTagItem3" class="search-off"><a href="javascript:toggleQuery('excludeTag', 3);">牧野</a></li>
+			<li id="excludeTagItem4" class="search-off"><a href="javascript:toggleQuery('excludeTag', 4);">プロジェクトA</a></li>
+			<li id="excludeTagItem5" class="search-off"><a href="javascript:toggleQuery('excludeTag', 5);">プロジェクトB</a></li>
+			<li id="excludeTagItem6" class="search-off"><a href="javascript:toggleQuery('excludeTag', 6);">プロジェクトC</a></li>
+			<li id="excludeTagItem7" class="search-off"><a href="javascript:toggleQuery('excludeTag', 7);">プロジェクトD</a></li>
+			<li id="excludeTagItem8" class="search-off"><a href="javascript:toggleQuery('excludeTag', 8);">プロジェクトE</a></li>
+			<li id="excludeTagItem9" class="search-off"><a href="javascript:toggleQuery('excludeTag', 9);">プロジェクトE</a></li>
+			</ul>
+			<select multiple="true" name="excludeTag" class="hidden">
+				<option id="excludeTagOption1" selected="selected">牧野</option>
+				<option id="excludeTagOption2">牧野</option>
+				<option id="excludeTagOption3">牧野</option>
+				<option id="excludeTagOption4">プロジェクトA</option>
+				<option id="excludeTagOption5">プロジェクトB</option>
+				<option id="excludeTagOption6">プロジェクトC</option>
+				<option id="excludeTagOption7">プロジェクトD</option>
+				<option id="excludeTagOption8">プロジェクトE</option>
+				<option id="excludeTagOption9">プロジェクトF</option>
+			</select>
+			<h3 class="accordion-header-close" onclick="toggleAccordion(this, 'searchPriority')">優先度</h3>
+			<p id="searchPriority" style="display:none;">
+				<script type="text/javascript" charset="utf-8">
+					<!--
+					function searchPriority(elementId, priority) {
+						$(elementId).value = priority;
+						$(elementId).form.submit();
+					}
+					-->
+				</script>
+				<input type="hidden" id="priorityFrom" value="0">
+				<input type="hidden" id="priorityTo" value="5">
+				<label for="priorityFrom">from:</label>
+				<span id="priorityFromIcon" class="priority0">
+				<div class="horizontal-priority-set" onmouseout="updatePriorityIcon('priorityFromIcon', $('priorityFrom').value);">
+					<img class="icon-priority0" onmouseover="updatePriorityIcon('priorityFromIcon', 0)" onclick="searchPriority('priorityFrom', 0)" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority1" onmouseover="updatePriorityIcon('priorityFromIcon', 1)" onclick="searchPriority('priorityFrom', 1)" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority2" onmouseover="updatePriorityIcon('priorityFromIcon', 2)" onclick="searchPriority('priorityFrom', 2)" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority3" onmouseover="updatePriorityIcon('priorityFromIcon', 3)" onclick="searchPriority('priorityFrom', 3)" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority4" onmouseover="updatePriorityIcon('priorityFromIcon', 4)" onclick="searchPriority('priorityFrom', 4)" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority5" onmouseover="updatePriorityIcon('priorityFromIcon', 5)" onclick="searchPriority('priorityFrom', 5)" src="resources/skin/default/image/spacer.gif"/>
+				</div>
+				</span>
+				<label for="priorityTo">to:</label>
+				<span id="priorityToIcon" class="priority5">
+				<div class="horizontal-priority-set" onmouseout="updatePriorityIcon('priorityToIcon', $('priorityTo').value)">
+					<img class="icon-priority0" onmouseover="updatePriorityIcon('priorityToIcon', 0)" onclick="searchPriority('priorityTo', 0)" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority1" onmouseover="updatePriorityIcon('priorityToIcon', 1)" onclick="searchPriority('priorityTo', 1)" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority2" onmouseover="updatePriorityIcon('priorityToIcon', 2)" onclick="searchPriority('priorityTo', 2)" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority3" onmouseover="updatePriorityIcon('priorityToIcon', 3)" onclick="searchPriority('priorityTo', 3)" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority4" onmouseover="updatePriorityIcon('priorityToIcon', 4)" onclick="searchPriority('priorityTo', 4)" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority5" onmouseover="updatePriorityIcon('priorityToIcon', 5)" onclick="searchPriority('priorityTo', 5)" src="resources/skin/default/image/spacer.gif"/>
+				</div>
+				</span>
+			</p>
+			<h3 class="accordion-header-close" onclick="toggleAccordion(this, 'deadEndDate');">〆切</h3>
+			<p id="deadEndDate" style="display:none;">
+				<label for="deadEndDateFrom">from:</label> <input type="text" class="text" id="deadEndDateFrom">
+				<label for="deadEndDateTo">to:</label> <input type="text" class="text" id="deadEndDateTo">
+			</p>
+			<h3 class="accordion-header-close" onclick="toggleAccordion(this, 'updateDate');">更新日</h3>
+			<p id="updateDate" style="display:none">
+				<label for="updateDateFrom">from:</label> <input type="text" class="text" id="updateDateFrom">
+				<label for="updateDateTo">to:</label> <input type="text" class="text" id="updateDateTo">
+			</p>
+			<h3 class="accordion-header-close" onclick="toggleAccordion(this, 'createDate');">作成日</h3>
+			<p id="createDate" style="display:none">
+				<label for="createDateFrom">from:</label> <input type="text" class="text" id="createDateFrom">
+				<label for="createDateTo">to:</label> <input type="text" class="text" id="createDateTo">
+			</p>
+			<input type="submit" class="submit" value="検索"/>
+		</form>
+	</div>
+    <!-- menu -->
+	<div id="main">
+		<div class="pager">
+			<a href="#"><img src="resources/skin/default/image/icon/back.png" /></a>
+			<a href="#"><img src="resources/skin/default/image/icon/next.png" /></a>
+			1-50 / 全100件
+		</div>
+		<table class="list" width="99%">
+		<tr> 
+			<th nowrap="nowrap"><a href="#">状態<img src="resources/skin/default/image/icon/order_desc.png" /></a></th>
+			<th nowrap="nowrap"><a href="#"><img src="resources/skin/default/image/icon/star-off.gif" alt="優先度"/><img src="resources/skin/default/image/icon/order_desc.png"/></a></th>
+			<th nowrap="nowrap">タスク</th>
+			<th nowrap="nowrap"><a href="#">〆切<img src="resources/skin/default/image/icon/order_desc.png" /></a></th>
+			<th nowrap="nowrap"><a href="#">更新日<img src="resources/skin/default/image/icon/order_desc.png" /></a></th>
+		</tr>
+		<tr id="task-123"> 
+			<td class="statusIcon">
+				<img id="statusIcon-123" class="status3-icon" src="resources/skin/default/image/spacer.gif" /> 
+			</td>
+			<td class="priority3">
+				<div class="vertical-priority-view">
+					<img class="icon-priority1" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority2" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority3" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority4" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority5" src="resources/skin/default/image/spacer.gif"/>
+				</div>
+			</td>
+			<td class="text">
+				<ul class="tagList">
+					<li class="tag">プロジェクトA</li>
+					<li class="tag2">プロジェクトA</li> 
+					<li class="tag3">プロジェクトA</li>
+					<li class="tag4">プロジェクトA</li> 
+					<li class="tag5">プロジェクトA</li>
+				</ul>
+				内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+				<ul class="actionList">
+					<li><a class="unlinkAction" href="javascript:linkTask(1, 123, 'task-123')">リンクする</a></li>
+				</ul>
+				<p class="note">ID: 123, 見積: 10, 作成日: 2006/12/12</p>
+			</td>
+			<td>2005/12/31</td>
+			<td id="updateDate-123">2005/12/31 09:09:09</td>
+		</tr>
+		<tr id="task-124">
+			<td class="statusIcon">
+				<img id="statusIcon-124" class="status3-icon" src="resources/skin/default/image/spacer.gif" />
+			</td>
+			<td class="priority3">
+				<div class="vertical-priority-view">
+					<img class="icon-priority1" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority2" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority3" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority4" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority5" src="resources/skin/default/image/spacer.gif"/>
+				</div>
+			</td>
+			<td class="text">
+				<ul class="tagList">
+					<li class="tag">プロジェクトA</li>
+					<li class="tag2">プロジェクトA</li> 
+					<li class="tag3">プロジェクトA</li>
+					<li class="tag4">プロジェクトA</li> 
+					<li class="tag5">プロジェクトA</li>
+				</ul>
+				内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+				<ul class="actionList">
+					<li><a class="unlinkAction" href="javascript:linkTask(1, 124, 'task-124')">リンクする</a></li>
+				</ul>
+				<p class="note">ID: 124, 見積: 10, 作成日: 2006/12/12</p>
+			</td>
+			<td>2005/12/31</td>
+			<td id="updateDate-124">2005/12/31 09:09:09</td>
+		</tr>
+		<tr id="task-125"> 
+			<td class="statusIcon">
+				<img id="statusIcon-125" class="status3-icon" src="resources/skin/default/image/spacer.gif" />
+			</td>
+			<td class="priority2">
+				<div class="vertical-priority-view">
+					<img class="icon-priority1" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority2" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority3" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority4" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority5" src="resources/skin/default/image/spacer.gif"/>
+				</div>
+			</td>
+			<td class="text">
+				<ul class="tagList">
+					<li class="tag">プロジェクトA</li>
+					<li class="tag2">プロジェクトA</li> 
+					<li class="tag3">プロジェクトA</li>
+					<li class="tag4">プロジェクトA</li> 
+					<li class="tag5">プロジェクトA</li>
+				</ul>
+				内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+				<ul class="actionList">
+					<li><a class="unlinkAction" href="javascript:linkTask(1, 125, 'task-125')">リンクする</a></li>
+				</ul>
+				<p class="note">ID: 125, 見積: 10, 作成日: 2006/12/12</p>
+			</td>
+			<td>2005/12/31</td>
+			<td id="updateDate-125">2005/12/31 09:09:09</td>
+		</tr>
+		<tr id="task-126">
+			<td class="statusIcon">
+				<img id="statusIcon-126" class="status3-icon" src="resources/skin/default/image/spacer.gif" /> 
+			</td>
+			<td class="priority4">
+				<div class="vertical-priority-view">
+					<img class="icon-priority1" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority2" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority3" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority4" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority5" src="resources/skin/default/image/spacer.gif"/>
+				</div>
+			</td>
+			<td class="text">
+				<ul class="tagList">
+					<li class="tag">プロジェクトA</li>
+					<li class="tag2">プロジェクトA</li> 
+					<li class="tag3">プロジェクトA</li>
+					<li class="tag4">プロジェクトA</li> 
+					<li class="tag5">プロジェクトA</li>
+				</ul>
+				内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+				<ul class="actionList">
+					<li><a class="unlinkAction" href="javascript:linkTask(1, 126, 'task-126')">リンクする</a></li>
+				</ul>
+				<p class="note">ID: 126, 見積: 10, 作成日: 2006/12/12</p>
+			</td>
+			<td>2005/12/31</td>
+			<td id="updateDate-126">2005/12/31 09:09:09</td>
+		</tr>
+		</table>
+		<div class="pager">
+			<a href="#"><img src="resources/skin/default/image/icon/back.png" /></a>
+			<a href="#"><img src="resources/skin/default/image/icon/next.png" /></a>
+			1-50 / 全50件 
+		</div>
+	</div>
+	<!-- main -->
+	<hr class="bot" />
+</div>
+<!-- content-body -->
+</div>
+<!-- content -->
+<div id="footer"/>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<% 
+if (context.tagMasterList) {
+	var _taskTags = $AX(context.task.tagList.tag); 
+	var _taskTagStrings = _taskTags.collect(
+					function (value, index) {
+						return value.name;
+					});
+	var tmpTags = $AX(context.tagMasterList.tag);
+	for (var i=0; i<tmpTags.length; i++) { 
+		var _tagId = 'tag' + tmpTags[i].tagId;
+		var _tag = tmpTags[i].name.escapeHTML();
+		var _style = _taskTagStrings.include(tmpTags[i].name) ? tmpTags[i].styleClass : '';
+%>
+<li id="<%= _tagId %>" class="<%=_style%>"><a href="javascript:updateTagList('tagList', '<%=_tagId%>', '<%=_tag%>', '<%=tmpTags[i].styleClass%>')"><%=_tag%></a></li>
+<%
+	}
+} 
+%>

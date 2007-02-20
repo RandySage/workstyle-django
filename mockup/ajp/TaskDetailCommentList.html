@@ -1,0 +1,8 @@
+<% var tmpComments = $AX(context.task.commentList.comment); %>
+<% for (var i = 0; i<tmpComments.length; i++) { %>
+<% var comment = tmpComments[i]; %>
+<dt><%= comment.commentator %>(<%= comment.updateDate %>)</dt>
+<dd>
+<%= comment.contents.formatSimpleHTML() %>
+</dd>
+<% } %>

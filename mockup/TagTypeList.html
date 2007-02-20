@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>WorkStyle</title>
+	<link type="text/css" rel="stylesheet" href="resources/skin/default/basic.css"/>
+	<script src="resources/prototype.js" language="JavaScript"></script>
+	<script src="resources/jkl-parsexml.js" language="JavaScript"></script>
+	<script src="resources/script.js" language="JavaScript"></script>
+	<script src="resources/local.js" language="JavaScript"></script>
+	<script src="resources/AjaxPages.js" language="JavaScript"></script>
+</head>
+<body class="yellow" onload="init()">
+<script src="resources/TagTypeList.js" language="JavaScript"></script>
+<p id="header"><a href="TaskList.html"><img src="resources/skin/default/image/logo.png" alt="WorkStyle" /></a></p>
+
+<ul class="nav">
+	<li><a href="TaskList.html">タスク一覧</a></li>
+	<li><a href="TaskList.html">タグ管理</a></li>
+</ul>
+
+<h1 id="pageTitle">Tag List</h1>
+
+<div id="content"> 
+<div id="content-body"> 
+	<div id="menu"> 
+		<h2>Menu</h2>
+		<ul>
+			<li><a href="TagList.html"><img src="resources/skin/default/image/icon/TagType.png"/>タグを編集する</a></li>
+		</ul>
+	</div>
+	<div id="main"> 
+	<form class="listTableForm" onsubmit="return editTagType();">
+	<input id="tagTypeId" name="tagTypeId" type="hidden" value=""/>
+		<table id="tagTypeList" class="list">
+		<tr> 
+			<th nowrap="nowrap">&nbsp;</th>
+			<th nowrap="nowrap">&nbsp;</th>
+			<th nowrap="nowrap">タグ種別</th>
+			<th nowrap="nowrap">表示順</th>
+			<th nowrap="nowrap">色</th>
+		</tr>
+		<tr id="tagType1"> 
+			<td class="icon"><a class="deleteAction" href="javascript:deleteTagType(1, 'tagType1');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+			<td id="editLink-1" class="icon"><a class="editAction" href="javascript:openEditForm(1);"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a>
+			</td>
+			<td id="editButton-1" class="submit" style="display:none">
+				<input type="submit" class="submit" value="登録" onmousedown="setTarget(1)"/>
+				<input type="reset" class="cancel" value="キャンセル" onclick="closeEditForm(1)"/>
+			</td>
+			<td id="nameView-1" class="editable" nowrap="nowrap" onclick="openEditForm(1);">プロジェクト</td>
+			<td id="orderView-1" class="editable-number" onclick="openEditFormOrder(1);">1</td>
+			<td id="editName-1" class="input" style="display:none">
+				<input id="name-1" name="name-1" onfocus="setTarget(1)" type="text" class="text" value="プロジェクト"/>
+			</td>
+			<td id="editOrder-1" class="input-number" style="display:none">
+				<input id="order-1" name="order-1"  onfocus="setTarget(1)" type="text" class="number" value="1"/>
+			</td>
+			<td>
+				<ul id="tagTypeStyleLink-1" class="tagTypeList">
+					<li id="tagTypeStyle-1" class="tag1"><a href="javascript:openChangeTagTypeStyleForm(1)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+				</ul>
+				<ul id="tagTypeStyleForm-1" class="tagTypeList" style="display:none">
+					<li class="tag1"><a href="javascript:changeTagTypeStyle(1, 'tag1')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag2"><a href="javascript:changeTagTypeStyle(1, 'tag2')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag3"><a href="javascript:changeTagTypeStyle(1, 'tag3')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag4"><a href="javascript:changeTagTypeStyle(1, 'tag4')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag5"><a href="javascript:changeTagTypeStyle(1, 'tag5')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag6"><a href="javascript:changeTagTypeStyle(1, 'tag6')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag7"><a href="javascript:changeTagTypeStyle(1, 'tag7')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag8"><a href="javascript:changeTagTypeStyle(1, 'tag8')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag9"><a href="javascript:changeTagTypeStyle(1, 'tag9')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag10"><a href="javascript:changeTagTypeStyle(1, 'tag10')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+				</ul>
+			</td>
+		</tr>
+		<tr id="tagType2"> 
+			<td class="icon"><a class="deleteAction" href="javascript:deleteTagType(2, 'tagType2');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+			<td id="editLink-2" class="icon"><a class="editAction" href="javascript:openEditForm(2);"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a>
+			</td>
+			<td id="editButton-2" class="submit" style="display:none">
+				<input type="submit" class="submit" value="登録" onmousedown="setTarget(2)"/>
+				<input type="reset" class="cancel" value="キャンセル" onclick="closeEditForm(2)"/>
+			</td>
+			<td id="nameView-2" class="editable" nowrap="nowrap" onclick="openEditForm(2);">タスク種別</td>
+			<td id="orderView-2" class="editable-number" onclick="openEditFormOrder(2);">2</td>
+			<td id="editName-2" class="input" style="display:none">
+				<input id="name-2" name="name-2" onfocus="setTarget(2)" type="text" class="text" value="プロジェクト"/>
+			</td>
+			<td id="editOrder-2" class="input-number" style="display:none">
+				<input id="order-2" name="order-2"  onfocus="setTarget(2)" type="text" class="number" value="2"/>
+			</td>
+			<td>
+				<ul id="tagTypeStyleLink-2" class="tagTypeList">
+					<li id="tagTypeStyle-2" class="tag2"><a href="javascript:openChangeTagTypeStyleForm(2)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+				</ul>
+				<ul id="tagTypeStyleForm-2" class="tagTypeList" style="display:none">
+					<li class="tag1"><a href="javascript:changeTagTypeStyle(2, 'tag1')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag2"><a href="javascript:changeTagTypeStyle(2, 'tag2')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag3"><a href="javascript:changeTagTypeStyle(2, 'tag3')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag4"><a href="javascript:changeTagTypeStyle(2, 'tag4')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag5"><a href="javascript:changeTagTypeStyle(2, 'tag5')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag6"><a href="javascript:changeTagTypeStyle(2, 'tag6')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag7"><a href="javascript:changeTagTypeStyle(2, 'tag7')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag8"><a href="javascript:changeTagTypeStyle(2, 'tag8')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag9"><a href="javascript:changeTagTypeStyle(2, 'tag9')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag10"><a href="javascript:changeTagTypeStyle(2, 'tag10')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+				</ul>
+			</td>
+		</tr>
+		<tr id="tagType3"> 
+			<td class="icon"><a class="deleteAction" href="javascript:deleteTagType(3, 'tagType3');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+			<td id="editLink-3" class="icon"><a class="editAction" href="javascript:openEditForm(3);"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+			<td id="editButton-3" class="submit" style="display:none">
+				<input type="submit" class="submit" value="登録" onmousedown="setTarget(3)"/>
+				<input type="reset" class="cancel" value="キャンセル" onclick="closeEditForm(3)"/>
+			</td>
+			<td id="nameView-3" class="editable" nowrap="nowrap" onclick="openEditForm(3);">担当</td>
+			<td id="orderView-3" class="editable-number" onclick="openEditFormOrder(3);">3</td>
+			<td id="editName-3" class="input" style="display:none">
+				<input id="name-3" name="name-3" onfocus="setTarget(3)" type="text" class="text" value="プロジェクト"/>
+			</td>
+			<td id="editOrder-3" class="input-number" style="display:none">
+				<input id="order-3" name="order-3"  onfocus="setTarget(3)" type="text" class="number" value="3"/>
+			</td>
+			<td>
+				<ul id="tagTypeStyleLink-3" class="tagTypeList">
+					<li id="tagTypeStyle-3" class="tag3"><a href="javascript:openChangeTagTypeStyleForm(3)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+				</ul>
+				<ul id="tagTypeStyleForm-3" class="tagTypeList" style="display:none">
+					<li class="tag1"><a href="javascript:changeTagTypeStyle(3, 'tag1')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag2"><a href="javascript:changeTagTypeStyle(3, 'tag2')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag3"><a href="javascript:changeTagTypeStyle(3, 'tag3')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag4"><a href="javascript:changeTagTypeStyle(3, 'tag4')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag5"><a href="javascript:changeTagTypeStyle(3, 'tag5')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag6"><a href="javascript:changeTagTypeStyle(3, 'tag6')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag7"><a href="javascript:changeTagTypeStyle(3, 'tag7')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag8"><a href="javascript:changeTagTypeStyle(3, 'tag8')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag9"><a href="javascript:changeTagTypeStyle(3, 'tag9')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag10"><a href="javascript:changeTagTypeStyle(3, 'tag10')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+				</ul>
+			</td>
+		</tr>
+		<tr id="tagType4"> 
+			<td class="icon"><a class="deleteAction" href="javascript:deleteTagType(4, 'tagType4');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+			<td id="editLink-4" class="icon"><a class="editAction" href="javascript:openEditForm(4);"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+			<td id="editButton-4" class="submit" style="display:none">
+				<input type="submit" class="submit" value="登録" onmousedown="setTarget(4)"/>
+				<input type="reset" class="cancel" value="キャンセル" onclick="closeEditForm(4)"/>
+			</td>
+			<td id="nameView-4" class="editable" nowrap="nowrap" onclick="openEditForm(4);">イテレーション</td>
+			<td id="orderView-4" class="editable-number" onclick="openEditFormOrder(4);">4</td>
+			<td id="editName-4" class="input" style="display:none">
+				<input id="name-4" name="name-4" onfocus="setTarget(4)" type="text" class="text" value="プロジェクト"/>
+			</td>
+			<td id="editOrder-4" class="input-number" style="display:none">
+				<input id="order-4" name="order-4"  onfocus="setTarget(4)" type="text" class="number" value="4"/>
+			</td>
+			<td>
+				<ul id="tagTypeStyleLink-4" class="tagTypeList">
+					<li id="tagTypeStyle-4" class="tag4"><a href="javascript:openChangeTagTypeStyleForm(4)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+				</ul>
+				<ul id="tagTypeStyleForm-4" class="tagTypeList" style="display:none">
+					<li class="tag1"><a href="javascript:changeTagTypeStyle(4, 'tag1')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag2"><a href="javascript:changeTagTypeStyle(4, 'tag2')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag3"><a href="javascript:changeTagTypeStyle(4, 'tag3')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag4"><a href="javascript:changeTagTypeStyle(4, 'tag4')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag5"><a href="javascript:changeTagTypeStyle(4, 'tag5')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag6"><a href="javascript:changeTagTypeStyle(4, 'tag6')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag7"><a href="javascript:changeTagTypeStyle(4, 'tag7')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag8"><a href="javascript:changeTagTypeStyle(4, 'tag8')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag9"><a href="javascript:changeTagTypeStyle(4, 'tag9')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag10"><a href="javascript:changeTagTypeStyle(4, 'tag10')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+				</ul>
+			</td>
+		</tr>
+		<tr id="tagType5">
+			<td class="icon"><a class="deleteAction" href="javascript:deleteTagType(5, 'tagType5');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+			<td id="editLink-5" class="icon"><a class="editAction" href="javascript:openEditForm(5);"><img src="resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+			<td id="editButton-5" class="submit" style="display:none">
+				<input type="submit" class="submit" value="登録" onmousedown="setTarget(5)"/>
+				<input type="reset" class="cancel" value="キャンセル" onclick="closeEditForm(5)"/>
+			</td>
+			<td id="nameView-5" class="editable" nowrap="nowrap" onclick="openEditForm(5);">備考</td>
+			<td id="orderView-5" class="editable-number" onclick="openEditFormOrder(5);">5</td>
+			<td id="editName-5" class="input" style="display:none">
+				<input id="name-5" name="name-5" onfocus="setTarget(5)" type="text" class="text" value="プロジェクト"/>
+			</td>
+			<td id="editOrder-5" class="input-number" style="display:none">
+				<input id="order-5" name="order-5"  onfocus="setTarget(5)" type="text" class="number" value="5"/>
+			</td>
+			<td>
+				<ul id="tagTypeStyleLink-5" class="tagTypeList">
+					<li id="tagTypeStyle-5" class="tag5"><a href="javascript:openChangeTagTypeStyleForm(5)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+				</ul>
+				<ul id="tagTypeStyleForm-5" class="tagTypeList" style="display:none">
+					<li class="tag1"><a href="javascript:changeTagTypeStyle(5, 'tag1')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag2"><a href="javascript:changeTagTypeStyle(5, 'tag2')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag3"><a href="javascript:changeTagTypeStyle(5, 'tag3')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag4"><a href="javascript:changeTagTypeStyle(5, 'tag4')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag5"><a href="javascript:changeTagTypeStyle(5, 'tag5')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag6"><a href="javascript:changeTagTypeStyle(5, 'tag6')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag7"><a href="javascript:changeTagTypeStyle(5, 'tag7')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag8"><a href="javascript:changeTagTypeStyle(5, 'tag8')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag9"><a href="javascript:changeTagTypeStyle(5, 'tag9')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li class="tag10"><a href="javascript:changeTagTypeStyle(5, 'tag10')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+				</ul>
+			</td>
+		</tr>
+		</table>
+	</form>
+	<p id="newLink">
+	<a class="ajax" href="javascript:openTagTypeForm()"/>追加</a>
+	</p>
+	<form id="TagTypeForm" onsubmit="return addTagType()" style="display:none">
+		<fieldset>
+			<div>
+			<label for="name">タグ種別</label>
+			<input id="name" name="name" type="text" class="text" value="" />
+			</div>
+			<div>
+			<label for="order">表示順</label>
+			<input id="order" name="order" type="text" class="text" value="" />
+			</div>
+		</fieldset>
+		<div class="action">
+		<input type="submit" class="submit" value="登録"/>
+		<input type="reset" class="cancel" value="キャンセル" onclick="closeTagTypeForm()"/>
+		</div>
+	</form>
+	</div>
+	<!-- main -->
+<hr class="bot" />
+</div>
+<!-- content-body -->
+</div>
+<!-- content -->
+<div id="footer"/>
+</body>
+</html>
