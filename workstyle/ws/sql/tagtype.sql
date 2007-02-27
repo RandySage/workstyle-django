@@ -1,0 +1,11 @@
+insert into ws_tagtype(tag_type_id,name,style_class,sort_order) values (100,'未分類','tag',11);
+insert into ws_tagtype(tag_type_id,name,style_class,sort_order) values (1,'タスク種別','tag1',1);
+insert into ws_tagtype(tag_type_id,name,style_class,sort_order) values (2,'プロジェクト','tag2',2);
+insert into ws_tagtype(tag_type_id,name,style_class,sort_order) values (3,'担当','tag3',3);
+insert into ws_tagtype(tag_type_id,name,style_class,sort_order) values (4,'処理方法','tag4',4);
+insert into ws_tagtype(tag_type_id,name,style_class,sort_order) values (5,'備考','tag5',5);
+insert into ws_tagtype(tag_type_id,name,style_class,sort_order) values (6,'イテレーション','tag6',6);
+insert into ws_tagtype(tag_type_id,name,style_class,sort_order) values (7,'コンテクスト','tag7',7);
+insert into ws_tagtype(tag_type_id,name,style_class,sort_order) values (8,'予備１','tag8',8);
+insert into ws_tagtype(tag_type_id,name,style_class,sort_order) values (9,'予備2','tag9',9);
+insert into ws_tagtype(tag_type_id,name,style_class,sort_order) values (10,'予備3','tag10',10);

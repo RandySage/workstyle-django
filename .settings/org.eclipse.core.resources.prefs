@@ -1,3 +1,5 @@
-#Mon Feb 26 18:25:40 JST 2007
+#Tue Feb 27 19:33:45 JST 2007
 eclipse.preferences.version=1
 encoding//workstyle/ws/models.py=UTF-8
+encoding//workstyle/ws/sql/status.sql=UTF-8
+encoding//workstyle/ws/sql/tagtype.sql=UTF-8

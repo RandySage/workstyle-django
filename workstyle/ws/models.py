@@ -23,6 +23,8 @@ class TagType(models.Model):
 
     class Meta:
         verbose_name = _('Tag Type')
+        ordering = ('sort_order',)
+
 
 class Task(models.Model):
     task_id              = models.AutoField(primary_key=True)
@@ -61,12 +63,20 @@ class TaskComment(models.Model):
     
     class Meta:
         verbose_name=_('Comment')
-    
+
+class TagManager(models.Manager):
+    def get_query_set(self):
+        return super(Taskmanager, self).get_query_set().filter(active=True)
+
 class Tag(models.Model):
     tag_id           = models.AutoField(primary_key=True)
     name             = models.CharField(_('Name'), maxlength=50)
     active           = models.BooleanField(_('Active'), default=True)
     tag_type         = models.ForeignKey(TagType)
 
+    objects = models.Manager()
+    public_objects = TagManager()
+
     class Meta:
         verbose_name=_('Tag')
+        order_with_respect_to = 'tag_type'
