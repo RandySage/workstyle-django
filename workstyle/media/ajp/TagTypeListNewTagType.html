@@ -1,0 +1,31 @@
+<tr id="tagType<%=context.tagType.tagTypeId%>">
+	<td class="icon"><a class="deleteAction" href="javascript:deleteTagType(<%=context.tagType.tagTypeId%>, 'tagType<%=context.tagType.tagTypeId%>');"><img src="../resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+	<td id="editLink-<%=context.tagType.tagTypeId%>" class="icon"><a class="editAction" href="javascript:openEditForm(<%=context.tagType.tagTypeId%>);"><img src="../resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+	<td id="editButton-<%=context.tagType.tagTypeId%>" class="submit" style="display:none">
+		<input type="submit" class="submit" value="登録" onmousedown="setTarget(<%=context.tagType.tagTypeId%>)"/>
+		<input type="reset" class="cancel" value="キャンセル" onclick="closeEditForm(<%=context.tagType.tagTypeId%>)"/>
+	</td>
+	<td id="nameView-<%=context.tagType.tagTypeId%>" class="editable" nowrap="nowrap" onclick="openEditForm(<%=context.tagType.tagTypeId%>);"><%=context.tagType.name%></td>
+	<td id="orderView-<%=context.tagType.tagTypeId%>" class="editable-number" onclick="openEditFormOrder(<%=context.tagType.tagTypeId%>);"><%=context.tagType.sortOrder%></td>
+	<td id="editName-<%=context.tagType.tagTypeId%>" class="input" style="display:none">
+		<input id="name-<%=context.tagType.tagTypeId%>" name="name-<%=context.tagType.tagTypeId%>" onfocus="setTarget(<%=context.tagType.tagTypeId%>)" type="text" class="text" value="<%=context.tagType.name%>"/>
+	</td>
+	<td id="editOrder-<%=context.tagType.tagTypeId%>" class="input-number" style="display:none">
+		<input id="order-<%=context.tagType.tagTypeId%>" name="order-<%=context.tagType.tagTypeId%>"  onfocus="setTarget(<%=context.tagType.tagTypeId%>)" type="text" class="number" value="<%=context.tagType.sortOrder%>"/>
+	</td>
+	<td>
+		<ul id="tagTypeStyleLink-<%=context.tagType.tagTypeId%>" class="tagTypeList">
+			<li id="tagTypeStyle-<%=context.tagType.tagTypeId%>" class="<%=context.tagType.styleClass%>"><a href="javascript:openChangeTagTypeStyleForm(<%=context.tagType.tagTypeId%>)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+		</ul>
+		<ul id="tagTypeStyleForm-<%=context.tagType.tagTypeId%>" class="tagTypeList" style="display:none">
+<%
+	var _styles = $AX(context.tagTypeStyles);
+	for (var i=0; i<_styles.length; i++) {
+%>
+			<li class="<%=_styles[i]%>"><a href="javascript:changeTagTypeStyle(<%=context.tagType.tagTypeId%>, '<%=_styles[i]%>')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+<%
+	}
+%>
+		</ul>
+	</td>
+</tr>

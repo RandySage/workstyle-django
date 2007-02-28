@@ -3,16 +3,16 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>WorkStyle</title>
-	<link type="text/css" rel="stylesheet" href="resources/skin/default/basic.css"/>
-	<script src="resources/prototype.js" language="JavaScript"></script>
-	<script src="resources/jkl-parsexml.js" language="JavaScript"></script>
-	<script src="resources/script.js" language="JavaScript"></script>
-	<script src="resources/local.js" language="JavaScript"></script>
-	<script src="resources/AjaxPages.js" language="JavaScript"></script>
+	<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}/resources/skin/default/basic.css"/>
+	<script src="{{ MEDIA_URL }}/resources/prototype.js" language="JavaScript"></script>
+	<script src="{{ MEDIA_URL }}/resources/jkl-parsexml.js" language="JavaScript"></script>
+	<script src="{{ MEDIA_URL }}/resources/script.js" language="JavaScript"></script>
+	<script src="{{ MEDIA_URL }}/resources/local.js" language="JavaScript"></script>
+	<script src="{{ MEDIA_URL }}/resources/AjaxPages.js" language="JavaScript"></script>
 </head>
 <body onload="init()">
-<script src="resources/TaskDetail.js" language="JavaScript"></script>
-<p id="header"><a href="TaskList.html"><img src="resources/skin/default/image/logo.png" alt="WorkStyle" /></a></p>
+<script src="{{ MEDIA_URL }}/resources/TaskDetail.js" language="JavaScript"></script>
+<p id="header"><a href="TaskList.html"><img src="{{ MEDIA_URL }}/resources/skin/default/image/logo.png" alt="WorkStyle" /></a></p>
   
 <ul class="nav">
 	<li><a href="TaskList.html">タスク一覧</a></li>
@@ -26,27 +26,27 @@
     <div id="menu"> 
 		<h2>Menu</h2>
 		<ul>
-			<li><a href="SimpleTaskForm.html"><img src="resources/skin/default/image/icon/normal16.png"/>新規タスクを追加</a></li>
-			<li><a href="UnlinkedTaskList.html"><img src="resources/skin/default/image/icon/link.png"/>タスクをリンクする</a></li>
-	        <li><a href="TaskList.html"><img src="resources/skin/default/image/icon/go_up.png"/>タスク一覧に戻る</a></li>
+			<li><a href="SimpleTaskForm.html"><img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/normal16.png"/>新規タスクを追加</a></li>
+			<li><a href="UnlinkedTaskList.html"><img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/link.png"/>タスクをリンクする</a></li>
+	        <li><a href="TaskList.html"><img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/go_up.png"/>タスク一覧に戻る</a></li>
 		</ul>
 	</div>
 	<div id="main"> 
 		<div class="taskinfo" id="taskInfo">
 			<form id="PropertyForm" onsubmit="return editProperty()">
-				<input id="estimatedManHourTaskId" name="taskId" type="hidden" value="1"/>
+				<input id="estimatedManHourTaskId" name="task_id" type="hidden" value="{{ object.task_id }}"/>
 				<table class="list">
 					<tr>
 						<td class="statusIconLarge" colspan="2">
-							<img id="statusIcon" class="status3-iconLarge" src="resources/skin/default/image/spacer.gif"/>
+							<img id="statusIcon" class="status3-iconLarge" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
 							<p>
-								<a href="javascript:updateStatus(123, 7)"><img class="status7" src="resources/skin/default/image/spacer.gif" /></a>
-								<a href="javascript:updateStatus(123, 1)"><img class="status1" src="resources/skin/default/image/spacer.gif" /></a>
-								<a href="javascript:updateStatus(123, 2)"><img class="status2" src="resources/skin/default/image/spacer.gif" /></a>
-								<a href="javascript:updateStatus(123, 3)"><img class="status3" src="resources/skin/default/image/spacer.gif" /></a><br/>
-								<a href="javascript:updateStatus(123, 4)"><img class="status4" src="resources/skin/default/image/spacer.gif" /></a>
-								<a href="javascript:updateStatus(123, 5)"><img class="status5" src="resources/skin/default/image/spacer.gif" /></a>
-								<a href="javascript:updateStatus(123, 6)"><img class="status6" src="resources/skin/default/image/spacer.gif"  /></a>
+								<a href="javascript:updateStatus({{ object.task_id }}, 7)"><img class="status7" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" /></a>
+								<a href="javascript:updateStatus({{ object.task_id }}, 1)"><img class="status1" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" /></a>
+								<a href="javascript:updateStatus({{ object.task_id }}, 2)"><img class="status2" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" /></a>
+								<a href="javascript:updateStatus({{ object.task_id }}, 3)"><img class="status3" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" /></a><br/>
+								<a href="javascript:updateStatus({{ object.task_id }}, 4)"><img class="status4" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" /></a>
+								<a href="javascript:updateStatus({{ object.task_id }}, 5)"><img class="status5" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" /></a>
+								<a href="javascript:updateStatus({{ object.task_id }}, 6)"><img class="status6" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"  /></a>
 							</p>
 						</td>
 					</tr>
@@ -59,22 +59,22 @@
 						<td class="priority3" id="taskPriority">
 							<input type="hidden" id="taskOriginalPriority" value="3">
 							<div class="horizontal-priority-set" onmouseout="updatePriorityIcon('taskPriority', $('taskOriginalPriority').value)">
-								<img class="icon-priority1" onmouseover="updatePriorityIcon('taskPriority', 1)" onclick="updatePriority(123, 1);" src="resources/skin/default/image/spacer.gif"/>
-								<img class="icon-priority2" onmouseover="updatePriorityIcon('taskPriority', 2)" onclick="updatePriority(123, 2);" src="resources/skin/default/image/spacer.gif"/>
-								<img class="icon-priority3" onmouseover="updatePriorityIcon('taskPriority', 3)" onclick="updatePriority(123, 3);" src="resources/skin/default/image/spacer.gif"/>
-								<img class="icon-priority4" onmouseover="updatePriorityIcon('taskPriority', 4)" onclick="updatePriority(123, 4);" src="resources/skin/default/image/spacer.gif"/>
-								<img class="icon-priority5" onmouseover="updatePriorityIcon('taskPriority', 5)" onclick="updatePriority(123, 5);" src="resources/skin/default/image/spacer.gif"/>
-								<img class="icon-priority0" onmouseover="updatePriorityIcon('taskPriority', 0)" onclick="updatePriority(123, 0);" src="resources/skin/default/image/spacer.gif"/>
+								<img class="icon-priority1" onmouseover="updatePriorityIcon('taskPriority', 1)" onclick="updatePriority(123, 1);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+								<img class="icon-priority2" onmouseover="updatePriorityIcon('taskPriority', 2)" onclick="updatePriority(123, 2);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+								<img class="icon-priority3" onmouseover="updatePriorityIcon('taskPriority', 3)" onclick="updatePriority(123, 3);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+								<img class="icon-priority4" onmouseover="updatePriorityIcon('taskPriority', 4)" onclick="updatePriority(123, 4);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+								<img class="icon-priority5" onmouseover="updatePriorityIcon('taskPriority', 5)" onclick="updatePriority(123, 5);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+								<img class="icon-priority0" onmouseover="updatePriorityIcon('taskPriority', 0)" onclick="updatePriority(123, 0);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
 							</div>
 						</td>
 					</tr>
 					<tr> 
 						<th>作成日</th>
-						<td id="createDate">2005/12/31 09:09:09</td>
+						<td id="createDate">{{ object.create_date|date:"Y/m/d H:i:s" }}</td>
 					</tr>
 					<tr> 
 						<th>更新日</th>
-						<td id="updateDate">2005/12/31 09:09:09</td>
+						<td id="updateDate">{{ object.update_date|date:"Y/m/d H:i:s" }}</td>
 					</tr>
 					<tr id="deadEndDateContainer"> 
 						<th>〆切</th>
@@ -103,43 +103,34 @@
 		<ul class="tagList">
 			<li id="tagListViewContainer">
 			<ul id="tagListView">
-				<li class="tag">プロジェクトA</li>
-				<li class="tag2">プロジェクトB</li>
+                            {% for tag in tag_list %}
+				<li class="tag">{{ tag.name }}</li>
+                            {% endfor %}
 			</ul>
 			</li>
 			<li id="tagListLink"><a class="ajax" href="javascript:openTagListForm()"/>タグ編集</a></li>
 			<li id="tagListFormContainer" style="display:none;">
 				<form id="tagListForm" onsubmit="return editTagList()">
-				<input type="hidden" id="tagListTaskId" name="taskId" value="1"/>
-				<input type="text" id="tagList" class="text" value="[プロジェクトA][プロジェクトB]"/>
+				<input type="hidden" id="tagListTaskId" name="taskId" value="{{ object.task_id }}"/>
+				<input type="text" id="tagList" class="text" value="{{ object.tag_list }}"/>
 				<input type="submit" class="submit" value="登録"/>
 				<input type="reset" class="cancel" value="キャンセル" onclick="closeTagListForm()"/>
 				</form>
 				<ul id="tagSelecter" class="tagList">
-					<li id="tag1"><a href="javascript:updateTagList('tagList', 'tag1', '牧野', 'tag1')">牧野</a></li>
-			        <li id="tag2"><a href="javascript:updateTagList('tagList', 'tag2', '露木', 'tag1')">露木</a></li>
-			        <li id="tag3"><a href="javascript:updateTagList('tagList', 'tag3', '徳嶋', 'tag1')">徳嶋</a></li>
-			        <li id="tag4"><a href="javascript:updateTagList('tagList', 'tag4', '斉藤', 'tag1')">斉藤</a></li>
-			        <li id="tag5"><a href="javascript:updateTagList('tagList', 'tag5', '菊池', 'tag1')">菊池</a></li>
-			        <li id="tag6" class="tag"><a href="javascript:updateTagList('tagList', 'tag6', 'プロジェクトA', 'tag2')">プロジェクトA</a></li>
-			        <li id="tag7" class="tag2"><a href="javascript:updateTagList('tagList', 'tag7', 'プロジェクトB', 'tag2')">プロジェクトB</a></li>
-			        <li id="tag8"><a href="javascript:updateTagList('tagList', 'tag8', 'プロジェクトC', 'tag2')">プロジェクトC</a></li>
-			        <li id="tag9"><a href="javascript:updateTagList('tagList', 'tag9', 'プロジェクトD', 'tag2')">プロジェクトD</a></li>
-			        <li id="tag10"><a href="javascript:updateTagList('tagList', 'tag10', 'プロジェクトE', 'tag2')">プロジェクトE</a></li>
+                                    {% for tag in tag_list %}
+					<li id="tag{{ forloop.counter }}"><a href="javascript:updateTagList('tagList', 'tag{{ forloop.counter }}', '{{ tag.name }}', 'tag{{ forloop.counter }}')">{{ tag.name }}</a></li>
+                                    {% endfor %}
 				</ul>
 			</li>
 		</ul>
 		<p id="contentsView" class="text">
-		内容内容内容内容内容内容内容内容内容内<br />
-		容内容内容内容内容内容内容内容内容<br />
-		内容内容内容内容内容内容内容内容内<br />
-		容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容 内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容 
+                    {{ object.contents }}
 		</p>
 		<p><a id="editContentsLink" class="ajax" href="javascript:openEditContentsForm()"/>編集</a></p>
 		<p>
 			<form id="editContentsForm" onsubmit="return editContents()" style="display:none">
-			<input id="contentsTaskId" name="taskId" type="hidden" value="1"/>
-			<textarea id="contents" name="contents" rows="15">容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容 内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容 </textarea>
+			<input id="contentsTaskId" name="taskId" type="hidden" value="{{ objects.task_id }}"/>
+			<textarea id="contents" name="contents" rows="15">{{ object.contents }}</textarea>
 			<div>
 			<input type="submit" class="submit" value="登録"/>
 			<input type="reset" class="cancel" value="キャンセル" onclick="closeEditContentsForm()"/>
@@ -150,9 +141,9 @@
 		<ul class="fileList">
 			<li>
 			<ul>
-			<li id="file-123"><a href="#">ファイル名123</a><a class="deleteAction" href="javascript:deleteFile(123, 'file-123');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16"/></a></li>
-			<li id="file-124"><a href="#">ファイル名124</a><a class="deleteAction" href="javascript:deleteFile(124, 'file-124');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16"/></a></li>
-			<li id="file-125"><a href="#">ファイル名125</a><a class="deleteAction" href="javascript:deleteFile(125, 'file-125');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16"/></a></li>
+			<li id="file-123"><a href="#">ファイル名123</a><a class="deleteAction" href="javascript:deleteFile(123, 'file-123');"><img src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" width="16" height="16"/></a></li>
+			<li id="file-124"><a href="#">ファイル名124</a><a class="deleteAction" href="javascript:deleteFile(124, 'file-124');"><img src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" width="16" height="16"/></a></li>
+			<li id="file-125"><a href="#">ファイル名125</a><a class="deleteAction" href="javascript:deleteFile(125, 'file-125');"><img src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" width="16" height="16"/></a></li>
 			</ul>
 			</li>
 			<li id="uploadFileLink"><a class="ajax" href="javascript:openUploadFileForm()"/>ファイル追加</a></li>
@@ -205,33 +196,33 @@
 		<table id="linkedTaskList" class="list" width="99%" style="/*display:none;*/">
 		<tr> 
 			<th nowrap="nowrap">状態</th>
-			<th nowrap="nowrap"><img src="resources/skin/default/image/icon/star-off.gif" alt="優先度"/></th>
+			<th nowrap="nowrap"><img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/star-off.gif" alt="優先度"/></th>
 			<th nowrap="nowrap">タスク</th>
 			<th nowrap="nowrap">〆切</th>
 			<th nowrap="nowrap">更新日</th>
 		</tr>
 		<tr id="linkedTask-223"> 
 			<td class="statusIcon">
-				<img id="linkedTaskStatusIcon-223" class="status1-icon" src="resources/skin/default/image/spacer.gif" /> 
+				<img id="linkedTaskStatusIcon-223" class="status1-icon" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" /> 
 				<ul>
-					<li><a href="javascript:updateLinkedTaskStatus(223, 7)"><img class="status7" src="resources/skin/default/image/spacer.gif" alt="未確認" /></a></li>
-					<li><a href="javascript:updateLinkedTaskStatus(223, 1)"><img class="status1" src="resources/skin/default/image/spacer.gif" alt="実行中" /></a></li>
-					<li><a href="javascript:updateLinkedTaskStatus(223, 2)"><img class="status2" src="resources/skin/default/image/spacer.gif" alt="すぐやる" /></a></li>
-					<li><a href="javascript:updateLinkedTaskStatus(223, 3)"><img class="status3" src="resources/skin/default/image/spacer.gif" alt="そのうちやる" /></a></li>
-					<li><a href="javascript:updateLinkedTaskStatus(223, 4)"><img class="status4" src="resources/skin/default/image/spacer.gif" alt="確認待ち" /></a></li>
-					<li><a href="javascript:updateLinkedTaskStatus(223, 5)"><img class="status5" src="resources/skin/default/image/spacer.gif" alt="保留" /></a></li>
-					<li><a href="javascript:updateLinkedTaskStatus(223, 6)"><img class="status6" src="resources/skin/default/image/spacer.gif" alt="終わり" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(223, 7)"><img class="status7" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="未確認" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(223, 1)"><img class="status1" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="実行中" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(223, 2)"><img class="status2" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="すぐやる" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(223, 3)"><img class="status3" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="そのうちやる" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(223, 4)"><img class="status4" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="確認待ち" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(223, 5)"><img class="status5" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="保留" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(223, 6)"><img class="status6" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="終わり" /></a></li>
 				</ul>
 			</td>
 			<td id="linkedTaskPriority-223" class="priority3">
 				<input type="hidden" id="linkedTaskOriginalPriority-223" value="3">
 				<div class="vertical-priority-set" onmouseout="updatePriorityIcon('linkedTaskPriority-223', $('linkedTaskOriginalPriority-223').value)">
-					<img class="icon-priority1" onmouseover="updatePriorityIcon('linkedTaskPriority-223', 1)"  onclick="updateLinkedTaskPriority(223, 1);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority2" onmouseover="updatePriorityIcon('linkedTaskPriority-223', 2)"  onclick="updateLinkedTaskPriority(223, 2);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority3" onmouseover="updatePriorityIcon('linkedTaskPriority-223', 3)"  onclick="updateLinkedTaskPriority(223, 3);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority4" onmouseover="updatePriorityIcon('linkedTaskPriority-223', 4)"  onclick="updateLinkedTaskPriority(223, 4);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority5" onmouseover="updatePriorityIcon('linkedTaskPriority-223', 5)"  onclick="updateLinkedTaskPriority(223, 5);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority0" onmouseover="updatePriorityIcon('linkedTaskPriority-223', 0)"  onclick="updateLinkedTaskPriority(223, 0);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority1" onmouseover="updatePriorityIcon('linkedTaskPriority-223', 1)"  onclick="updateLinkedTaskPriority(223, 1);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority2" onmouseover="updatePriorityIcon('linkedTaskPriority-223', 2)"  onclick="updateLinkedTaskPriority(223, 2);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority3" onmouseover="updatePriorityIcon('linkedTaskPriority-223', 3)"  onclick="updateLinkedTaskPriority(223, 3);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority4" onmouseover="updatePriorityIcon('linkedTaskPriority-223', 4)"  onclick="updateLinkedTaskPriority(223, 4);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority5" onmouseover="updatePriorityIcon('linkedTaskPriority-223', 5)"  onclick="updateLinkedTaskPriority(223, 5);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority0" onmouseover="updatePriorityIcon('linkedTaskPriority-223', 0)"  onclick="updateLinkedTaskPriority(223, 0);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
 				</div>
 			</td>
 			<td class="text">
@@ -255,26 +246,26 @@
 		</tr>
 		<tr id="linkedTask-224">
 			<td class="statusIcon">
-				<img id="linkedTaskStatusIcon-224" class="status2-icon" src="resources/skin/default/image/spacer.gif"/>
+				<img id="linkedTaskStatusIcon-224" class="status2-icon" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
 				<ul>
-					<li><a href="javascript:updateLinkedTaskStatus(224, 7)"><img class="status7" src="resources/skin/default/image/spacer.gif" alt="未確認" /></a></li>
-					<li><a href="javascript:updateLinkedTaskStatus(224, 1)"><img class="status1" src="resources/skin/default/image/spacer.gif" alt="実行中" /></a></li>
-					<li><a href="javascript:updateLinkedTaskStatus(224, 2)"><img class="status2" src="resources/skin/default/image/spacer.gif" alt="すぐやる" /></a></li>
-					<li><a href="javascript:updateLinkedTaskStatus(224, 3)"><img class="status3" src="resources/skin/default/image/spacer.gif" alt="そのうちやる" /></a></li>
-					<li><a href="javascript:updateLinkedTaskStatus(224, 4)"><img class="status4" src="resources/skin/default/image/spacer.gif" alt="確認待ち" /></a></li>
-					<li><a href="javascript:updateLinkedTaskStatus(224, 5)"><img class="status5" src="resources/skin/default/image/spacer.gif" alt="保留" /></a></li>
-					<li><a href="javascript:updateLinkedTaskStatus(224, 6)"><img class="status6" src="resources/skin/default/image/spacer.gif" alt="終わり" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(224, 7)"><img class="status7" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="未確認" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(224, 1)"><img class="status1" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="実行中" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(224, 2)"><img class="status2" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="すぐやる" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(224, 3)"><img class="status3" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="そのうちやる" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(224, 4)"><img class="status4" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="確認待ち" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(224, 5)"><img class="status5" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="保留" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(224, 6)"><img class="status6" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="終わり" /></a></li>
 				</ul>
 			</td>
 			<td id="linkedTaskPriority-224" class="priority3">
 				<input type="hidden" id="linkedTaskOriginalPriority-224" value="3">
 				<div class="vertical-priority-set" onmouseout="updatePriorityIcon('linkedTaskPriority-224', $('linkedTaskOriginalPriority-224').value)">
-					<img class="icon-priority1" onmouseover="updatePriorityIcon('linkedTaskPriority-224', 1)"  onclick="updateLinkedTaskPriority(224, 1);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority2" onmouseover="updatePriorityIcon('linkedTaskPriority-224', 2)"  onclick="updateLinkedTaskPriority(224, 2);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority3" onmouseover="updatePriorityIcon('linkedTaskPriority-224', 3)"  onclick="updateLinkedTaskPriority(224, 3);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority4" onmouseover="updatePriorityIcon('linkedTaskPriority-224', 4)"  onclick="updateLinkedTaskPriority(224, 4);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority5" onmouseover="updatePriorityIcon('linkedTaskPriority-224', 5)"  onclick="updateLinkedTaskPriority(224, 5);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority0" onmouseover="updatePriorityIcon('linkedTaskPriority-224', 0)"  onclick="updateLinkedTaskPriority(224, 0);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority1" onmouseover="updatePriorityIcon('linkedTaskPriority-224', 1)"  onclick="updateLinkedTaskPriority(224, 1);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority2" onmouseover="updatePriorityIcon('linkedTaskPriority-224', 2)"  onclick="updateLinkedTaskPriority(224, 2);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority3" onmouseover="updatePriorityIcon('linkedTaskPriority-224', 3)"  onclick="updateLinkedTaskPriority(224, 3);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority4" onmouseover="updatePriorityIcon('linkedTaskPriority-224', 4)"  onclick="updateLinkedTaskPriority(224, 4);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority5" onmouseover="updatePriorityIcon('linkedTaskPriority-224', 5)"  onclick="updateLinkedTaskPriority(224, 5);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority0" onmouseover="updatePriorityIcon('linkedTaskPriority-224', 0)"  onclick="updateLinkedTaskPriority(224, 0);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
 				</div>
 			</td>
 			<td class="text">

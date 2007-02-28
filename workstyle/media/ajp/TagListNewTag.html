@@ -1,0 +1,17 @@
+<tr id="tag<%=context.tag.tagId%>"> 
+	<td class="icon"><a class="deleteAction" href="javascript:deleteTag(<%=context.tag.tagId%>, 'tag<%=context.tag.tagId%>');"><img src="../resources/skin/default/image/spacer.gif" width="16" height="16" /></a></td>
+	<td class="icon"><a id="tagActvity<%=context.tag.tagId%>" class="active" href="javascript:toggleTagActivity(<%=context.tag.tagId%>, 'tagActvity<%=context.tag.tagId%>')"><img src="../resources/skin/default/image/spacer.gif" width="16" height="16"/></a></td>
+	<td><%=context.tag.name%></td>
+	<td>
+		<ul id="tagTypeList-<%=context.tag.tagId%>" class="tagTypeList">
+<%
+	var _types = $AX(context.tagTypes);
+	for (var i=0; i<_types.length; i++) {
+%>
+		<li><a href="javascript:changeTypeOfTag(<%=context.tag.tagId%>, <%=_types[i].tagTypeId%>)"><%= _types[i].name%></a></li>
+<%
+	}
+%>
+		</ul>
+	</td>
+</tr>

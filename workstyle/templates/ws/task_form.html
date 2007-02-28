@@ -3,12 +3,12 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>WorkStyle</title>
-	<link type="text/css" rel="stylesheet" href="resources/skin/default/basic.css"/>
-	<script src="resources/prototype.js" language="JavaScript"></script>
-	<script src="resources/jkl-parsexml.js" language="JavaScript"></script>
-	<script src="resources/script.js" language="JavaScript"></script>
-	<script src="resources/local.js" language="JavaScript"></script>
-	<script src="resources/AjaxPages.js" language="JavaScript"></script>
+	<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}/resources/skin/default/basic.css"/>
+	<script src="{{ MEDIA_URL }}/resources/prototype.js" language="JavaScript"></script>
+	<script src="{{ MEDIA_URL }}/resources/jkl-parsexml.js" language="JavaScript"></script>
+	<script src="{{ MEDIA_URL }}/resources/script.js" language="JavaScript"></script>
+	<script src="{{ MEDIA_URL }}/resources/local.js" language="JavaScript"></script>
+	<script src="{{ MEDIA_URL }}/resources/AjaxPages.js" language="JavaScript"></script>
 	<script language="JavaScript" type="text/JavaScript">
 	<!--
 	function init() {
@@ -18,7 +18,7 @@
 	</script>
 </head>
 <body onload="init()">
-<p id="header"><a href="TaskList.html"><img src="resources/skin/default/image/logo.png" alt="WorkStyle" /></a></p>
+<p id="header"><a href="TaskList.html"><img src="{{ MEDIA_URL }}/resources/skin/default/image/logo.png" alt="WorkStyle" /></a></p>
 
 <ul class="nav">
 	<li><a href="TaskList.html">タスク一覧</a></li>
@@ -32,30 +32,28 @@
 	<div id="menu"> 
 		<h2>Menu</h2>
 		<ul>
-			<li><a href="TaskList.html"><img src="resources/skin/default/image/icon/go_up.png"/>タスク一覧に戻る</a></li>
+			<li><a href="TaskList.html"><img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/go_up.png"/>タスク一覧に戻る</a></li>
 		</ul>
 	</div>
 	<div id="main"> 
-	<form action="{{ CONTEXT_ROOT }}/task/" method="post" enctype="multipart/form-data">
+	<form action="." method="post" enctype="multipart/form-data">
+            <input type="hidden" name="status" value="7" />
+            <input type="hidden" name="estimated_man_hour" value="0" />
 		<fieldset>
 			<div>
+{% if form.has_errors %}
+<h2>Please correct the following error {{ form.error_dict }}</h2>
+{% endif %}
 			<label for="conents">タスク</label>
-			<textarea id="contents" name="contents" class="text" rows="15">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</textarea>
+			<textarea id="contents" name="contents" class="text" rows="15">{{ form.contents.data }}</textarea>
 			</div>
 			<div>
 			<label for="tagList">タグ</label>
-			<input id="tagList" name="tagList" type="text" class="text" value="[プロジェクトA][プロジェクトA][プロジェクトA][プロジェクトA]" />
+			<input id="tagList" name="tag_list" type="text" class="text" value="{{ form.tag_list.data }}" />
 			<ul class="tagList">
-				<li id="tag1"><a href="javascript:updateTagList('tagList', 'tag1', '牧野', 'tag1')">牧野</a></li>
-		        <li id="tag2"><a href="javascript:updateTagList('tagList', 'tag2', '露木', 'tag1')">露木</a></li>
-		        <li id="tag3"><a href="javascript:updateTagList('tagList', 'tag3', '徳嶋', 'tag1')">徳嶋</a></li>
-		        <li id="tag4"><a href="javascript:updateTagList('tagList', 'tag4', '斉藤', 'tag1')">斉藤</a></li>
-		        <li id="tag5"><a href="javascript:updateTagList('tagList', 'tag5', '菊池', 'tag1')">菊池</a></li>
-		        <li id="tag6"><a href="javascript:updateTagList('tagList', 'tag6', 'プロジェクトA', 'tag2')">プロジェクトA</a></li>
-		        <li id="tag7"><a href="javascript:updateTagList('tagList', 'tag7', 'プロジェクトB', 'tag2')">プロジェクトB</a></li>
-		        <li id="tag8"><a href="javascript:updateTagList('tagList', 'tag8', 'プロジェクトC', 'tag2')">プロジェクトC</a></li>
-		        <li id="tag9"><a href="javascript:updateTagList('tagList', 'tag9', 'プロジェクトD', 'tag2')">プロジェクトD</a></li>
-		        <li id="tag10"><a href="javascript:updateTagList('tagList', 'tag10', 'プロジェクトE', 'tag2')">プロジェクトE</a></li>
+                            {% for tag in tag_list %}
+				<li id="tag{{ forloop.counter }}"><a href="javascript:updateTagList('tagList', 'tag{{ forloop.counter }}', '{{ tag.name }}', 'tag{{ forloop.counter }}')">{{ tag.name }}</a></li>
+                            {% endfor %}
 			</ul>
 			</div>
 		</fieldset>

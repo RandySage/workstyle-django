@@ -3,19 +3,19 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>WorkStyle</title>
-	<link type="text/css" rel="stylesheet" href="resources/skin/default/basic.css"/>
+	<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}/resources/skin/default/basic.css"/>
 	<link rel="alternate" type="application/atom+xml" title="Atom" href="http://www.yher.net/workstyle/mockup/atom0.3.xml" />
-	<script src="resources/prototype.js" language="JavaScript"></script>
-	<script src="resources/jkl-parsexml.js" language="JavaScript"></script>
-	<script src="resources/script.js" language="JavaScript"></script>
-	<script src="resources/local.js" language="JavaScript"></script>
+	<script src="{{ MEDIA_URL }}/resources/prototype.js" language="JavaScript"></script>
+	<script src="{{ MEDIA_URL }}/resources/jkl-parsexml.js" language="JavaScript"></script>
+	<script src="{{ MEDIA_URL }}/resources/script.js" language="JavaScript"></script>
+	<script src="{{ MEDIA_URL }}/resources/local.js" language="JavaScript"></script>
 </head>
 <body>
 <!--
 <body onkeypress="alert('hoge');alert(event.target);alert(event.keyCode);alert(event.which)">
 -->
-<script src="resources/TaskList.js" language="JavaScript"></script>
-<p id="header"><a href="TaskList.html"><img src="resources/skin/default/image/logo.png" alt="WorkStyle" /></a></p>
+<script src="{{ MEDIA_URL }}/resources/TaskList.js" language="JavaScript"></script>
+<p id="header"><a href="TaskList.html"><img src="{{ MEDIA_URL }}/resources/skin/default/image/logo.png" alt="WorkStyle" /></a></p>
 
 <ul class="nav">
 	<li><a href="TaskList.html">タスク一覧</a></li>
@@ -29,7 +29,7 @@
 	<div id="menu"> 
 		<h2>Menu</h2>
 		<ul>
-			<li><a href="{{ CONTEXT_ROOT }}/task/add/"><img src="resources/skin/default/image/icon/normal16.png"/>新規タスクを追加</a></li>
+			<li><a href="{{ CONTEXT_ROOT }}/task/add/"><img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/normal16.png"/>新規タスクを追加</a></li>
 		</ul>
 
 		<h2>Search</h2>
@@ -128,23 +128,23 @@
 				<label for="priorityFrom">from:</label>
 				<span id="priorityFromIcon" class="priority0">
 				<div class="horizontal-priority-set" onmouseout="updatePriorityIcon('priorityFromIcon', $('priorityFrom').value);">
-					<img class="icon-priority1" onmouseover="updatePriorityIcon('priorityFromIcon', 1)" onclick="searchPriority('priorityFrom', 1)" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority2" onmouseover="updatePriorityIcon('priorityFromIcon', 2)" onclick="searchPriority('priorityFrom', 2)" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority3" onmouseover="updatePriorityIcon('priorityFromIcon', 3)" onclick="searchPriority('priorityFrom', 3)" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority4" onmouseover="updatePriorityIcon('priorityFromIcon', 4)" onclick="searchPriority('priorityFrom', 4)" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority5" onmouseover="updatePriorityIcon('priorityFromIcon', 5)" onclick="searchPriority('priorityFrom', 5)" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority0" onmouseover="updatePriorityIcon('priorityFromIcon', 0)" onclick="searchPriority('priorityFrom', 0)" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority1" onmouseover="updatePriorityIcon('priorityFromIcon', 1)" onclick="searchPriority('priorityFrom', 1)" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority2" onmouseover="updatePriorityIcon('priorityFromIcon', 2)" onclick="searchPriority('priorityFrom', 2)" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority3" onmouseover="updatePriorityIcon('priorityFromIcon', 3)" onclick="searchPriority('priorityFrom', 3)" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority4" onmouseover="updatePriorityIcon('priorityFromIcon', 4)" onclick="searchPriority('priorityFrom', 4)" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority5" onmouseover="updatePriorityIcon('priorityFromIcon', 5)" onclick="searchPriority('priorityFrom', 5)" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority0" onmouseover="updatePriorityIcon('priorityFromIcon', 0)" onclick="searchPriority('priorityFrom', 0)" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
 				</div>
 				</span>
 				<label for="priorityTo">to:</label>
 				<span id="priorityToIcon" class="priority5">
 				<div class="horizontal-priority-set" onmouseout="updatePriorityIcon('priorityToIcon', $('priorityTo').value)">
-					<img class="icon-priority1" onmouseover="updatePriorityIcon('priorityToIcon', 1)" onclick="searchPriority('priorityTo', 1)" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority2" onmouseover="updatePriorityIcon('priorityToIcon', 2)" onclick="searchPriority('priorityTo', 2)" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority3" onmouseover="updatePriorityIcon('priorityToIcon', 3)" onclick="searchPriority('priorityTo', 3)" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority4" onmouseover="updatePriorityIcon('priorityToIcon', 4)" onclick="searchPriority('priorityTo', 4)" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority5" onmouseover="updatePriorityIcon('priorityToIcon', 5)" onclick="searchPriority('priorityTo', 5)" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority0" onmouseover="updatePriorityIcon('priorityToIcon', 0)" onclick="searchPriority('priorityTo', 0)" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority1" onmouseover="updatePriorityIcon('priorityToIcon', 1)" onclick="searchPriority('priorityTo', 1)" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority2" onmouseover="updatePriorityIcon('priorityToIcon', 2)" onclick="searchPriority('priorityTo', 2)" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority3" onmouseover="updatePriorityIcon('priorityToIcon', 3)" onclick="searchPriority('priorityTo', 3)" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority4" onmouseover="updatePriorityIcon('priorityToIcon', 4)" onclick="searchPriority('priorityTo', 4)" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority5" onmouseover="updatePriorityIcon('priorityToIcon', 5)" onclick="searchPriority('priorityTo', 5)" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority0" onmouseover="updatePriorityIcon('priorityToIcon', 0)" onclick="searchPriority('priorityTo', 0)" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
 				</div>
 				</span>
 			</p>
@@ -169,41 +169,41 @@
     <!-- menu -->
 	<div id="main">
 		<span class="pager">
-			<a href="#"><img src="resources/skin/default/image/icon/back.png" /></a>
-			<a href="#"><img src="resources/skin/default/image/icon/next.png" /></a>
+			<a href="#"><img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/back.png" /></a>
+			<a href="#"><img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/next.png" /></a>
 			1-50 / <a href="#">全100件</a>
 		</span>
 		 (見積合計: 30)
 		<table class="list" width="99%">
 		<tr> 
-			<th nowrap="nowrap"><a href="#">状態<img src="resources/skin/default/image/icon/order_desc.png" /></a></th>
-			<th nowrap="nowrap"><a href="#"><img src="resources/skin/default/image/icon/star-off.gif" alt="優先度"/><img src="resources/skin/default/image/icon/order_desc.png"/></a></th>
+			<th nowrap="nowrap"><a href="#">状態<img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/order_desc.png" /></a></th>
+			<th nowrap="nowrap"><a href="#"><img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/star-off.gif" alt="優先度"/><img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/order_desc.png"/></a></th>
 			<th nowrap="nowrap">タスク</th>
-			<th nowrap="nowrap"><a href="#">〆切<img src="resources/skin/default/image/icon/order_desc.png" /></a></th>
-			<th nowrap="nowrap"><a href="#">更新日<img src="resources/skin/default/image/icon/order_desc.png" /></a></th>
+			<th nowrap="nowrap"><a href="#">〆切<img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/order_desc.png" /></a></th>
+			<th nowrap="nowrap"><a href="#">更新日<img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/order_desc.png" /></a></th>
 		</tr>
 		<tr id="task-123"> 
 			<td class="statusIcon">
-				<img id="statusIcon-123" class="status3-icon" src="resources/skin/default/image/spacer.gif" /> 
+				<img id="statusIcon-123" class="status3-icon" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" /> 
 				<ul>
-					<li><a href="javascript:updateStatus(123, 7)"><img class="status7" src="resources/skin/default/image/spacer.gif" alt="未分類" /></a></li>
-					<li><a href="javascript:updateStatus(123, 1)"><img class="status1" src="resources/skin/default/image/spacer.gif" alt="実行中" /></a></li>
-					<li><a href="javascript:updateStatus(123, 2)"><img class="status2" src="resources/skin/default/image/spacer.gif" alt="すぐやる" /></a></li>
-					<li><a href="javascript:updateStatus(123, 3)"><img class="status3" src="resources/skin/default/image/spacer.gif" alt="そのうちやる" /></a></li>
-					<li><a href="javascript:updateStatus(123, 4)"><img class="status4" src="resources/skin/default/image/spacer.gif" alt="確認待ち" /></a></li>
-					<li><a href="javascript:updateStatus(123, 5)"><img class="status5" src="resources/skin/default/image/spacer.gif" alt="保留" /></a></li>
-					<li><a href="javascript:updateStatus(123, 6)"><img class="status6" src="resources/skin/default/image/spacer.gif" alt="終わり" /></a></li>
+					<li><a href="javascript:updateStatus(123, 7)"><img class="status7" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="未分類" /></a></li>
+					<li><a href="javascript:updateStatus(123, 1)"><img class="status1" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="実行中" /></a></li>
+					<li><a href="javascript:updateStatus(123, 2)"><img class="status2" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="すぐやる" /></a></li>
+					<li><a href="javascript:updateStatus(123, 3)"><img class="status3" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="そのうちやる" /></a></li>
+					<li><a href="javascript:updateStatus(123, 4)"><img class="status4" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="確認待ち" /></a></li>
+					<li><a href="javascript:updateStatus(123, 5)"><img class="status5" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="保留" /></a></li>
+					<li><a href="javascript:updateStatus(123, 6)"><img class="status6" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="終わり" /></a></li>
 				</ul>
 			</td>
 			<td id="taskPriority-123" class="priority3">
 				<input type="hidden" id="taskOriginalPriority-123" value="3">
 				<div class="vertical-priority-set" onmouseout="updatePriorityIcon('taskPriority-123', $('taskOriginalPriority-123').value)">
-					<img class="icon-priority1" onmouseover="updatePriorityIcon('taskPriority-123', 1)"  onclick="updatePriority(123, 1);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority2" onmouseover="updatePriorityIcon('taskPriority-123', 2)"  onclick="updatePriority(123, 2);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority3" onmouseover="updatePriorityIcon('taskPriority-123', 3)"  onclick="updatePriority(123, 3);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority4" onmouseover="updatePriorityIcon('taskPriority-123', 4)"  onclick="updatePriority(123, 4);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority5" onmouseover="updatePriorityIcon('taskPriority-123', 5)"  onclick="updatePriority(123, 5);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority0" onmouseover="updatePriorityIcon('taskPriority-123', 0)"  onclick="updatePriority(123, 0);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority1" onmouseover="updatePriorityIcon('taskPriority-123', 1)"  onclick="updatePriority(123, 1);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority2" onmouseover="updatePriorityIcon('taskPriority-123', 2)"  onclick="updatePriority(123, 2);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority3" onmouseover="updatePriorityIcon('taskPriority-123', 3)"  onclick="updatePriority(123, 3);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority4" onmouseover="updatePriorityIcon('taskPriority-123', 4)"  onclick="updatePriority(123, 4);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority5" onmouseover="updatePriorityIcon('taskPriority-123', 5)"  onclick="updatePriority(123, 5);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority0" onmouseover="updatePriorityIcon('taskPriority-123', 0)"  onclick="updatePriority(123, 0);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
 				</div>
 			</td>
 			<td class="text">
@@ -226,26 +226,26 @@
 		</tr>
 		<tr id="task-124">
 			<td class="statusIcon">
-				<img id="statusIcon-124" class="status3-icon" src="resources/skin/default/image/spacer.gif" />
+				<img id="statusIcon-124" class="status3-icon" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" />
 				<ul>
-					<li><a href="javascript:updateStatus(124, 7)"><img class="status7" src="resources/skin/default/image/spacer.gif" alt="未分類" /></a></li>
-					<li><a href="javascript:updateStatus(124, 1)"><img class="status1" src="resources/skin/default/image/spacer.gif" alt="実行中" /></a></li>
-					<li><a href="javascript:updateStatus(124, 2)"><img class="status2" src="resources/skin/default/image/spacer.gif" alt="すぐやる" /></a></li>
-					<li><a href="javascript:updateStatus(124, 3)"><img class="status3" src="resources/skin/default/image/spacer.gif" alt="そのうちやる" /></a></li>
-					<li><a href="javascript:updateStatus(124, 4)"><img class="status4" src="resources/skin/default/image/spacer.gif" alt="確認待ち" /></a></li>
-					<li><a href="javascript:updateStatus(124, 5)"><img class="status5" src="resources/skin/default/image/spacer.gif" alt="保留" /></a></li>
-					<li><a href="javascript:updateStatus(124, 6)"><img class="status6" src="resources/skin/default/image/spacer.gif" alt="終わり" /></a></li>
+					<li><a href="javascript:updateStatus(124, 7)"><img class="status7" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="未分類" /></a></li>
+					<li><a href="javascript:updateStatus(124, 1)"><img class="status1" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="実行中" /></a></li>
+					<li><a href="javascript:updateStatus(124, 2)"><img class="status2" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="すぐやる" /></a></li>
+					<li><a href="javascript:updateStatus(124, 3)"><img class="status3" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="そのうちやる" /></a></li>
+					<li><a href="javascript:updateStatus(124, 4)"><img class="status4" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="確認待ち" /></a></li>
+					<li><a href="javascript:updateStatus(124, 5)"><img class="status5" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="保留" /></a></li>
+					<li><a href="javascript:updateStatus(124, 6)"><img class="status6" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="終わり" /></a></li>
 				</ul>
 			</td>
 			<td id="taskPriority-124" class="priority3">
 				<input type="hidden" id="taskOriginalPriority-124" value="3">
 				<div class="vertical-priority-set" onmouseout="updatePriorityIcon('taskPriority-124', $('taskOriginalPriority-124').value)">
-					<img class="icon-priority1" onmouseover="updatePriorityIcon('taskPriority-124', 1)"  onclick="updatePriority(124, 1);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority2" onmouseover="updatePriorityIcon('taskPriority-124', 2)"  onclick="updatePriority(124, 2);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority3" onmouseover="updatePriorityIcon('taskPriority-124', 3)"  onclick="updatePriority(124, 3);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority4" onmouseover="updatePriorityIcon('taskPriority-124', 4)"  onclick="updatePriority(124, 4);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority5" onmouseover="updatePriorityIcon('taskPriority-124', 5)"  onclick="updatePriority(124, 5);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority0" onmouseover="updatePriorityIcon('taskPriority-124', 0)"  onclick="updatePriority(124, 0);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority1" onmouseover="updatePriorityIcon('taskPriority-124', 1)"  onclick="updatePriority(124, 1);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority2" onmouseover="updatePriorityIcon('taskPriority-124', 2)"  onclick="updatePriority(124, 2);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority3" onmouseover="updatePriorityIcon('taskPriority-124', 3)"  onclick="updatePriority(124, 3);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority4" onmouseover="updatePriorityIcon('taskPriority-124', 4)"  onclick="updatePriority(124, 4);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority5" onmouseover="updatePriorityIcon('taskPriority-124', 5)"  onclick="updatePriority(124, 5);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority0" onmouseover="updatePriorityIcon('taskPriority-124', 0)"  onclick="updatePriority(124, 0);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
 				</div>
 			</td>
 			<td class="text">
@@ -268,26 +268,26 @@
 		</tr>
 		<tr id="task-125"> 
 			<td class="statusIcon">
-				<img id="statusIcon-125" class="status3-icon" src="resources/skin/default/image/spacer.gif" />
+				<img id="statusIcon-125" class="status3-icon" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" />
 				<ul>
-					<li><a href="javascript:updateStatus(125, 7)"><img class="status7" src="resources/skin/default/image/spacer.gif" alt="未分類" /></a></li>
-					<li><a href="javascript:updateStatus(125, 1)"><img class="status1" src="resources/skin/default/image/spacer.gif" alt="実行中" /></a></li>
-					<li><a href="javascript:updateStatus(125, 2)"><img class="status2" src="resources/skin/default/image/spacer.gif" alt="すぐやる" /></a></li>
-					<li><a href="javascript:updateStatus(125, 3)"><img class="status3" src="resources/skin/default/image/spacer.gif" alt="そのうちやる" /></a></li>
-					<li><a href="javascript:updateStatus(125, 4)"><img class="status4" src="resources/skin/default/image/spacer.gif" alt="確認待ち" /></a></li>
-					<li><a href="javascript:updateStatus(125, 5)"><img class="status5" src="resources/skin/default/image/spacer.gif" alt="保留" /></a></li>
-					<li><a href="javascript:updateStatus(125, 6)"><img class="status6" src="resources/skin/default/image/spacer.gif" alt="終わり" /></a></li>
+					<li><a href="javascript:updateStatus(125, 7)"><img class="status7" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="未分類" /></a></li>
+					<li><a href="javascript:updateStatus(125, 1)"><img class="status1" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="実行中" /></a></li>
+					<li><a href="javascript:updateStatus(125, 2)"><img class="status2" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="すぐやる" /></a></li>
+					<li><a href="javascript:updateStatus(125, 3)"><img class="status3" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="そのうちやる" /></a></li>
+					<li><a href="javascript:updateStatus(125, 4)"><img class="status4" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="確認待ち" /></a></li>
+					<li><a href="javascript:updateStatus(125, 5)"><img class="status5" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="保留" /></a></li>
+					<li><a href="javascript:updateStatus(125, 6)"><img class="status6" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="終わり" /></a></li>
 				</ul>
 			</td>
 			<td id="taskPriority-125" class="priority3">
 				<input type="hidden" id="taskOriginalPriority-125" value="3">
 				<div class="vertical-priority-set" onmouseout="updatePriorityIcon('taskPriority-125', $('taskOriginalPriority-125').value)">
-					<img class="icon-priority1" onmouseover="updatePriorityIcon('taskPriority-125', 1)" onclick="updatePriority(125, 1);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority2" onmouseover="updatePriorityIcon('taskPriority-125', 2)" onclick="updatePriority(125, 2);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority3" onmouseover="updatePriorityIcon('taskPriority-125', 3)" onclick="updatePriority(125, 3);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority4" onmouseover="updatePriorityIcon('taskPriority-125', 4)" onclick="updatePriority(125, 4);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority5" onmouseover="updatePriorityIcon('taskPriority-125', 5)" onclick="updatePriority(125, 5);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority0" onmouseover="updatePriorityIcon('taskPriority-125', 0)" onclick="updatePriority(125, 0);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority1" onmouseover="updatePriorityIcon('taskPriority-125', 1)" onclick="updatePriority(125, 1);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority2" onmouseover="updatePriorityIcon('taskPriority-125', 2)" onclick="updatePriority(125, 2);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority3" onmouseover="updatePriorityIcon('taskPriority-125', 3)" onclick="updatePriority(125, 3);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority4" onmouseover="updatePriorityIcon('taskPriority-125', 4)" onclick="updatePriority(125, 4);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority5" onmouseover="updatePriorityIcon('taskPriority-125', 5)" onclick="updatePriority(125, 5);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority0" onmouseover="updatePriorityIcon('taskPriority-125', 0)" onclick="updatePriority(125, 0);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
 				</div>
 			</td>
 			<td class="text">
@@ -310,26 +310,26 @@
 		</tr>
 		<tr id="task-126">
 			<td class="statusIcon">
-				<img id="statusIcon-126" class="status3-icon" src="resources/skin/default/image/spacer.gif" /> 
+				<img id="statusIcon-126" class="status3-icon" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" /> 
 				<ul>
-					<li><a href="javascript:updateStatus(126, 7)"><img class="status7" src="resources/skin/default/image/spacer.gif" alt="未分類" /></a></li>
-					<li><a href="javascript:updateStatus(126, 1)"><img class="status1" src="resources/skin/default/image/spacer.gif" alt="実行中" /></a></li>
-					<li><a href="javascript:updateStatus(126, 2)"><img class="status2" src="resources/skin/default/image/spacer.gif" alt="すぐやる" /></a></li>
-					<li><a href="javascript:updateStatus(126, 3)"><img class="status3" src="resources/skin/default/image/spacer.gif" alt="そのうちやる" /></a></li>
-					<li><a href="javascript:updateStatus(126, 4)"><img class="status4" src="resources/skin/default/image/spacer.gif" alt="確認待ち" /></a></li>
-					<li><a href="javascript:updateStatus(126, 5)"><img class="status5" src="resources/skin/default/image/spacer.gif" alt="保留" /></a></li>
-					<li><a href="javascript:updateStatus(126, 6)"><img class="status6" src="resources/skin/default/image/spacer.gif" alt="終わり" /></a></li>
+					<li><a href="javascript:updateStatus(126, 7)"><img class="status7" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="未分類" /></a></li>
+					<li><a href="javascript:updateStatus(126, 1)"><img class="status1" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="実行中" /></a></li>
+					<li><a href="javascript:updateStatus(126, 2)"><img class="status2" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="すぐやる" /></a></li>
+					<li><a href="javascript:updateStatus(126, 3)"><img class="status3" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="そのうちやる" /></a></li>
+					<li><a href="javascript:updateStatus(126, 4)"><img class="status4" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="確認待ち" /></a></li>
+					<li><a href="javascript:updateStatus(126, 5)"><img class="status5" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="保留" /></a></li>
+					<li><a href="javascript:updateStatus(126, 6)"><img class="status6" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="終わり" /></a></li>
 				</ul>
 			</td>
 			<td id="taskPriority-126" class="priority0">
 				<input type="hidden" id="taskOriginalPriority-126" value="0">
 				<div class="vertical-priority-set" onmouseout="updatePriorityIcon('taskPriority-126', $('taskOriginalPriority-126').value)">
-					<img class="icon-priority1" onmouseover="updatePriorityIcon('taskPriority-126', 1)" onclick="updatePriority(126, 1);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority2" onmouseover="updatePriorityIcon('taskPriority-126', 2)" onclick="updatePriority(126, 2);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority3" onmouseover="updatePriorityIcon('taskPriority-126', 3)" onclick="updatePriority(126, 3);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority4" onmouseover="updatePriorityIcon('taskPriority-126', 4)" onclick="updatePriority(126, 4);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority5" onmouseover="updatePriorityIcon('taskPriority-126', 5)" onclick="updatePriority(126, 5);" src="resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority0" onmouseover="updatePriorityIcon('taskPriority-126', 0)" onclick="updatePriority(126, 0);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority1" onmouseover="updatePriorityIcon('taskPriority-126', 1)" onclick="updatePriority(126, 1);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority2" onmouseover="updatePriorityIcon('taskPriority-126', 2)" onclick="updatePriority(126, 2);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority3" onmouseover="updatePriorityIcon('taskPriority-126', 3)" onclick="updatePriority(126, 3);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority4" onmouseover="updatePriorityIcon('taskPriority-126', 4)" onclick="updatePriority(126, 4);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority5" onmouseover="updatePriorityIcon('taskPriority-126', 5)" onclick="updatePriority(126, 5);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority0" onmouseover="updatePriorityIcon('taskPriority-126', 0)" onclick="updatePriority(126, 0);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
 				</div>
 			</td>
 			<td class="text">
@@ -352,8 +352,8 @@
 		</tr>
 		</table>
 		<span class="pager">
-			<a href="#"><img src="resources/skin/default/image/icon/back.png" /></a>
-			<a href="#"><img src="resources/skin/default/image/icon/next.png" /></a>
+			<a href="#"><img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/back.png" /></a>
+			<a href="#"><img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/next.png" /></a>
 			1-50 / <a href="#">全100件</a>
 		</span>
 	</div>

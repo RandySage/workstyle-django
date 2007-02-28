@@ -34,19 +34,20 @@ class Task(models.Model):
     create_date          = models.DateTimeField(_('Create Date'), auto_now_add=True, db_index=True)
     update_date          = models.DateTimeField(_('Update Date'), auto_now=True, db_index=True)
     status               = models.ForeignKey(Status, verbose_name=_('Status'))
-    related_task         = models.ManyToManyField('self', verbose_name=_('Task'))
+    related_task         = models.ManyToManyField('self', null=True, blank=True, verbose_name=_('Task'))
     
     def save(self):
         super(Task, self).save()
-        for tag in tag_list.strip().replace('[', '').split(']'):
+        for tag in self.tag_list.strip().replace('[', '').split(']'):
             #処理は冗長だけど…
-            Tag.objects.get_or_create(name__iexact=tag, defaults={'active': True, 'tag_type_id': 1})
+            if tag:
+                Tag.objects.get_or_create(name__iexact=tag, defaults={'active': True, 'tag_type_id': 1})
      
     class Meta:
          verbose_name=_('Task')
          
     def get_absolute_url(self):
-        return '/workstyle/task/%d/' % (self.task_id,)
+        return '/task/%d/' % (self.task_id,)
 
 class FileInfo(models.Model):
     file_id    = models.AutoField(primary_key=True)

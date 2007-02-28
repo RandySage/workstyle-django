@@ -1,0 +1,4 @@
+<% var tmpTags = $AX(context.task.tagList.tag); %>
+<% for (var i = 0; i<tmpTags.length; i++) { %>
+<li class="<%=tmpTags[i].styleClass%>"><%=tmpTags[i].name%></li>
+<% } %>

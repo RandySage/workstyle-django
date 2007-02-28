@@ -1,0 +1,12 @@
+<% 
+if (context.tagMasterList) {
+	var tmpTags = $AX(context.tagMasterList.tag);
+	for (var i=0; i<tmpTags.length; i++) { 
+		var _tagId = 'linkedTaskTag' + tmpTags[i].tagId;
+		var _tag = tmpTags[i].name.escapeHTML();
+%>
+<li id="<%= _tagId %>"><a href="javascript:updateTagList('linkedTaskTagList', '<%=_tagId%>', '<%=_tag%>', '<%=tmpTags[i].styleClass%>')"><%=_tag%></a></li>
+<%
+	}
+} 
+%>
