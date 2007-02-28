@@ -1,0 +1,340 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>WorkStyle</title>
+	<link type="text/css" rel="stylesheet" href="resources/skin/default/basic.css"/>
+	<script src="resources/prototype.js" language="JavaScript"></script>
+	<script src="resources/jkl-parsexml.js" language="JavaScript"></script>
+	<script src="resources/script.js" language="JavaScript"></script>
+	<script src="resources/local.js" language="JavaScript"></script>
+	<script src="resources/AjaxPages.js" language="JavaScript"></script>
+</head>
+<body onload="init()">
+<script src="resources/TaskDetail.js" language="JavaScript"></script>
+<p id="header"><a href="TaskList.html"><img src="resources/skin/default/image/logo.png" alt="WorkStyle" /></a></p>
+  
+<ul class="nav">
+	<li><a href="TaskList.html">タスク一覧</a></li>
+	<li><a href="TagList.html">タグ管理</a></li>
+</ul>
+
+<h1 id="pageTitle">TaskDetail</h1>
+
+<div id="content"> 
+<div id="content-body"> 
+    <div id="menu"> 
+		<h2>Menu</h2>
+		<ul>
+			<li><a href="SimpleTaskForm.html"><img src="resources/skin/default/image/icon/normal16.png"/>新規タスクを追加</a></li>
+			<li><a href="UnlinkedTaskList.html"><img src="resources/skin/default/image/icon/link.png"/>タスクをリンクする</a></li>
+	        <li><a href="TaskList.html"><img src="resources/skin/default/image/icon/go_up.png"/>タスク一覧に戻る</a></li>
+		</ul>
+	</div>
+	<div id="main"> 
+		<div class="taskinfo" id="taskInfo">
+			<form id="PropertyForm" onsubmit="return editProperty()">
+				<input id="estimatedManHourTaskId" name="taskId" type="hidden" value="1"/>
+				<table class="list">
+					<tr>
+						<td class="statusIconLarge" colspan="2">
+							<img id="statusIcon" class="status3-iconLarge" src="resources/skin/default/image/spacer.gif"/>
+							<p>
+								<a href="javascript:updateStatus(123, 7)"><img class="status7" src="resources/skin/default/image/spacer.gif" /></a>
+								<a href="javascript:updateStatus(123, 1)"><img class="status1" src="resources/skin/default/image/spacer.gif" /></a>
+								<a href="javascript:updateStatus(123, 2)"><img class="status2" src="resources/skin/default/image/spacer.gif" /></a>
+								<a href="javascript:updateStatus(123, 3)"><img class="status3" src="resources/skin/default/image/spacer.gif" /></a><br/>
+								<a href="javascript:updateStatus(123, 4)"><img class="status4" src="resources/skin/default/image/spacer.gif" /></a>
+								<a href="javascript:updateStatus(123, 5)"><img class="status5" src="resources/skin/default/image/spacer.gif" /></a>
+								<a href="javascript:updateStatus(123, 6)"><img class="status6" src="resources/skin/default/image/spacer.gif"  /></a>
+							</p>
+						</td>
+					</tr>
+					<tr> 
+						<th>タスクID</th>
+						<td>1234</td>
+					</tr>
+					<tr> 
+						<th>優先度</th>
+						<td class="priority3" id="taskPriority">
+							<input type="hidden" id="taskOriginalPriority" value="3">
+							<div class="horizontal-priority-set" onmouseout="updatePriorityIcon('taskPriority', $('taskOriginalPriority').value)">
+								<img class="icon-priority1" onmouseover="updatePriorityIcon('taskPriority', 1)" onclick="updatePriority(123, 1);" src="resources/skin/default/image/spacer.gif"/>
+								<img class="icon-priority2" onmouseover="updatePriorityIcon('taskPriority', 2)" onclick="updatePriority(123, 2);" src="resources/skin/default/image/spacer.gif"/>
+								<img class="icon-priority3" onmouseover="updatePriorityIcon('taskPriority', 3)" onclick="updatePriority(123, 3);" src="resources/skin/default/image/spacer.gif"/>
+								<img class="icon-priority4" onmouseover="updatePriorityIcon('taskPriority', 4)" onclick="updatePriority(123, 4);" src="resources/skin/default/image/spacer.gif"/>
+								<img class="icon-priority5" onmouseover="updatePriorityIcon('taskPriority', 5)" onclick="updatePriority(123, 5);" src="resources/skin/default/image/spacer.gif"/>
+								<img class="icon-priority0" onmouseover="updatePriorityIcon('taskPriority', 0)" onclick="updatePriority(123, 0);" src="resources/skin/default/image/spacer.gif"/>
+							</div>
+						</td>
+					</tr>
+					<tr> 
+						<th>作成日</th>
+						<td id="createDate">2005/12/31 09:09:09</td>
+					</tr>
+					<tr> 
+						<th>更新日</th>
+						<td id="updateDate">2005/12/31 09:09:09</td>
+					</tr>
+					<tr id="deadEndDateContainer"> 
+						<th>〆切</th>
+						<td id="deadEndDateView">2005/12/31</td>
+					</tr>
+					<tr class="form" id="deadEndDateForm" style="display:none;"> 
+						<th>〆切</th>
+						<td><input id="deadEndDate" type="text" class="text" value="2005/12/31"/></td>
+					</tr>
+					<tr id="estimatedManHourContainer"> 
+						<th>見積</th>
+						<td id="estimatedManHourView">10</td>
+					</tr>
+					<tr class="form" id="estimatedManHourForm" style="display:none"> 
+						<th>見積</th>
+						<td><input id="estimatedManHour" name="estimatedManHour" type="text" class="text" value="10"/></td>
+					</tr>
+				</table>
+				<a id="propertyLink" class="ajax" href="javascript:openPropertyForm()"/>変更</a>
+				<p id="propertyFormButton" style="display:none">
+				<input type="submit" class="submit" value="登録"/>
+				<input type="reset" class="cancel" value="キャンセル" onclick="closePropertyForm()"/>
+				</p>
+			</form>
+		</div>
+		<ul class="tagList">
+			<li id="tagListViewContainer">
+			<ul id="tagListView">
+				<li class="tag">プロジェクトA</li>
+				<li class="tag2">プロジェクトB</li>
+			</ul>
+			</li>
+			<li id="tagListLink"><a class="ajax" href="javascript:openTagListForm()"/>タグ編集</a></li>
+			<li id="tagListFormContainer" style="display:none;">
+				<form id="tagListForm" onsubmit="return editTagList()">
+				<input type="hidden" id="tagListTaskId" name="taskId" value="1"/>
+				<input type="text" id="tagList" class="text" value="[プロジェクトA][プロジェクトB]"/>
+				<input type="submit" class="submit" value="登録"/>
+				<input type="reset" class="cancel" value="キャンセル" onclick="closeTagListForm()"/>
+				</form>
+				<ul id="tagSelecter" class="tagList">
+					<li id="tag1"><a href="javascript:updateTagList('tagList', 'tag1', '牧野', 'tag1')">牧野</a></li>
+			        <li id="tag2"><a href="javascript:updateTagList('tagList', 'tag2', '露木', 'tag1')">露木</a></li>
+			        <li id="tag3"><a href="javascript:updateTagList('tagList', 'tag3', '徳嶋', 'tag1')">徳嶋</a></li>
+			        <li id="tag4"><a href="javascript:updateTagList('tagList', 'tag4', '斉藤', 'tag1')">斉藤</a></li>
+			        <li id="tag5"><a href="javascript:updateTagList('tagList', 'tag5', '菊池', 'tag1')">菊池</a></li>
+			        <li id="tag6" class="tag"><a href="javascript:updateTagList('tagList', 'tag6', 'プロジェクトA', 'tag2')">プロジェクトA</a></li>
+			        <li id="tag7" class="tag2"><a href="javascript:updateTagList('tagList', 'tag7', 'プロジェクトB', 'tag2')">プロジェクトB</a></li>
+			        <li id="tag8"><a href="javascript:updateTagList('tagList', 'tag8', 'プロジェクトC', 'tag2')">プロジェクトC</a></li>
+			        <li id="tag9"><a href="javascript:updateTagList('tagList', 'tag9', 'プロジェクトD', 'tag2')">プロジェクトD</a></li>
+			        <li id="tag10"><a href="javascript:updateTagList('tagList', 'tag10', 'プロジェクトE', 'tag2')">プロジェクトE</a></li>
+				</ul>
+			</li>
+		</ul>
+		<p id="contentsView" class="text">
+		内容内容内容内容内容内容内容内容内容内<br />
+		容内容内容内容内容内容内容内容内容<br />
+		内容内容内容内容内容内容内容内容内<br />
+		容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容 内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容 
+		</p>
+		<p><a id="editContentsLink" class="ajax" href="javascript:openEditContentsForm()"/>編集</a></p>
+		<p>
+			<form id="editContentsForm" onsubmit="return editContents()" style="display:none">
+			<input id="contentsTaskId" name="taskId" type="hidden" value="1"/>
+			<textarea id="contents" name="contents" rows="15">容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容 内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容 </textarea>
+			<div>
+			<input type="submit" class="submit" value="登録"/>
+			<input type="reset" class="cancel" value="キャンセル" onclick="closeEditContentsForm()"/>
+			</div>
+			</form>
+		</p>
+		<h3>Attached File</h3>
+		<ul class="fileList">
+			<li>
+			<ul>
+			<li id="file-123"><a href="#">ファイル名123</a><a class="deleteAction" href="javascript:deleteFile(123, 'file-123');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16"/></a></li>
+			<li id="file-124"><a href="#">ファイル名124</a><a class="deleteAction" href="javascript:deleteFile(124, 'file-124');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16"/></a></li>
+			<li id="file-125"><a href="#">ファイル名125</a><a class="deleteAction" href="javascript:deleteFile(125, 'file-125');"><img src="resources/skin/default/image/spacer.gif" width="16" height="16"/></a></li>
+			</ul>
+			</li>
+			<li id="uploadFileLink"><a class="ajax" href="javascript:openUploadFileForm()"/>ファイル追加</a></li>
+			<li id="uploadFileForm" style="display:none">
+			<form action="TaskDetail.html" method="post"  enctype="multipart/form-data">
+			<input type="hidden" name="taskId"/>
+			<input name="attachFile" type="file"/>
+			<input type="submit" class="submit" value="登録"/>
+			<input type="reset" class="cancel" value="キャンセル" onclick="closeUploadFileForm()"/>
+			</form>
+			</li>
+		</ul>
+		<h2 id="commentTitle">Comment</h2>
+			<!--  コメントが存在しない場合はdisplay:noneを設定  -->
+			<dl class="commentList" id="commentList" style="/*display:none*/">
+				<dt>コメンテイター (2006/01/30 10:00:00)</dt>
+				<dd>
+				コメント内容コメント内容コメント内容コメント内容コメント内容コメント内容コメント内容
+				</dd>
+				<dt>コメンテイター (2006/01/30 10:00:00)</dt>
+				<dd>
+				コメント内容コメント内容コメント内容コメント内容コメント内容コメント内容コメント内容
+				</dd>
+				<dt>コメンテイター (2006/01/30 10:00:00)</dt>
+				<dd>
+				コメント内容コメント内容コメント内容コメント内容コメント内容コメント内容コメント内容
+				</dd>
+			</dl>
+			<a id="addCommentLink" class="ajax" href="javascript:openCommentForm()"/>コメント追加</a>
+			<form id="CommentForm" onsubmit="return addComment()" style="display:none">
+				<fieldset>
+				<input id="commentTaskId" name="taskId" type="hidden" value="1"/>
+				<div>
+				<label for="comment">コメント</label>
+				<textarea id="comment" name="comment" rows="3"></textarea> 
+				</div>
+				<div>
+				<label for="commenator">入力者</label>
+				<input id="commentator" name="commentator" type="text" class="text"/>
+				</div>
+				</fieldset>
+				<div class="action">
+				<input type="submit" class="submit" value="登録"/>
+				<input type="reset" class="cancel" value="キャンセル" onclick="closeCommentForm()"/>
+				</div>
+			</form>
+		<h2>Linked Task</h2>
+		<!--  関連タスクが存在しない場合はdisplay:noneを設定  -->
+		<p>全2件(見積合計: 5.5)</p>
+		<table id="linkedTaskList" class="list" width="99%" style="/*display:none;*/">
+		<tr> 
+			<th nowrap="nowrap">状態</th>
+			<th nowrap="nowrap"><img src="resources/skin/default/image/icon/star-off.gif" alt="優先度"/></th>
+			<th nowrap="nowrap">タスク</th>
+			<th nowrap="nowrap">〆切</th>
+			<th nowrap="nowrap">更新日</th>
+		</tr>
+		<tr id="linkedTask-223"> 
+			<td class="statusIcon">
+				<img id="linkedTaskStatusIcon-223" class="status1-icon" src="resources/skin/default/image/spacer.gif" /> 
+				<ul>
+					<li><a href="javascript:updateLinkedTaskStatus(223, 7)"><img class="status7" src="resources/skin/default/image/spacer.gif" alt="未確認" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(223, 1)"><img class="status1" src="resources/skin/default/image/spacer.gif" alt="実行中" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(223, 2)"><img class="status2" src="resources/skin/default/image/spacer.gif" alt="すぐやる" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(223, 3)"><img class="status3" src="resources/skin/default/image/spacer.gif" alt="そのうちやる" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(223, 4)"><img class="status4" src="resources/skin/default/image/spacer.gif" alt="確認待ち" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(223, 5)"><img class="status5" src="resources/skin/default/image/spacer.gif" alt="保留" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(223, 6)"><img class="status6" src="resources/skin/default/image/spacer.gif" alt="終わり" /></a></li>
+				</ul>
+			</td>
+			<td id="linkedTaskPriority-223" class="priority3">
+				<input type="hidden" id="linkedTaskOriginalPriority-223" value="3">
+				<div class="vertical-priority-set" onmouseout="updatePriorityIcon('linkedTaskPriority-223', $('linkedTaskOriginalPriority-223').value)">
+					<img class="icon-priority1" onmouseover="updatePriorityIcon('linkedTaskPriority-223', 1)"  onclick="updateLinkedTaskPriority(223, 1);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority2" onmouseover="updatePriorityIcon('linkedTaskPriority-223', 2)"  onclick="updateLinkedTaskPriority(223, 2);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority3" onmouseover="updatePriorityIcon('linkedTaskPriority-223', 3)"  onclick="updateLinkedTaskPriority(223, 3);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority4" onmouseover="updatePriorityIcon('linkedTaskPriority-223', 4)"  onclick="updateLinkedTaskPriority(223, 4);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority5" onmouseover="updatePriorityIcon('linkedTaskPriority-223', 5)"  onclick="updateLinkedTaskPriority(223, 5);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority0" onmouseover="updatePriorityIcon('linkedTaskPriority-223', 0)"  onclick="updateLinkedTaskPriority(223, 0);" src="resources/skin/default/image/spacer.gif"/>
+				</div>
+			</td>
+			<td class="text">
+				<ul class="tagList">
+					<li class="tag">プロジェクトA</li>
+					<li class="tag2">プロジェクトA</li> 
+					<li class="tag3">プロジェクトA</li>
+					<li class="tag4">プロジェクトA</li> 
+					<li class="tag5">プロジェクトA</li>
+				</ul>
+				内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+				<ul class="actionList">
+					<li><a class="viewAction" href="TaskDetail.html">閲覧</a></li>
+					<li><a class="unlinkAction" href="javascript:unlinkTask(223, 1, 'linkedTask-223')">リンク削除</a></li>
+					<li><a class="deleteAction" href="javascript:deleteLinkedTask(223, 'linkedTask-223')">削除</a></li>
+				</ul>
+				<p class="note">ID: 126, 見積: 10, 作成日: 2006/12/12</p>
+			</td>
+			<td>2005/12/31</td>
+			<td id="linkedTaskUpdateDate-223">2005/12/31</td>
+		</tr>
+		<tr id="linkedTask-224">
+			<td class="statusIcon">
+				<img id="linkedTaskStatusIcon-224" class="status2-icon" src="resources/skin/default/image/spacer.gif"/>
+				<ul>
+					<li><a href="javascript:updateLinkedTaskStatus(224, 7)"><img class="status7" src="resources/skin/default/image/spacer.gif" alt="未確認" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(224, 1)"><img class="status1" src="resources/skin/default/image/spacer.gif" alt="実行中" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(224, 2)"><img class="status2" src="resources/skin/default/image/spacer.gif" alt="すぐやる" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(224, 3)"><img class="status3" src="resources/skin/default/image/spacer.gif" alt="そのうちやる" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(224, 4)"><img class="status4" src="resources/skin/default/image/spacer.gif" alt="確認待ち" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(224, 5)"><img class="status5" src="resources/skin/default/image/spacer.gif" alt="保留" /></a></li>
+					<li><a href="javascript:updateLinkedTaskStatus(224, 6)"><img class="status6" src="resources/skin/default/image/spacer.gif" alt="終わり" /></a></li>
+				</ul>
+			</td>
+			<td id="linkedTaskPriority-224" class="priority3">
+				<input type="hidden" id="linkedTaskOriginalPriority-224" value="3">
+				<div class="vertical-priority-set" onmouseout="updatePriorityIcon('linkedTaskPriority-224', $('linkedTaskOriginalPriority-224').value)">
+					<img class="icon-priority1" onmouseover="updatePriorityIcon('linkedTaskPriority-224', 1)"  onclick="updateLinkedTaskPriority(224, 1);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority2" onmouseover="updatePriorityIcon('linkedTaskPriority-224', 2)"  onclick="updateLinkedTaskPriority(224, 2);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority3" onmouseover="updatePriorityIcon('linkedTaskPriority-224', 3)"  onclick="updateLinkedTaskPriority(224, 3);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority4" onmouseover="updatePriorityIcon('linkedTaskPriority-224', 4)"  onclick="updateLinkedTaskPriority(224, 4);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority5" onmouseover="updatePriorityIcon('linkedTaskPriority-224', 5)"  onclick="updateLinkedTaskPriority(224, 5);" src="resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority0" onmouseover="updatePriorityIcon('linkedTaskPriority-224', 0)"  onclick="updateLinkedTaskPriority(224, 0);" src="resources/skin/default/image/spacer.gif"/>
+				</div>
+			</td>
+			<td class="text">
+				<ul class="tagList">
+					<li class="tag">プロジェクトA</li>
+					<li class="tag2">プロジェクトA</li> 
+					<li class="tag3">プロジェクトA</li>
+					<li class="tag4">プロジェクトA</li> 
+					<li class="tag5">プロジェクトA</li>
+				</ul>
+				内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+				<ul class="actionList">
+					<li><a class="viewAction" href="TaskDetail.html">閲覧</a></li>
+					<li><a class="unlinkAction" href="javascript:unlinkTask(224, 1, 'linkedTask-224')">リンク削除</a></li>
+					<li><a class="deleteAction" href="javascript:deleteLinkedTask(224, 'linkedTask-224')">削除</a></li>
+				</ul>
+				<p class="note">ID: 126, 見積: 10, 作成日: 2006/12/12</p>
+			</td>
+			<td>2005/12/31</td>
+			<td id="linkedTaskUpdateDate-224">2005/12/31</td>
+		</tr>
+		</table>
+		<p>
+			<a id="addLinkedTaskLink" class="ajax" href="javascript:openLinkedTaskForm()"/>関連タスク追加</a>
+			<form id="LinkedTaskForm" onsubmit="return addLinkedTask()" style="display:none">
+				<input id="parentTaskId" name="taskId" type="hidden" value="1"/>
+				<fieldset>
+					<div>					
+					<label for="linkedTaskTagList">タグ</label>
+					<input id="linkedTaskTagList" name="textfield22" type="text" class="text" value="" />
+					<ul id="linkedTaskTagSelecter" class="tagList">
+						<li id="linkedTaskTag1"><a href="javascript:updateTagList('linkedTaskTagList', 'linkedTaskTag1', '牧野', 'tag1')">牧野</a></li>
+				        <li id="linkedTaskTag2"><a href="javascript:updateTagList('linkedTaskTagList', 'linkedTaskTag2', '露木', 'tag1')">露木</a></li>
+				        <li id="linkedTaskTag3"><a href="javascript:updateTagList('linkedTaskTagList', 'linkedTaskTag3', '徳嶋', 'tag1')">徳嶋</a></li>
+				        <li id="linkedTaskTag4"><a href="javascript:updateTagList('linkedTaskTagList', 'linkedTaskTag4', '斉藤', 'tag1')">斉藤</a></li>
+				        <li id="linkedTaskTag5"><a href="javascript:updateTagList('linkedTaskTagList', 'linkedTaskTag5', '菊池', 'tag1')">菊池</a></li>
+				        <li id="linkedTaskTag6"><a href="javascript:updateTagList('linkedTaskTagList', 'linkedTaskTag6', 'プロジェクトA', 'tag2')">プロジェクトA</a></li>
+				        <li id="linkedTaskTag7"><a href="javascript:updateTagList('linkedTaskTagList', 'linkedTaskTag7', 'プロジェクトB', 'tag2')">プロジェクトB</a></li>
+				        <li id="linkedTaskTag8"><a href="javascript:updateTagList('linkedTaskTagList', 'linkedTaskTag8', 'プロジェクトC', 'tag2')">プロジェクトC</a></li>
+				        <li id="linkedTaskTag9"><a href="javascript:updateTagList('linkedTaskTagList', 'linkedTaskTag9', 'プロジェクトD', 'tag2')">プロジェクトD</a></li>
+				        <li id="linkedTaskTag10"><a href="javascript:updateTagList('linkedTaskTagList', 'linkedTaskTag10', 'プロジェクトE', 'tag2')">プロジェクトE</a></li>
+					</ul>
+					</div>
+					<div>
+					<label for="linkedTaskContents">タスク </label>
+					<textarea id="linkedTaskContents" name="linkedTaskContents" class="text"  rows="10"></textarea>
+					</div>
+				</fieldset>
+				<div class="action">
+				<input type="submit" class="submit" value="登録"/>
+				<input type="reset" class="cancel" value="キャンセル" onclick="closeLinkedTaskForm()"/>
+				</div>
+			</form>
+		</p>
+	</div>
+	<hr class="bot"/>
+</div>
+<!-- content-body -->
+</div>
+<!-- content -->
+<div id="footer"/>
+</body>
+</html>

@@ -69,7 +69,7 @@ class TaskComment(models.Model):
 
 class TagManager(models.Manager):
     def get_query_set(self):
-        return super(Taskmanager, self).get_query_set().filter(active=True)
+        return super(TagManager, self).get_query_set().filter(active=True)
 
 class Tag(models.Model):
     tag_id           = models.AutoField(primary_key=True)
