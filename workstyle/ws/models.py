@@ -44,6 +44,9 @@ class Task(models.Model):
      
     class Meta:
          verbose_name=_('Task')
+         
+    def get_absolute_url(self):
+        return '/workstyle/task/%d/' % (self.task_id,)
 
 class FileInfo(models.Model):
     file_id    = models.AutoField(primary_key=True)
