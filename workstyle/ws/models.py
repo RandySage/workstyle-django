@@ -29,21 +29,20 @@ class TagType(models.Model):
 class Task(models.Model):
     task_id              = models.AutoField(primary_key=True)
     contents             = models.TextField(_('Contents'))
-    estimated_man_hour   = models.FloatField(_('Estimate by man'), max_digits=5, decimal_places=2)
+    estimated_man_hour   = models.FloatField(_('Estimate by man'), max_digits=5, decimal_places=2, default=0.0)
     tag_list             = models.CharField(maxlength=200, db_index=True)
     create_date          = models.DateTimeField(_('Create Date'), auto_now_add=True, db_index=True)
     update_date          = models.DateTimeField(_('Update Date'), auto_now=True, db_index=True)
-    status               = models.ForeignKey(Status, verbose_name=_('Status'))
+    deadend_date          = models.DateTimeField(_('Limit Date'), db_index=True, null=True, blank=True)
+    status               = models.ForeignKey(Status, verbose_name=_('Status'), default=7)
     related_task         = models.ManyToManyField('self', null=True, blank=True, verbose_name=_('Task'))
+    priority             = models.IntegerField(_('priority'), default=3)
     
     def save(self):
         super(Task, self).save()
         for tag in self.tag_list.strip().replace('[', '').split(']'):
             #処理は冗長だけど…
             if tag:
-                print 'TAG----\n'
-                print tag
-                print '\n' * 2
                 Tag.objects.get_or_create(name=tag.strip(), defaults={'active': True, 'tag_type_id': 1})
      
     class Meta:
