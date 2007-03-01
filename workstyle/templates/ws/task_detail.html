@@ -26,7 +26,7 @@
     <div id="menu"> 
 		<h2>Menu</h2>
 		<ul>
-			<li><a href="SimpleTaskForm.html"><img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/normal16.png"/>新規タスクを追加</a></li>
+			<li><a href="/task/add/"><img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/normal16.png"/>新規タスクを追加</a></li>
 			<li><a href="UnlinkedTaskList.html"><img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/link.png"/>タスクをリンクする</a></li>
 	        <li><a href="TaskList.html"><img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/go_up.png"/>タスク一覧に戻る</a></li>
 		</ul>
@@ -104,7 +104,7 @@
 			<li id="tagListViewContainer">
 			<ul id="tagListView">
                             {% for tag in tag_list %}
-				<li class="tag">{{ tag.name }}</li>
+				<li class="tag{{ tag.tag_type_id }}">{{ tag.name }}</li>
                             {% endfor %}
 			</ul>
 			</li>
@@ -124,7 +124,7 @@
 			</li>
 		</ul>
 		<p id="contentsView" class="text">
-                    {{ object.contents }}
+                    {{ object.contents|escape|linebreaksbr|urlize }}
 		</p>
 		<p><a id="editContentsLink" class="ajax" href="javascript:openEditContentsForm()"/>編集</a></p>
 		<p>

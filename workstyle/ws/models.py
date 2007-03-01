@@ -41,7 +41,10 @@ class Task(models.Model):
         for tag in self.tag_list.strip().replace('[', '').split(']'):
             #処理は冗長だけど…
             if tag:
-                Tag.objects.get_or_create(name__iexact=tag, defaults={'active': True, 'tag_type_id': 1})
+                print 'TAG----\n'
+                print tag
+                print '\n' * 2
+                Tag.objects.get_or_create(name=tag.strip(), defaults={'active': True, 'tag_type_id': 1})
      
     class Meta:
          verbose_name=_('Task')
