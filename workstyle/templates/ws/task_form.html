@@ -21,8 +21,8 @@
 <p id="header"><a href="TaskList.html"><img src="{{ MEDIA_URL }}/resources/skin/default/image/logo.png" alt="WorkStyle" /></a></p>
 
 <ul class="nav">
-	<li><a href="TaskList.html">タスク一覧</a></li>
-	<li><a href="TagList.html">タグ管理</a></li>
+	<li><a href="/">タスク一覧</a></li>
+	<li><a href="/tag/">タグ管理</a></li>
 </ul>
 
 <h1 id="pageTitle">Task Form</h1>
@@ -37,8 +37,9 @@
 	</div>
 	<div id="main"> 
 	<form action="." method="post" enctype="multipart/form-data">
-            <input type="hidden" name="status" value="7" />
-            <input type="hidden" name="estimated_man_hour" value="0" />
+            <input type="hidden" name="status" value="{{ form.status.data }}" />
+            <input type="hidden" name="estimated_man_hour" value="{{ form.estimated_man_hour.data }}" />
+            <input type="hidden" name="priority" value="{{ form.priority.data }}" />
 		<fieldset>
 			<div>
 {% if form.has_errors %}

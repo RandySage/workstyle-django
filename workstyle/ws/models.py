@@ -44,7 +44,10 @@ class Task(models.Model):
             #処理は冗長だけど…
             if tag:
                 Tag.objects.get_or_create(name=tag.strip(), defaults={'active': True, 'tag_type_id': 1})
-     
+    
+    def get_tag_list(self):
+        return self.tag_list.strip().replace('[', '').split(']')
+    
     class Meta:
          verbose_name=_('Task')
          

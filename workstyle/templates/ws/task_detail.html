@@ -15,8 +15,8 @@
 <p id="header"><a href="TaskList.html"><img src="{{ MEDIA_URL }}/resources/skin/default/image/logo.png" alt="WorkStyle" /></a></p>
   
 <ul class="nav">
-	<li><a href="TaskList.html">タスク一覧</a></li>
-	<li><a href="TagList.html">タグ管理</a></li>
+	<li><a href="/">タスク一覧</a></li>
+	<li><a href="/tag/">タグ管理</a></li>
 </ul>
 
 <h1 id="pageTitle">TaskDetail</h1>
@@ -103,8 +103,12 @@
 		<ul class="tagList">
 			<li id="tagListViewContainer">
 			<ul id="tagListView">
-                            {% for tag in tag_list %}
-				<li class="tag{{ tag.tag_type_id }}">{{ tag.name }}</li>
+                            {% for tag in object.get_tag_list%}
+                              {% for tag_master in tag_list %}
+                                {% ifequal tag tag_master.name %}
+                                  <li class="tag{{ tag_master.tag_type_id }}">{{ tag }}</li>
+                                {% endifequal %}
+                              {% endfor %}
                             {% endfor %}
 			</ul>
 			</li>

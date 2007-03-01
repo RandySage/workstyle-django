@@ -18,8 +18,8 @@
 <p id="header"><a href="TaskList.html"><img src="{{ MEDIA_URL }}/resources/skin/default/image/logo.png" alt="WorkStyle" /></a></p>
 
 <ul class="nav">
-	<li><a href="TaskList.html">タスク一覧</a></li>
-	<li><a href="TagList.html">タグ管理</a></li>
+	<li><a href="/">タスク一覧</a></li>
+	<li><a href="/tag/">タグ管理</a></li>
 </ul>
 
 <h1 id="pageTitle">Task List</h1>
@@ -29,7 +29,7 @@
 	<div id="menu"> 
 		<h2>Menu</h2>
 		<ul>
-			<li><a href="{{ CONTEXT_ROOT }}/task/add/"><img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/normal16.png"/>新規タスクを追加</a></li>
+			<li><a href="/task/add/"><img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/normal16.png"/>新規タスクを追加</a></li>
 		</ul>
 
 		<h2>Search</h2>
@@ -209,11 +209,13 @@
 			</td>
 			<td class="text">
 				<ul class="tagList">
-					<li class="tag">プロジェクトA</li>
-					<li class="tag2">プロジェクトA</li> 
-					<li class="tag3">プロジェクトA</li>
-					<li class="tag4">プロジェクトA</li> 
-					<li class="tag5">プロジェクトA</li>
+					{% for tag in task.get_tag_list %}
+						{% for tag_master in tag_list %}
+                        	{% ifequal tag tag_master.name %}
+                                  <li class="tag{{ tag_master.tag_type_id }}">{{ tag }}</li>
+                            {% endifequal %}
+                        {% endfor %}
+					{% endfor %}
 				</ul>
 				{{task.contents}}
 				<ul class="actionList">
@@ -222,7 +224,7 @@
 				</ul>
 				<p class="note">ID: {{task.task_id}}, 見積: {{task.estimated_man_hour}}, 作成日: {{task.create_date}}</p>
 			</td>
-			<td id="deadEndDate-123">2005/12/31</td>
+			<td id="deadEndDate-123">{{task.deadend_date}}</td>
 			<td id="updateDate-123">{{task.update_date}}</td>
 		</tr>
 		{% endfor %}
