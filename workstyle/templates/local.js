@@ -62,8 +62,10 @@ function buildEditTagListRequest(targetTaskId, tagList) {
  */
 function buildEditContentsRequest(targetTaskId, contents) {
 	var req = Class.create();
-	req.url = 'xml/Task.xml';
-	req.param = $H({taskId:targetTaskId, contents:contents}).toQueryString();
+//	req.url = 'xml/Task.xml';
+    req.url = '/task/' + targetTaskId + '/contents/update/'
+//	req.param = $H({taskId:targetTaskId, contents:contents}).toQueryString();
+    req.param = $H({contents:contents}).toQueryString();
 	req.method = 'POST';
 	return req;
 }

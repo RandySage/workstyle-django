@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<result>
+{% if message %}
+	<errors>
+		<error>{{ message }}</error>
+	</errors>
+{% endif %}
+{% if task %}
+	<task>
+		<taskId>{{ task.task_id }}</taskId>
+		<createDate>{{ task.create_date }}</createDate>
+		<updateDate>{{ task.update_date }}</updateDate>
+		<deadEndDate>{{ task.deadend_date }}</deadEndDate>
+		<estimatedManHour>{{ task.estimated_man_hour }}</estimatedManHour>
+		<priority>{{ task.priority }}</priority>
+		<status>{{ task.status }}</status>
+		<tagList>
+			{% for tag in task.get_tag_list %}
+                {% for tag_master in tag_list %}
+                    {% ifequal tag tag_master.name %}
+                        <tag>
+                            <name><![CDATA[{{ tag }}]]></name>
+				            <styleClass>tag{{ tag_master.tag_type_id }}</styleClass>
+			            </tag>
+                    {% endifequal %}
+                 {% endfor %}
+            {% endfor %}
+ 		</tagList>
+		<contents><![CDATA[{{ task.contents }}]]></contents>
+		<fileList>
+			<file>
+				<fileId></fileId>
+				<name></name>
+				<url></url>
+			</file>
+		</fileList>
+		<commentList>
+			<comment>
+				<commentId>1</commentId>
+				<commentator>牧野</commentator>
+				<contents><![CDATA[コメント内容<a href="#">リンク</a>
+				http://localhost:8080/hogehoge
+				改行もあるやつ]]></contents>
+				<updateDate>2006/12/31 10:30:29</updateDate>
+			</comment>
+		</commentList>
+	</task>
+{% endif %}
+	<tagMasterList>
+	    {% for tag in tag_list %}
+		<tag>
+			<tagId>{{ tag.tag_id }}</tagId>
+			<name><![CDATA[{{ tag.name }}]]></name>
+			<styleClass>tag{{ tag.tag_id }}</styleClass>
+		</tag>
+		{% endfor %}
+	</tagMasterList>
+</result>

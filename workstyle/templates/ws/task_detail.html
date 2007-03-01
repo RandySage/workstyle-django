@@ -133,7 +133,7 @@
 		<p><a id="editContentsLink" class="ajax" href="javascript:openEditContentsForm()"/>編集</a></p>
 		<p>
 			<form id="editContentsForm" onsubmit="return editContents()" style="display:none">
-			<input id="contentsTaskId" name="taskId" type="hidden" value="{{ objects.task_id }}"/>
+			<input id="contentsTaskId" name="taskId" type="hidden" value="{{ object.task_id }}"/>
 			<textarea id="contents" name="contents" rows="15">{{ object.contents }}</textarea>
 			<div>
 			<input type="submit" class="submit" value="登録"/>
