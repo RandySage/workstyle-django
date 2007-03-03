@@ -187,13 +187,13 @@
 			<td class="statusIcon">
 				<img id="statusIcon-123" class="status3-icon" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" /> 
 				<ul>
-					<li><a href="javascript:updateStatus(123, 7)"><img class="status7" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="未分類" /></a></li>
-					<li><a href="javascript:updateStatus(123, 1)"><img class="status1" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="実行中" /></a></li>
-					<li><a href="javascript:updateStatus(123, 2)"><img class="status2" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="すぐやる" /></a></li>
-					<li><a href="javascript:updateStatus(123, 3)"><img class="status3" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="そのうちやる" /></a></li>
-					<li><a href="javascript:updateStatus(123, 4)"><img class="status4" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="確認待ち" /></a></li>
-					<li><a href="javascript:updateStatus(123, 5)"><img class="status5" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="保留" /></a></li>
-					<li><a href="javascript:updateStatus(123, 6)"><img class="status6" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="終わり" /></a></li>
+					<li><a href="javascript:updateStatus({{ task.task_id }}, 7)"><img class="status7" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="未分類" /></a></li>
+					<li><a href="javascript:updateStatus({{ task.task_id }}, 1)"><img class="status1" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="実行中" /></a></li>
+					<li><a href="javascript:updateStatus({{ task.task_id }}, 2)"><img class="status2" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="すぐやる" /></a></li>
+					<li><a href="javascript:updateStatus({{ task.task_id }}, 3)"><img class="status3" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="そのうちやる" /></a></li>
+					<li><a href="javascript:updateStatus({{ task.task_id }}, 4)"><img class="status4" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="確認待ち" /></a></li>
+					<li><a href="javascript:updateStatus({{ task.task_id }}, 5)"><img class="status5" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="保留" /></a></li>
+					<li><a href="javascript:updateStatus({{ task.task_id }}, 6)"><img class="status6" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="終わり" /></a></li>
 				</ul>
 			</td>
 			<td id="taskPriority-{{task.task_id}}" class="priority{{task.priority}}">
