@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     (r'^task/(?P<object_id>\d+)/$', 'django.views.generic.list_detail.object_detail',info_dict),
     (r'^task/(?P<object_id>\d+)/contents/update/$', 'workstyle.ws.views.update_contents'),
     (r'^static/resources/local.js$', 'django.views.generic.simple.direct_to_template',{'template': 'local.js'}),
+    (r'^tag/$', 'django.views.generic.list_detail.object_list',{'queryset': Tag.objects.all().order_by("create_date"),'allow_empty': True}),
 )
 
 if settings.DEBUG:
