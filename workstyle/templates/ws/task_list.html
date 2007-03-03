@@ -185,7 +185,7 @@
 		{% for task in object_list %}
 		<tr id="task-{{task.task_id}}"> 
 			<td class="statusIcon">
-				<img id="statusIcon-123" class="status3-icon" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" /> 
+				<img id="statusIcon-{{ task.task_id }}" class="status{{ task.status.status_id }}-icon" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" /> 
 				<ul>
 					<li><a href="javascript:updateStatus({{ task.task_id }}, 7)"><img class="status7" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="未分類" /></a></li>
 					<li><a href="javascript:updateStatus({{ task.task_id }}, 1)"><img class="status1" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="実行中" /></a></li>

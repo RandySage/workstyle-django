@@ -9,9 +9,9 @@
 {% if task %}
 	<task>
 		<taskId>{{ task.task_id }}</taskId>
-		<createDate>{{ task.create_date }}</createDate>
-		<updateDate>{{ task.update_date }}</updateDate>
-		<deadEndDate>{{ task.deadend_date }}</deadEndDate>
+		<createDate>{{ task.create_date|date:"Y/m/d H:i:s" }}</createDate>
+		<updateDate>{{ task.update_date|date:"Y/m/d H:i:s" }}</updateDate>
+		<deadEndDate>{{ task.deadend_date|date:"Y/m/d H:i:s" }}</deadEndDate>
 		<estimatedManHour>{{ task.estimated_man_hour }}</estimatedManHour>
 		<priority>{{ task.priority }}</priority>
 		<status>{{ task.status }}</status>
