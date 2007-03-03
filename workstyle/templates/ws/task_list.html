@@ -183,7 +183,7 @@
 			<th nowrap="nowrap"><a href="#">更新日<img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/order_desc.png" /></a></th>
 		</tr>
 		{% for task in object_list %}
-		<tr id="task-{{task.task_id}}"> 
+		<tr id="task-{{ task.task_id }}"> 
 			<td class="statusIcon">
 				<img id="statusIcon-{{ task.task_id }}" class="status{{ task.status.status_id }}-icon" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" /> 
 				<ul>
@@ -196,15 +196,15 @@
 					<li><a href="javascript:updateStatus({{ task.task_id }}, 6)"><img class="status6" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="終わり" /></a></li>
 				</ul>
 			</td>
-			<td id="taskPriority-{{task.task_id}}" class="priority{{task.priority}}">
-				<input type="hidden" id="taskOriginalPriority-{{task.task_id}}" value="{{task.priority}}">
-				<div class="vertical-priority-set" onmouseout="updatePriorityIcon('taskPriority-{{task.task_id}}', $('taskOriginalPriority-{{task.task_id}}').value)">
-					<img class="icon-priority1" onmouseover="updatePriorityIcon('taskPriority-{{task.task_id}}', 1)"  onclick="updatePriority({{task.task_id}}, 1);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority2" onmouseover="updatePriorityIcon('taskPriority-{{task.task_id}}', 2)"  onclick="updatePriority({{task.task_id}}, 2);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority3" onmouseover="updatePriorityIcon('taskPriority-{{task.task_id}}', 3)"  onclick="updatePriority({{task.task_id}}, 3);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority4" onmouseover="updatePriorityIcon('taskPriority-{{task.task_id}}', 4)"  onclick="updatePriority({{task.task_id}}, 4);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority5" onmouseover="updatePriorityIcon('taskPriority-{{task.task_id}}', 5)"  onclick="updatePriority({{task.task_id}}, 5);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority0" onmouseover="updatePriorityIcon('taskPriority-{{task.task_id}}', 0)"  onclick="updatePriority({{task.task_id}}, 0);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+			<td id="taskPriority-{{ task.task_id }}" class="priority{{ task.priority }}">
+				<input type="hidden" id="taskOriginalPriority-{{ task.task_id }}" value="{{ task.priority }}">
+				<div class="vertical-priority-set" onmouseout="updatePriorityIcon('taskPriority-{{ task.task_id }}', $('taskOriginalPriority-{{ task.task_id }}').value)">
+					<img class="icon-priority1" onmouseover="updatePriorityIcon('taskPriority-{{ task.task_id }}', 1)"  onclick="updatePriority({{ task.task_id }}, 1);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority2" onmouseover="updatePriorityIcon('taskPriority-{{ task.task_id }}', 2)"  onclick="updatePriority({{ task.task_id }}, 2);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority3" onmouseover="updatePriorityIcon('taskPriority-{{ task.task_id }}', 3)"  onclick="updatePriority({{ task.task_id }}, 3);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority4" onmouseover="updatePriorityIcon('taskPriority-{{ task.task_id }}', 4)"  onclick="updatePriority({{ task.task_id }}, 4);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority5" onmouseover="updatePriorityIcon('taskPriority-{{ task.task_id }}', 5)"  onclick="updatePriority({{ task.task_id }}, 5);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority0" onmouseover="updatePriorityIcon('taskPriority-{{ task.task_id }}', 0)"  onclick="updatePriority({{ task.task_id }}, 0);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
 				</div>
 			</td>
 			<td class="text">
@@ -217,10 +217,10 @@
                         {% endfor %}
 					{% endfor %}
 				</ul>
-				{{task.contents}}
+				{{ task.contents }}
 				<ul class="actionList">
-					<li><a class="viewAction" href="{{ CONTEXT_ROOT }}/task/{{task.task_id}}/">閲覧</a></li>
-					<li><a class="deleteAction" href="javascript:deleteTask({{task.task_id}}, 'task-{{task.task_id}}')">削除</a></li>
+					<li><a class="viewAction" href="{{ CONTEXT_ROOT }}/task/{{ task.task_id }}/">閲覧</a></li>
+					<li><a class="deleteAction" href="javascript:deleteTask({{ task.task_id }}, 'task-{{ task.task_id }}')">削除</a></li>
 				</ul>
 				<p class="note">ID: {{ task.task_id }}, 見積: {{ task.estimated_man_hour }}, 作成日: {{ task.create_date|date:"Y/m/d H:i:s" }}</p>
 			</td>
