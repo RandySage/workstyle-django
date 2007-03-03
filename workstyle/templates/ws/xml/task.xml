@@ -14,18 +14,18 @@
 		<deadEndDate>{{ task.deadend_date|date:"Y/m/d H:i:s" }}</deadEndDate>
 		<estimatedManHour>{{ task.estimated_man_hour }}</estimatedManHour>
 		<priority>{{ task.priority }}</priority>
-		<status>{{ task.status }}</status>
+		<status>{{ task.status.status_id }}</status>
 		<tagList>
-			{% for tag in task.get_tag_list %}
-                {% for tag_master in tag_list %}
+                {% for tag in task.get_tag_list %}
+                  {% for tag_master in tag_list %}
                     {% ifequal tag tag_master.name %}
                         <tag>
                             <name><![CDATA[{{ tag }}]]></name>
-				            <styleClass>tag{{ tag_master.tag_type_id }}</styleClass>
-			            </tag>
+                            <styleClass>tag{{ tag_master.tag_type_id }}</styleClass>
+                        </tag>
                     {% endifequal %}
-                 {% endfor %}
-            {% endfor %}
+                  {% endfor %}
+                {% endfor %}
  		</tagList>
 		<contents><![CDATA[{{ task.contents }}]]></contents>
 		<fileList>
