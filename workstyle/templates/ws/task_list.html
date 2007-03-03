@@ -217,7 +217,7 @@
                         {% endfor %}
 					{% endfor %}
 				</ul>
-				{{ task.contents }}
+				{{ task.contents|escape|linebreaksbr|urlize }}
 				<ul class="actionList">
 					<li><a class="viewAction" href="{{ CONTEXT_ROOT }}/task/{{ task.task_id }}/">閲覧</a></li>
 					<li><a class="deleteAction" href="javascript:deleteTask({{ task.task_id }}, 'task-{{ task.task_id }}')">削除</a></li>
