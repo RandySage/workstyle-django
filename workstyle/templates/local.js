@@ -42,7 +42,8 @@ function buildUpdateStatusRequest(targetTaskId, updateStatusId) {
  */
 function buildUpdatePriorityRequest(taskId, priority) {
 	var req = Class.create();
-	req.url = 'xml/Task.xml';
+	//req.url = 'xml/Task.xml';
+        req.url = '/task/'+taskId+'/priority/update/';
 	req.param = $H({taskId:taskId, priority:priority}).toQueryString();
 	req.method = 'POST';
 	return req;

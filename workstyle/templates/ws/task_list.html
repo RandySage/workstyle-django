@@ -196,15 +196,15 @@
 					<li><a href="javascript:updateStatus(123, 6)"><img class="status6" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" alt="終わり" /></a></li>
 				</ul>
 			</td>
-			<td id="taskPriority-123" class="priority3">
-				<input type="hidden" id="taskOriginalPriority-123" value="3">
-				<div class="vertical-priority-set" onmouseout="updatePriorityIcon('taskPriority-123', $('taskOriginalPriority-123').value)">
-					<img class="icon-priority1" onmouseover="updatePriorityIcon('taskPriority-123', 1)"  onclick="updatePriority(123, 1);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority2" onmouseover="updatePriorityIcon('taskPriority-123', 2)"  onclick="updatePriority(123, 2);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority3" onmouseover="updatePriorityIcon('taskPriority-123', 3)"  onclick="updatePriority(123, 3);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority4" onmouseover="updatePriorityIcon('taskPriority-123', 4)"  onclick="updatePriority(123, 4);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority5" onmouseover="updatePriorityIcon('taskPriority-123', 5)"  onclick="updatePriority(123, 5);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
-					<img class="icon-priority0" onmouseover="updatePriorityIcon('taskPriority-123', 0)"  onclick="updatePriority(123, 0);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+			<td id="taskPriority-{{task.task_id}}" class="priority{{task.priority}}">
+				<input type="hidden" id="taskOriginalPriority-{{task.task_id}}" value="{{task.priority}}">
+				<div class="vertical-priority-set" onmouseout="updatePriorityIcon('taskPriority-{{task.task_id}}', $('taskOriginalPriority-{{task.task_id}}').value)">
+					<img class="icon-priority1" onmouseover="updatePriorityIcon('taskPriority-{{task.task_id}}', 1)"  onclick="updatePriority({{task.task_id}}, 1);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority2" onmouseover="updatePriorityIcon('taskPriority-{{task.task_id}}', 2)"  onclick="updatePriority({{task.task_id}}, 2);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority3" onmouseover="updatePriorityIcon('taskPriority-{{task.task_id}}', 3)"  onclick="updatePriority({{task.task_id}}, 3);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority4" onmouseover="updatePriorityIcon('taskPriority-{{task.task_id}}', 4)"  onclick="updatePriority({{task.task_id}}, 4);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority5" onmouseover="updatePriorityIcon('taskPriority-{{task.task_id}}', 5)"  onclick="updatePriority({{task.task_id}}, 5);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+					<img class="icon-priority0" onmouseover="updatePriorityIcon('taskPriority-{{task.task_id}}', 0)"  onclick="updatePriority({{task.task_id}}, 0);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
 				</div>
 			</td>
 			<td class="text">
@@ -224,8 +224,8 @@
 				</ul>
 				<p class="note">ID: {{task.task_id}}, 見積: {{task.estimated_man_hour}}, 作成日: {{task.create_date}}</p>
 			</td>
-			<td id="deadEndDate-123">{{task.deadend_date}}</td>
-			<td id="updateDate-123">{{task.update_date}}</td>
+			<td id="deadEndDate-{{task.task_id}}">{{task.deadend_date}}</td>
+			<td id="updateDate-{{task.task_id}}">{{task.update_date}}</td>
 		</tr>
 		{% endfor %}
 		</table>
