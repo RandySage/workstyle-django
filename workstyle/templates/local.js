@@ -22,7 +22,7 @@ function buildViewUrl(taskId) {
  */
 function buildDeleteTaskRequest(targetTaskId) {
 	var req = Class.create();
-	req.url = 'xml/SimpleResult.xml';
+	req.url = '/task/' + targetTaskId + '/delete/';
 	req.param = $H({taskId:targetTaskId}).toQueryString();
 	req.method = 'POST';
 	return req;
@@ -44,7 +44,7 @@ function buildUpdateStatusRequest(targetTaskId, updateStatusId) {
 function buildUpdatePriorityRequest(taskId, priority) {
 	var req = Class.create();
 	//req.url = 'xml/Task.xml';
-        req.url = '/task/'+taskId+'/priority/update/';
+    req.url = '/task/'+taskId+'/priority/update/';
 	req.param = $H({taskId:taskId, priority:priority}).toQueryString();
 	req.method = 'POST';
 	return req;

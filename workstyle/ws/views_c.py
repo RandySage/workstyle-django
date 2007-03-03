@@ -33,3 +33,16 @@ def update_priority(request,object_id):
     res = render_to_response('ws/xml/task.xml', {'task': task, 'message': message, 'mimetype': 'text/xml'})
     res['Content-Type'] = 'text/xml; charset=utf-8'
     return res
+
+def delete_task(request,object_id):
+    message = None
+    task = None
+    try:
+        task = Task.objects.get(pk=object_id)
+    except Task.DoesNotExist:
+        message = '対象のタスクが見つかりません'
+    else:
+        task.delete()
+    res = render_to_response('ws/xml/simple_request.xml', {'mimetype': 'text/xml'})
+    res['Content-Type'] = 'text/xml; charset=utf-8'
+    return res

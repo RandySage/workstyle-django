@@ -183,7 +183,7 @@
 			<th nowrap="nowrap"><a href="#">更新日<img src="{{ MEDIA_URL }}/resources/skin/default/image/icon/order_desc.png" /></a></th>
 		</tr>
 		{% for task in object_list %}
-		<tr id="{{task.task_id}}"> 
+		<tr id="task-{{task.task_id}}"> 
 			<td class="statusIcon">
 				<img id="statusIcon-123" class="status3-icon" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" /> 
 				<ul>

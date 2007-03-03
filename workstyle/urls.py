@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     (r'^static/resources/local.js$', 'django.views.generic.simple.direct_to_template',{'template': 'local.js'}),
     (r'^tag/$', 'django.views.generic.list_detail.object_list',{'queryset': Tag.objects.all().order_by("name"),'allow_empty': True}),
     (r'^task/(?P<task_id>\d+)/property/update/$','workstyle.ws.views.update_task_property'),
+    (r'^task/(?P<object_id>\d+)/delete/$', 'workstyle.ws.views.delete_task'),
 )
 
 if settings.DEBUG:
