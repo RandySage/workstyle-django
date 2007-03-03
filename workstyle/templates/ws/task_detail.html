@@ -38,7 +38,7 @@
 				<table class="list">
 					<tr>
 						<td class="statusIconLarge" colspan="2">
-							<img id="statusIcon" class="status3-iconLarge" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+							<img id="statusIcon" class="status{{ object.status.status_id }}-iconLarge" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
 							<p>
 								<a href="javascript:updateStatus({{ object.task_id }}, 7)"><img class="status7" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" /></a>
 								<a href="javascript:updateStatus({{ object.task_id }}, 1)"><img class="status1" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif" /></a>
