@@ -56,15 +56,15 @@
 					</tr>
 					<tr> 
 						<th>優先度</th>
-						<td class="priority3" id="taskPriority">
-							<input type="hidden" id="taskOriginalPriority" value="3">
+						<td class="priority{{ object.priority }}" id="taskPriority">
+							<input type="hidden" id="taskOriginalPriority" value="{{ object.priority }}">
 							<div class="horizontal-priority-set" onmouseout="updatePriorityIcon('taskPriority', $('taskOriginalPriority').value)">
-								<img class="icon-priority1" onmouseover="updatePriorityIcon('taskPriority', 1)" onclick="updatePriority(123, 1);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
-								<img class="icon-priority2" onmouseover="updatePriorityIcon('taskPriority', 2)" onclick="updatePriority(123, 2);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
-								<img class="icon-priority3" onmouseover="updatePriorityIcon('taskPriority', 3)" onclick="updatePriority(123, 3);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
-								<img class="icon-priority4" onmouseover="updatePriorityIcon('taskPriority', 4)" onclick="updatePriority(123, 4);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
-								<img class="icon-priority5" onmouseover="updatePriorityIcon('taskPriority', 5)" onclick="updatePriority(123, 5);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
-								<img class="icon-priority0" onmouseover="updatePriorityIcon('taskPriority', 0)" onclick="updatePriority(123, 0);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+								<img class="icon-priority1" onmouseover="updatePriorityIcon('taskPriority', 1)" onclick="updatePriority({{ object.task_id }}, 1);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+								<img class="icon-priority2" onmouseover="updatePriorityIcon('taskPriority', 2)" onclick="updatePriority({{ object.task_id }}, 2);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+								<img class="icon-priority3" onmouseover="updatePriorityIcon('taskPriority', 3)" onclick="updatePriority({{ object.task_id }}, 3);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+								<img class="icon-priority4" onmouseover="updatePriorityIcon('taskPriority', 4)" onclick="updatePriority({{ object.task_id }}, 4);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+								<img class="icon-priority5" onmouseover="updatePriorityIcon('taskPriority', 5)" onclick="updatePriority({{ object.task_id }}, 5);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
+								<img class="icon-priority0" onmouseover="updatePriorityIcon('taskPriority', 0)" onclick="updatePriority({{ object.task_id }}, 0);" src="{{ MEDIA_URL }}/resources/skin/default/image/spacer.gif"/>
 							</div>
 						</td>
 					</tr>
