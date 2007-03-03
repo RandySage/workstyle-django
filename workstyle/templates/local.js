@@ -32,7 +32,8 @@ function buildDeleteTaskRequest(targetTaskId) {
  */
 function buildUpdateStatusRequest(targetTaskId, updateStatusId) {
 	var req = Class.create();
-	req.url = 'xml/Task.xml';
+	//req.url = 'xml/Task.xml';
+        req.url = '/task/'+targetTaskId+'/status/update/';
 	req.param = $H({taskId:targetTaskId, statusId:updateStatusId}).toQueryString();
 	req.method = 'POST';
 	return req;
