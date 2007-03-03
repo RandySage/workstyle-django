@@ -222,10 +222,10 @@
 					<li><a class="viewAction" href="{{ CONTEXT_ROOT }}/task/{{task.task_id}}/">閲覧</a></li>
 					<li><a class="deleteAction" href="javascript:deleteTask({{task.task_id}}, 'task-{{task.task_id}}')">削除</a></li>
 				</ul>
-				<p class="note">ID: {{task.task_id}}, 見積: {{task.estimated_man_hour}}, 作成日: {{task.create_date}}</p>
+				<p class="note">ID: {{ task.task_id }}, 見積: {{ task.estimated_man_hour }}, 作成日: {{ task.create_date|date:"Y/m/d H:i:s" }}</p>
 			</td>
-			<td id="deadEndDate-{{task.task_id}}">{{task.deadend_date}}</td>
-			<td id="updateDate-{{task.task_id}}">{{task.update_date}}</td>
+			<td id="deadEndDate-{{ task.task_id }}">{{ task.deadend_date|date:"Y/m/d H:i:s" }}</td>
+			<td id="updateDate-{{ task.task_id }}">{{ task.update_date|date:"Y/m/d H:i:s" }}</td>
 		</tr>
 		{% endfor %}
 		</table>
