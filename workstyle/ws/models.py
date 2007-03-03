@@ -30,7 +30,7 @@ class Task(models.Model):
     task_id              = models.AutoField(primary_key=True)
     contents             = models.TextField(_('Contents'))
     estimated_man_hour   = models.FloatField(_('Estimate by man'), max_digits=5, decimal_places=2, default=0.0)
-    tag_list             = models.CharField(maxlength=200, db_index=True)
+    tag_list             = models.CharField(blank=True, maxlength=200, db_index=True)
     create_date          = models.DateTimeField(_('Create Date'), auto_now_add=True, db_index=True)
     update_date          = models.DateTimeField(_('Update Date'), auto_now=True, db_index=True)
     deadend_date          = models.DateTimeField(_('Limit Date'), db_index=True, null=True, blank=True)
