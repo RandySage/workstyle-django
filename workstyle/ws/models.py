@@ -12,6 +12,9 @@ class Status(models.Model):
     sort_order = models.IntegerField(_('Sort Order'), default=0)
     image      = models.CharField(_('Image Path'), maxlength=256)
     
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = _('Status')
   
@@ -38,6 +41,9 @@ class Task(models.Model):
     related_task         = models.ManyToManyField('self', null=True, blank=True, verbose_name=_('Task'))
     priority             = models.IntegerField(_('priority'), default=3)
     
+    def __str__(self):
+        return self.contents[:20]
+
     def save(self):
         super(Task, self).save()
         for tag in self.tag_list.strip().replace('[', '').split(']'):
@@ -47,14 +53,17 @@ class Task(models.Model):
     
     def get_tag_list(self):
         return self.tag_list.strip().replace('[', '').split(']')
+
+    title = property(__str__)
     
-    class Meta:
-         verbose_name=_('Task')
-         
     def get_absolute_url(self):
         return '/task/%d/' % (self.task_id,)
 
+    class Meta:
+         verbose_name=_('Task')
+         
     class Admin:
+        list_display = ("title", "tag_list", "status", )
         pass
 
 class FileInfo(models.Model):
