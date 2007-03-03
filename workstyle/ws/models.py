@@ -46,6 +46,10 @@ class Task(models.Model):
     
     def get_tag_list(self):
         return self.tag_list.strip().replace('[', '').split(']')
+
+    def __str__(self):
+        return self.contents.split('\n')[0]
+
     title = property(__str__)
 
     def _get_comment_list(self):
