@@ -98,7 +98,7 @@ function buildAddCommentRequest(targetTaskId, commentator, comment) {
  */
 function buildEditPropertyRequest(property) {
 	var req = Class.create();
-	req.url = 'xml/Task.xml';
+	req.url = 'property/update/';
 	req.param = $H({
 		taskId: property.taskId,
 		estimatedManHour: property.estimatedManHour,
