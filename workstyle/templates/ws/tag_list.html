@@ -3,9 +3,9 @@
 
 {% block main %}
 
-<ol>
+<ol class="tagList">
 {% for tag in object_list %}
-    <li>{{ tag.name }}</li>
+    <li class="tag">{{ tag.name }}</li>
 {% endfor %}
 </ol>
 
