@@ -163,18 +163,10 @@
 		<h2 id="commentTitle">Comment</h2>
 			<!--  コメントが存在しない場合はdisplay:noneを設定  -->
 			<dl class="commentList" id="commentList" style="/*display:none*/">
-				<dt>コメンテイター (2006/01/30 10:00:00)</dt>
-				<dd>
-				コメント内容コメント内容コメント内容コメント内容コメント内容コメント内容コメント内容
-				</dd>
-				<dt>コメンテイター (2006/01/30 10:00:00)</dt>
-				<dd>
-				コメント内容コメント内容コメント内容コメント内容コメント内容コメント内容コメント内容
-				</dd>
-				<dt>コメンテイター (2006/01/30 10:00:00)</dt>
-				<dd>
-				コメント内容コメント内容コメント内容コメント内容コメント内容コメント内容コメント内容
-				</dd>
+				{% for comment in object.get_comment_list %}
+				<dt>{{ comment.commentator }} ({{ comment.update_date }})</dt>
+				<dd>{{comment.contents}}</dd>
+				{% endfor %}
 			</dl>
 			<a id="addCommentLink" class="ajax" href="javascript:openCommentForm()"/>コメント追加</a>
 			<form id="CommentForm" onsubmit="return addComment()" style="display:none">

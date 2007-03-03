@@ -10,11 +10,8 @@ class Status(models.Model):
     status_id  = models.AutoField(primary_key=True)
     name       = models.CharField(_('Name'), maxlength=20)
     sort_order = models.IntegerField(_('Sort Order'), default=0)
-    image      = models.CharField(_('Image Path'), maxlength=256)
+    image      = models.CharField(_('Image Path'), maxlength=255)
     
-    def __str__(self):
-        return self.name
-
     class Meta:
         verbose_name = _('Status')
   
@@ -36,14 +33,10 @@ class Task(models.Model):
     tag_list             = models.CharField(blank=True, maxlength=200, db_index=True)
     create_date          = models.DateTimeField(_('Create Date'), auto_now_add=True, db_index=True)
     update_date          = models.DateTimeField(_('Update Date'), auto_now=True, db_index=True)
-    deadend_date          = models.DateTimeField(_('Limit Date'), db_index=True, null=True, blank=True)
+    deadend_date         = models.DateTimeField(_('Limit Date'), db_index=True, null=True, blank=True)
     status               = models.ForeignKey(Status, verbose_name=_('Status'), default=7)
     related_task         = models.ManyToManyField('self', null=True, blank=True, verbose_name=_('Task'))
     priority             = models.IntegerField(_('priority'), default=3)
-    
-    def __str__(self):
-        return self.contents[:20]
-
     def save(self):
         super(Task, self).save()
         for tag in self.tag_list.strip().replace('[', '').split(']'):
@@ -53,17 +46,19 @@ class Task(models.Model):
     
     def get_tag_list(self):
         return self.tag_list.strip().replace('[', '').split(']')
-
     title = property(__str__)
-    
-    def get_absolute_url(self):
-        return '/task/%d/' % (self.task_id,)
 
+    def _get_comment_list(self):
+        return self.taskcomment_set.all()
+    get_comment_list = property(_get_comment_list)
+    
     class Meta:
          verbose_name=_('Task')
          
+    def get_absolute_url(self):
+        return '/task/%d/' % (self.task_id,)
+
     class Admin:
-        list_display = ("title", "tag_list", "status", )
         pass
 
 class FileInfo(models.Model):
@@ -81,7 +76,7 @@ class TaskComment(models.Model):
     commentator          = models.CharField(_('Commentator'), maxlength=50)
     update_date          = models.DateTimeField(auto_now=True)
     task                 = models.ForeignKey(Task)
-    
+        
     class Meta:
         verbose_name=_('Comment')
 

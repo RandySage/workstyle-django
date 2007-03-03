@@ -19,6 +19,6 @@ def insert_comment(request,object_id):
             taskcomment.commentator = commentator
             taskcomment.task_id = object_id
             taskcomment.save()
-    res = render_to_response('ws/xml/task.xml', {'task': taskcomment, 'message': message, 'mimetype': 'text/xml'})
+    res = render_to_response('ws/xml/task.xml', {'task': taskcomment.task, 'message': message, 'mimetype': 'text/xml'})
     res['Content-Type'] = 'text/xml; charset=utf-8'
     return res

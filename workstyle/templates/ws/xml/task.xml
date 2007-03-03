@@ -36,14 +36,14 @@
 			</file>
 		</fileList>
 		<commentList>
-			<comment>
-				<commentId>1</commentId>
-				<commentator>牧野</commentator>
-				<contents><![CDATA[コメント内容<a href="#">リンク</a>
-				http://localhost:8080/hogehoge
-				改行もあるやつ]]></contents>
-				<updateDate>2006/12/31 10:30:29</updateDate>
-			</comment>
+		  {% for comment in task.get_comment_list %}
+		  <comment>
+			<commentId>{{ comment.comment_id }}</commentId>
+			<commentator>{{ comment.commentator }}</commentator>
+			<contents><![CDATA[{{comment.contents}}]]></contents>
+			<updateDate>{{ comment.update_date }}</updateDate>
+		  </comment>
+		  {% endfor %}
 		</commentList>
 	</task>
 {% endif %}

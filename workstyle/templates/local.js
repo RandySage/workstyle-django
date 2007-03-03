@@ -87,7 +87,7 @@ function buildDeleteFileRequest(targetFileId) {
  */
 function buildAddCommentRequest(targetTaskId, commentator, comment) {
 	var req = Class.create();
-	req.url = 'xml/Task.xml';
+	req.url = 'comment/add/';
 	req.param = $H({
 		taskId:targetTaskId,
 		commentator:commentator,
