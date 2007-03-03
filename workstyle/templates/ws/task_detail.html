@@ -82,15 +82,15 @@
 					</tr>
 					<tr class="form" id="deadEndDateForm" style="display:none;"> 
 						<th>〆切</th>
-						<td><input id="deadEndDate" type="text" class="text" value="2005/12/31"/></td>
+						<td><input id="deadEndDate" type="text" class="text" value="{{ object.deadend_date|date:"Y/m/d H:i:s" }}"/></td>
 					</tr>
 					<tr id="estimatedManHourContainer"> 
 						<th>見積</th>
-						<td id="estimatedManHourView">10</td>
+						<td id="estimatedManHourView">{{ object.estimated_man_hour }}</td>
 					</tr>
 					<tr class="form" id="estimatedManHourForm" style="display:none"> 
 						<th>見積</th>
-						<td><input id="estimatedManHour" name="estimatedManHour" type="text" class="text" value="10"/></td>
+						<td><input id="estimatedManHour" name="estimatedManHour" type="text" class="text" value="{{ object.estimated_man_hour }}"/></td>
 					</tr>
 				</table>
 				<a id="propertyLink" class="ajax" href="javascript:openPropertyForm()"/>変更</a>
