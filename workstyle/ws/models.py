@@ -54,6 +54,9 @@ class Task(models.Model):
     def get_absolute_url(self):
         return '/task/%d/' % (self.task_id,)
 
+    class Admin:
+        pass
+
 class FileInfo(models.Model):
     file_id    = models.AutoField(primary_key=True)
     #ここはoriginalから変更したので注意
