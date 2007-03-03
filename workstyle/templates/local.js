@@ -53,7 +53,8 @@ function buildUpdatePriorityRequest(taskId, priority) {
  */
 function buildEditTagListRequest(targetTaskId, tagList) {
 	var req = Class.create();
-	req.url = 'xml/Task.xml';
+//	req.url = 'xml/Task.xml';
+	req.url = '/task/' + targetTaskId + '/tag/update/'
 	req.param = $H({taskId:targetTaskId, tagList:tagList}).toQueryString();
 	req.method = 'POST';
 	return req;
