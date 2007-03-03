@@ -88,4 +88,4 @@ class Tag(models.Model):
 
     class Meta:
         verbose_name=_('Tag')
-        order_with_respect_to = 'tag_type'
+        #order_with_respect_to = 'tag_type'
