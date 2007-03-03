@@ -18,6 +18,9 @@ urlpatterns = patterns('',
 
 if settings.DEBUG:
     urlpatterns += patterns('',
+        # Uncomment this for admin:
+        (r'^admin/', include('django.contrib.admin.urls')),
+        
         (r'^static/(?P<path>.*)$', 'django.views.static.serve',
-         {'document_root': settings.MEDIA_ROOT}),
+        {'document_root': settings.MEDIA_ROOT}),
     )

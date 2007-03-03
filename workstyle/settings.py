@@ -16,6 +16,7 @@ MANAGERS = ADMINS
 
 #DATABASE_ENGINE = 'mysql'           # 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
 DATABASE_ENGINE = 'postgresql_psycopg2'
+#DATABASE_ENGINE = 'sqlite3'
 DATABASE_NAME = 'workstyle'             # Or path to database file if using sqlite3.
 DATABASE_USER = 'workstyle'             # Not used with sqlite3.
 DATABASE_PASSWORD = 'workstyle'         # Not used with sqlite3.
@@ -85,6 +86,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'workstyle.ws.context_processor.workstyle_context',
 )
 INSTALLED_APPS = (
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

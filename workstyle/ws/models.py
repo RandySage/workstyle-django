@@ -83,9 +83,15 @@ class Tag(models.Model):
     active           = models.BooleanField(_('Active'), default=True)
     tag_type         = models.ForeignKey(TagType)
 
+    def __str__(self):
+        return self.name
+
     objects = models.Manager()
     public_objects = TagManager()
 
     class Meta:
         verbose_name=_('Tag')
         #order_with_respect_to = 'tag_type'
+
+    class Admin:
+        pass
