@@ -40,8 +40,8 @@
 		  <comment>
 			<commentId>{{ comment.comment_id }}</commentId>
 			<commentator>{{ comment.commentator }}</commentator>
-			<contents><![CDATA[{{comment.contents}}]]></contents>
-			<updateDate>{{ comment.update_date }}</updateDate>
+			<contents><![CDATA[{{ comment.contents|escape }}]]></contents>
+			<updateDate>{{ comment.update_date|date:"Y/m/d H:i:s" }}</updateDate>
 		  </comment>
 		  {% endfor %}
 		</commentList>

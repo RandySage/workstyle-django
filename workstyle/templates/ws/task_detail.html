@@ -164,8 +164,8 @@
 			<!--  コメントが存在しない場合はdisplay:noneを設定  -->
 			<dl class="commentList" id="commentList" style="/*display:none*/">
 				{% for comment in object.get_comment_list %}
-				<dt>{{ comment.commentator }} ({{ comment.update_date }})</dt>
-				<dd>{{comment.contents}}</dd>
+				<dt>{{ comment.commentator }} ({{ comment.update_date|date:"Y/m/d H:i:s" }})</dt>
+				<dd>{{ comment.contents|escape }}</dd>
 				{% endfor %}
 			</dl>
 			<a id="addCommentLink" class="ajax" href="javascript:openCommentForm()"/>コメント追加</a>
